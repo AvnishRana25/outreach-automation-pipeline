@@ -16,23 +16,25 @@ on:
       action:
         description: 'Action to execute'
         required: true
-        default: 'status'
+        default: 'research-and-draft'
         type: choice
         options:
-          - status
-          - check-replies
+          - research-and-draft
           - send-batch
           - followups
+          - check-replies
+          - status
       region:
-        description: 'Target region if action is send-batch'
+        description: 'Target region (India, ME, EU, US, All)'
         required: false
-        default: 'US'
+        default: 'All'
         type: choice
         options:
-          - US
+          - All
           - India
           - ME
           - EU
+          - US
       auto_send:
         description: 'Directly send email instead of saving to Drafts'
         required: false
@@ -67,17 +69,17 @@ jobs:
             HOUR=$(date -u +%H)
             echo "Current UTC Hour: $HOUR"
             if [ "$HOUR" -eq 4 ]; then
-              echo "ACTION=send-batch" >> $GITHUB_ENV
+              echo "ACTION=research-and-draft" >> $GITHUB_ENV
               echo "REGION=India" >> $GITHUB_ENV
             elif [ "$HOUR" -eq 7 ]; then
-              echo "ACTION=send-batch" >> $GITHUB_ENV
+              echo "ACTION=research-and-draft" >> $GITHUB_ENV
               echo "REGION=EU" >> $GITHUB_ENV
             elif [ "$HOUR" -eq 16 ]; then
-              echo "ACTION=send-batch" >> $GITHUB_ENV
+              echo "ACTION=research-and-draft" >> $GITHUB_ENV
               echo "REGION=US" >> $GITHUB_ENV
             else
-              echo "ACTION=check-replies" >> $GITHUB_ENV
-              echo "REGION=US" >> $GITHUB_ENV
+              echo "ACTION=followups" >> $GITHUB_ENV
+              echo "REGION=All" >> $GITHUB_ENV
             fi
             echo "AUTO_SEND=false" >> $GITHUB_ENV
           fi
@@ -107,9 +109,9 @@ jobs:
         run: |
           git config --global user.name "Outreach Cloud Bot"
           git config --global user.email "bot@outreach.local"
-          git add outreach.db
+          git add outreach.db curated_leads.json 2>/dev/null || true
           if ! git diff-index --quiet HEAD --; then
-            git commit -m "Auto-update outreach state & replies [skip ci]"
+            git commit -m "Auto-update outreach state & leads [skip ci]"
             git push
           else
             echo "No database changes to commit."

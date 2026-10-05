@@ -216,6 +216,152 @@ MULTI_REGION_PROSPECTS = [
         "funding": "$16M Series A (Scale Venture Partners)",
         "tech_focus": "Real-time conversational voice agents handling enterprise phone dispatching",
         "hook": "streaming telemetry and deterministic state tracking under high-throughput concurrent audio streams"
+    },
+
+    # --- ADDITIONAL MULTI-REGION BATCH (INDIA, ME, EUROPE, US) ---
+    {
+        "company": "Sarvam AI",
+        "domain": "sarvam.ai",
+        "founder": "Vivek Raghavan",
+        "email": "vivek@sarvam.ai",
+        "role": "Co-Founder",
+        "region": "Bengaluru, India",
+        "category": "Sovereign Indic LLMs & Enterprise Agents",
+        "funding": "$41M Series A (Lightspeed, Peak XV)",
+        "tech_focus": "Enterprise voice and text AI agents localized for Indian languages and high-volume backends",
+        "hook": "benchmarking agent tool-call execution under regional language code-mixing and schema variations"
+    },
+    {
+        "company": "TrueFoundry",
+        "domain": "truefoundry.com",
+        "founder": "Nikunj Bajaj",
+        "email": "nikunj@truefoundry.com",
+        "role": "Co-Founder & CEO",
+        "region": "Bengaluru, India",
+        "category": "LLM & Agent Deployment Platform",
+        "funding": "$2.3M Seed (Eniac Ventures)",
+        "tech_focus": "Kubernetes-native deployment and monitoring for production autonomous agents",
+        "hook": "Dockerized eval harnesses and automated container health checks for agentic microservices"
+    },
+    {
+        "company": "Decentro",
+        "domain": "decentro.tech",
+        "founder": "Rohit Taneja",
+        "email": "rohit@decentro.tech",
+        "role": "Founder & CEO",
+        "region": "Bengaluru, India",
+        "category": "Fintech Workflow Automation & WhatsApp Rails",
+        "funding": "$4.7M (Y Combinator & InfoEdge)",
+        "tech_focus": "Real-time bank API aggregation, KYC verification, and conversational WhatsApp payment rails",
+        "hook": "deterministic state machines managing 4,000+ live transactions with zero transaction dropouts"
+    },
+    {
+        "company": "Mozn",
+        "domain": "mozn.sa",
+        "founder": "Mohammed Alhussein",
+        "email": "malhussein@mozn.sa",
+        "role": "Founder & CEO",
+        "region": "Riyadh, Saudi Arabia",
+        "category": "Enterprise AI & Anti-Money Laundering Agents",
+        "funding": "$10M Series A (BECO Capital)",
+        "tech_focus": "Autonomous financial fraud prevention and transaction monitoring across Gulf financial institutions",
+        "hook": "deterministic transaction state locks and high-throughput real-time telemetry pipelines"
+    },
+    {
+        "company": "Dapi",
+        "domain": "dapi.com",
+        "founder": "Ahmed Szegedi",
+        "email": "ahmed@dapi.com",
+        "role": "Co-Founder & CTO",
+        "region": "Dubai, UAE",
+        "category": "Open Banking & Real-Time Financial Workflows",
+        "funding": "YC W20 & $2M Seed",
+        "tech_focus": "Autonomous bank scraping, account reconciliation, and payment APIs across MENA",
+        "hook": "building schema-sanitized evaluation harnesses and deterministic transaction pipelines"
+    },
+    {
+        "company": "Baraka",
+        "domain": "getbaraka.com",
+        "founder": "Feras Jalbout",
+        "email": "feras@getbaraka.com",
+        "role": "Founder & CEO",
+        "region": "Dubai, UAE",
+        "category": "WealthTech & Autonomous Portfolio Agents",
+        "funding": "$20M Series A (Valar Ventures)",
+        "tech_focus": "Automated market research summaries and real-time execution pipelines for regional investors",
+        "hook": "deterministic state machines preventing rogue trades and 1 Hz telemetry streaming"
+    },
+    {
+        "company": "Causaly",
+        "domain": "causaly.com",
+        "founder": "Yiannis Kiachopoulos",
+        "email": "yiannis@causaly.com",
+        "role": "Co-Founder & CEO",
+        "region": "London, UK",
+        "category": "Biomedical AI Research Agents",
+        "funding": "$60M Series B (ICONIQ Growth)",
+        "tech_focus": "Autonomous causal agents mapping molecular interactions and drug target validation",
+        "hook": "evaluating multi-hop reasoning graphs and Dockerized verification harnesses for scientific literature"
+    },
+    {
+        "company": "Kive",
+        "domain": "kive.ai",
+        "founder": "Olle Frejd",
+        "email": "olle@kive.ai",
+        "role": "Founder & CEO",
+        "region": "Stockholm & London",
+        "category": "Generative Media & Creative AI Workflows",
+        "funding": "Seed Funded",
+        "tech_focus": "Multi-modal AI agents managing video, image, and concept production pipelines",
+        "hook": "stress-testing multimodal agent tool pipelines and automated pytest grading harnesses"
+    },
+    {
+        "company": "Cradle",
+        "domain": "cradle.bio",
+        "founder": "Stef van Grieken",
+        "email": "stef@cradle.bio",
+        "role": "Co-Founder & CEO",
+        "region": "Amsterdam & London",
+        "category": "Generative AI Agents for Protein Engineering",
+        "funding": "$24M Series A (Index Ventures)",
+        "tech_focus": "Autonomous design agents predicting protein mutations and laboratory assay results",
+        "hook": "Dockerized simulation benchmarks and physics-grounded telemetry tracking"
+    },
+    {
+        "company": "Sierra",
+        "domain": "sierra.ai",
+        "founder": "Bret Taylor",
+        "email": "bret@sierra.ai",
+        "role": "Co-Founder",
+        "region": "San Francisco, US",
+        "category": "Enterprise Customer AI Agents with Zero Hallucination",
+        "funding": "$110M (Sequoia Capital & Benchmark)",
+        "tech_focus": "High-agency enterprise conversational agents executing real-world CRM and billing workflows",
+        "hook": "deterministic state machines and containerized eval harnesses ensuring zero transaction hallucination"
+    },
+    {
+        "company": "Cognition",
+        "domain": "cognition.ai",
+        "founder": "Scott Wu",
+        "email": "scott@cognition.ai",
+        "role": "Co-Founder & CEO",
+        "region": "San Francisco, US",
+        "category": "Autonomous Coding Agent (Devin)",
+        "funding": "$175M (Founders Fund)",
+        "tech_focus": "End-to-end software engineering agents executing code in isolated sandboxes",
+        "hook": "containerized pytest grading harnesses and dynamic environment verification"
+    },
+    {
+        "company": "Mercor",
+        "domain": "mercor.com",
+        "founder": "Brendan Foody",
+        "email": "brendan@mercor.com",
+        "role": "Co-Founder & CEO",
+        "region": "San Francisco, US",
+        "category": "Autonomous Technical Hiring & Interview Agents",
+        "funding": "$30M (Benchmark)",
+        "tech_focus": "AI agents evaluating engineer pull requests, work samples, and live audio interviews",
+        "hook": "designing objective Docker-based coding benchmark suites and deterministic candidate scoring"
     }
 ]
 

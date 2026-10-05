@@ -257,15 +257,27 @@ def action_status():
     print("=" * 45)
     conn.close()
 
+from research_and_generate import run_multi_region_expansion
+
+def action_research_and_draft(region: str = None):
+    """Sources new multi-region startups, deduplicates, and drafts them into Gmail."""
+    print(f"[Research & Draft Engine] Sourcing new startups (region filter: {region})...")
+    target_regions = [region] if region and region.upper() != "ALL" else None
+    leads = run_multi_region_expansion(target_regions=target_regions, dry_run=False, create_drafts=True)
+    print(f"[Research & Draft Engine] Finished. {len(leads)} new emails drafted in Gmail.")
+    return len(leads)
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Cloud Outreach Orchestrator")
-    parser.add_argument("--action", choices=["status", "check-replies", "send-batch", "followups"], default="status")
-    parser.add_argument("--region", default="US", help="Target region (US, India, Middle East, Europe)")
+    parser.add_argument("--action", choices=["research-and-draft", "send-batch", "check-replies", "followups", "status"], default="research-and-draft")
+    parser.add_argument("--region", default="All", help="Target region (India, Middle East, Europe, US, All)")
     parser.add_argument("--auto-send", action="store_true", help="Send directly instead of creating drafts")
     parser.add_argument("--dry-run", action="store_true", help="Dry run without writing to Gmail")
     args = parser.parse_args()
     
-    if args.action == "status":
+    if args.action == "research-and-draft":
+        action_research_and_draft(region=args.region)
+    elif args.action == "status":
         action_status()
     elif args.action == "check-replies":
         action_check_replies()
@@ -273,3 +285,4 @@ if __name__ == "__main__":
         action_send_batch(region=args.region, dry_run=args.dry_run, auto_send=args.auto_send)
     elif args.action == "followups":
         action_process_followups(auto_send=args.auto_send)
+
