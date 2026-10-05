@@ -62,7 +62,7 @@ Local automatic sending is disabled by default. For an exclusive local run, firs
 
 ## Cloud and credentials
 
-The workflow in `.github/workflows/outreach_pipeline.yml` uses `main`, serializes campaign actions, refreshes state before execution, runs offline tests, checkpoints each transition and preserves recovery artifacts on failure. Scheduled ticks send automatically once verified leads are eligible. Manual workflow dispatch defaults to status and drafting. Commit `verified_leads.json` to the private campaign repository when using its import action. Enabling the repaired workflow requires deployment; local edits alone do not change an existing remote workflow.
+The workflow in `.github/workflows/outreach_pipeline.yml` uses `main`, serializes campaign actions, refreshes state before execution, runs offline tests, checkpoints each transition and preserves recovery artifacts on failure. Scheduled ticks send automatically once verified leads are eligible. Manual workflow dispatch defaults to status and drafting. Commit `verified_leads.json` to the private campaign repository when using its import action. The repaired workflow is deployed to the private repository; its live status acceptance run passed. Local edits alone do not change the remote workflow.
 
 Required secrets: `GMAIL_CLIENT_ID`, `GMAIL_CLIENT_SECRET`, `GMAIL_REFRESH_TOKEN`, with existing Gmail scopes covering metadata/search, drafts, sending and deletion of queued drafts. Local Gmail can use the existing Workspace credential file; do not place credentials in this repository. Cloud checkpoints need permission to push `main`; branch protection or push failure stops further Gmail writes.
 

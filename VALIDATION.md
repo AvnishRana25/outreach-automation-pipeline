@@ -1,6 +1,6 @@
 # Repair and validation checklist
 
-Validated locally on 5 October 2026. The original audit is preserved in AUDIT.md; its findings describe the pre-repair baseline. The repository has been made private with user approval. Live deployment acceptance is in progress; see the update below.
+Validated locally on 5 October 2026. The original audit is preserved in AUDIT.md; its findings describe the pre-repair baseline. The repository has been made private with user approval. The repairs are deployed and the cloud status acceptance run passed; see the update below.
 
 ## Automated checks
 
@@ -53,9 +53,9 @@ All three snapshots contain the same 52 real leads and status counts. The old mo
 
 ## Live acceptance still pending
 
-- [ ] Deploy the reviewed changes to the private campaign repository and observe a GitHub Actions run, including push permissions, branch protection and delayed scheduling.
+- [x] Deployed to the private campaign repository. Cloud status run 37355917369 passed 47 regressions, the action, checkpoint/push and exports. Future scheduled delivery timing remains dependent on GitHub scheduling.
 - [ ] Supply verified lead evidence and confirm recipient timezones before enabling new initial automatic sends.
-- [ ] Test a real draft/send/thread/reply cycle using a specifically authorized controlled recipient.
+- [x] Controlled live draft/send/thread/reply cycle passed using the authorized inbox; queued follow-up cancellation and actual Gmail draft removal were verified.
 - [ ] Verify mobile delivery using a configured private ntfy topic or Telegram destination.
 
 Fake transport checks establish local behavior; they do not establish real Gmail delivery, inbox placement, recipient identity, or live mobile/workflow health. Unknown outcomes intentionally stop sending until delivery is positively reconciled. The one-authoritative-sender restriction and remote push availability remain operating requirements. No flawless production guarantee is implied.
@@ -68,4 +68,4 @@ Findings 1–4: serialized runner, durable attempt/checkpoint recovery, manual d
 
 The user authorized deployment to a private repository and a controlled message to `collaboratewithavnish@gmail.com`. The repository visibility is confirmed private. The live sent message and follow-up draft share a Gmail thread. The test exposed Gmail replacing the supplied RFC Message-ID; recovery now uses a retained X-Outreach-ID header as well. The retained header and draft lookup were verified against Gmail, and a regression covers rewritten IDs for sent/draft recovery. The original test's sent Message-ID was reconciled from its actual Gmail message. No campaign recipient was contacted.
 
-The controlled reply and follow-up cancellation are awaiting the recipient's reply. Existing phone alerts use the old setup; a protected topic/token is still needed to validate the repaired mobile configuration.
+The incoming reply from the controlled recipient was detected and the queued follow-up draft was cancelled and removed from Gmail. The private [cloud run](https://github.com/AvnishRana25/outreach-automation-pipeline/actions/runs/37355917369) completed successfully, including 47 tests and checkpoint/export pushes. Existing phone alerts were reported by the user to work under the old setup; a protected topic/token is still needed to validate the repaired mobile configuration. NTFY_TOKEN is currently absent from repository secrets, so the repaired pipeline will not send alerts through that old setup. Use the deployed notify-test action after configuring the private channel.
