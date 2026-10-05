@@ -95,37 +95,30 @@ class GmailClient:
         return None
 
     def format_email_html(self, plain_body: str) -> str:
-        """Converts plain email body to clean, beautifully formatted modern HTML."""
+        """Converts plain body to 100% native Gmail compose format (<div dir="ltr"> with standard paragraph breaks)."""
         paragraphs = [p.strip() for p in plain_body.split('\n\n') if p.strip()]
-        html_paragraphs = []
+        html_blocks = []
         
         for p in paragraphs:
             # Detect signature block
             if p.startswith('Best,') or p.startswith('Best regards,') or 'Avnish Rana' in p:
-                sig_html = """<p style="margin: 18px 0 4px 0; color: #111827; font-size: 14px;">Best,<br><strong>Avnish Rana</strong></p>
-<p style="margin: 6px 0 0 0; font-size: 13px; color: #4b5563;">
-  <a href="https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing" style="color: #2563eb; text-decoration: underline; font-weight: 500;">Resume</a> &nbsp;•&nbsp; 
-  <a href="https://github.com/AvnishRana25" style="color: #2563eb; text-decoration: underline; font-weight: 500;">GitHub</a> &nbsp;•&nbsp; 
-  <a href="https://www.linkedin.com/in/avnish-rana-83523b2a3/" style="color: #2563eb; text-decoration: underline; font-weight: 500;">LinkedIn</a> &nbsp;•&nbsp; 
-  <a href="https://wa.me/917982252971" style="color: #2563eb; text-decoration: underline; font-weight: 500;">+91 7982252971</a>
-</p>"""
-                html_paragraphs.append(sig_html)
+                sig_html = """Best,<br>
+Avnish Rana<br>
+<span style="color:#666; font-size: 13px;">
+<a href="https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing" style="color:#1155cc;">Resume</a> | 
+<a href="https://github.com/AvnishRana25" style="color:#1155cc;">GitHub</a> | 
+<a href="https://www.linkedin.com/in/avnish-rana-83523b2a3/" style="color:#1155cc;">LinkedIn</a> | 
+<a href="https://wa.me/917982252971" style="color:#1155cc;">+91 7982252971</a>
+</span>"""
+                html_blocks.append(sig_html)
                 break
             else:
-                # Remove artificial hard wraps inside sentences so it flows fluidly
-                clean_p = ' '.join(p.split())
-                html_paragraphs.append(f'<p style="margin: 0 0 14px 0; line-height: 1.55; color: #1f2937; font-size: 14px;">{clean_p}</p>')
-                
-        content_html = '\n'.join(html_paragraphs)
-        return f"""<!DOCTYPE html>
-<html>
-<head><meta charset="utf-8"></head>
-<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.55; color: #1f2937; margin: 0; padding: 0;">
-<div style="max-width: 600px;">
-{content_html}
-</div>
-</body>
-</html>"""
+                # Clean multi-space / hard-wrap artifacts so sentences flow naturally
+                clean_lines = ' '.join(p.split())
+                html_blocks.append(clean_lines)
+
+        full_content = '<br><br>\n'.join(html_blocks)
+        return f'<div dir="ltr">\n{full_content}\n</div>'
 
     def _build_mime_message(self, to_email: str, subject: str, body: str, thread_id: str = None) -> dict:
         """Builds a multipart email with both clean fluid plain text and beautiful rich HTML."""
