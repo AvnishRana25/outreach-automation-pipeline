@@ -38,9 +38,3 @@ ENV/
 .AppleDouble
 .LSOverride
 Thumbs.db
-
-# Local campaign locks, recovery copies and tooling state
-*.db.lock
-backups/
-.serena/
-.code-review-graph/

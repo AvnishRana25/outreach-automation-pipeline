@@ -1,9 +1,9 @@
-id,company_name,batch_or_stage,location,domain,founder_name,founder_role,verified_email,target_role,status,hook_angle,recommended_send_time_ist,founder_local_window,resume_link,github_link,linkedin_link,scheduled_initial,initial_subject,initial_body,scheduled_fu1,fu1_subject,fu1_body,scheduled_fu2,fu2_subject,fu2_body,gmail_thread_id,sent_at,fu1_sent_at,fu2_sent_at,replied_at,last_error,region_code,recipient_timezone,email_verified_at,email_verification_source
-1,Hamming AI,YC S24,"San Francisco, US (Remote)",hamming.ai,Sumanyu Sharma,Co-founder & CEO,sumanyu@hamming.ai,AI Evaluation / QA Engineer Intern (or 1-Mo Trial),SENT,Adversarial benchmark authoring & pytest verifiers for agent pipelines,09:00–11:00 recipient local time,America/Los_Angeles,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,quick technical question re: Hamming's agent eval verifiers,"Hi Sumanyu,
+id,company_name,batch_or_stage,location,domain,founder_name,founder_role,verified_email,target_role,status,hook_angle,recommended_send_time_ist,founder_local_window,resume_link,github_link,linkedin_link,scheduled_initial,initial_subject,initial_body,scheduled_fu1,fu1_subject,fu1_body,scheduled_fu2,fu2_subject,fu2_body
+1,Hamming AI,YC S24,"San Francisco, US (Remote)",hamming.ai,Sumanyu Sharma,Co-founder & CEO,sumanyu@hamming.ai,AI Evaluation / QA Engineer Intern (or 1-Mo Trial),Drafted in Gmail,Adversarial benchmark authoring & pytest verifiers for agent pipelines,9:30 PM IST,9:00 AM PDT (San Francisco),https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,2026-10-06,quick technical question re: Hamming's agent eval verifiers,"Hi Sumanyu,
 
 Saw your launch of Hamming for agent QA and prompt optimization — the focus on moving teams away from 'vibe checks' to deterministic regression testing is spot on.
 
-In my current contract role at Caudal AI, I author contamination-resistant benchmark tasks for frontier coding agents in Docker environments. I write adversarial edge cases and pytest verifiers that catch hallucinated fixes and incomplete execution across complex trajectories before they reach benchmark datasets.
+At Caudal AI, I author contamination-resistant benchmark tasks for frontier coding agents in Docker environments. I write adversarial edge cases and pytest verifiers that catch hallucinated fixes and incomplete execution across complex trajectories before they reach benchmark datasets.
 
 Previously, I shipped a production WhatsApp sales agent running 4,000+ live deals where deterministic state machines prevented LLMs from hallucinating pricing or availability.
 
@@ -16,7 +16,7 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Phone / WhatsApp: +91 7982252971",,Re: quick technical question re: Hamming's agent eval verifiers,"Hi Sumanyu,
+Phone / WhatsApp: +91 7982252971",2026-10-09,Re: quick technical question re: Hamming's agent eval verifiers,"Hi Sumanyu,
 
 Thought about Hamming's test runners over the weekend.
 
@@ -28,13 +28,13 @@ Still open to a brief chat this week?
 
 Best,
 Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",,Re: quick technical question re: Hamming's agent eval verifiers,"Hi Sumanyu,
+Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",2026-10-14,Re: quick technical question re: Hamming's agent eval verifiers,"Hi Sumanyu,
 
 Assuming your plate is completely full scaling Hamming right now, so I'll leave this here.
 
 If you ever need an engineer who specializes in Dockerized agent benchmarks, adversarial pytest verifiers, and deterministic guardrails, feel free to keep my details handy:
-- Production WhatsApp Sales Agent (4,000+ deals, zero price improvisation): https://github.com/AvnishRana25
-- Caudal AI (Contract): Frontier agent benchmark verifiers in Docker shell environments
+- Production WhatsApp Sales Agent (4,000+ deals, zero price improvisation): [GitHub]
+- Caudal AI: Frontier agent benchmark verifiers in Docker shell environments
 - Direct / WhatsApp: +91 7982252971
 
 Wishing you and the team continued momentum.
@@ -44,12 +44,12 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Direct / WhatsApp: +91 7982252971",1a10c41a04979edf,2026-10-05T16:29:22.871702+00:00,,,,,US,America/Los_Angeles,,
-2,Composio,Together Fund / Seed,Bengaluru & SF,composio.dev,Soham Ganatra,Co-founder & CEO,soham@composio.dev,Junior Forward Deployed Engineer (FDE) / Integrations,DRAFTED,"Tool-use reliability, Docker sandboxes, and production CRM WhatsApp agents",09:00–11:00 recipient local time,Asia/Kolkata,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,composio tool-use reliability + agent eval sandboxes,"Hi Soham,
+Direct / WhatsApp: +91 7982252971"
+2,Composio,Together Fund / Seed,Bengaluru & SF,composio.dev,Soham Ganatra,Co-founder & CEO,soham@composio.dev,Junior Forward Deployed Engineer (FDE) / Integrations,Drafted in Gmail,"Tool-use reliability, Docker sandboxes, and production CRM WhatsApp agents",9:30 AM IST,9:30 AM IST (India),https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,2026-10-06,composio tool-use reliability + agent eval sandboxes,"Hi Soham,
 
 Been following Composio's rapid expansion as the go-to tool execution layer for agent builders — native auth and execution sandboxing are game-changers for reliability.
 
-In my current contract role at Caudal AI, I author Dockerized shell environments and adversarial pytest verifiers that stress-test frontier coding agents on tool inspection, command execution, and runtime debugging. Previously, I built a production multimodal WhatsApp agent running 4,000+ live deals, using strict deterministic trees so the model never improvises deal state or tool arguments.
+At Caudal AI, I author Dockerized shell environments and adversarial pytest verifiers that stress-test frontier coding agents on tool inspection, command execution, and runtime debugging. Previously, I built a production multimodal WhatsApp agent running 4,000+ live deals, using strict deterministic trees so the model never improvises deal state or tool arguments.
 
 I also have customer-facing experience (Klimashift, where 2 of my 4 product proposals were adopted into the roadmap and I built ROI models for enterprise pitches).
 
@@ -62,7 +62,7 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Phone / WhatsApp: +91 7982252971",,Re: composio tool-use reliability + agent eval sandboxes,"Hi Soham,
+Phone / WhatsApp: +91 7982252971",2026-10-09,Re: composio tool-use reliability + agent eval sandboxes,"Hi Soham,
 
 Quick follow-up on Composio's tool execution layer.
 
@@ -74,12 +74,12 @@ Do you have 10 minutes Thursday or Friday?
 
 Best,
 Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",,Re: composio tool-use reliability + agent eval sandboxes,"Hi Soham,
+Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",2026-10-14,Re: composio tool-use reliability + agent eval sandboxes,"Hi Soham,
 
 Figure you're heads-down driving Composio's growth, so I won't crowd your inbox.
 
 If you ever need an engineer who understands both tool-use execution sandboxes (Caudal AI) and commercial client delivery (Klimashift + Realty Pandit CRM), here is my contact info:
-- GitHub: https://github.com/AvnishRana25
+- GitHub: [GitHub Link]
 - WhatsApp / Cell: +91 7982252971
 
 Rooting for Composio's continued dominance in agent tooling.
@@ -89,12 +89,12 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Direct / WhatsApp: +91 7982252971",,,,,,,India,Asia/Kolkata,,
-3,Atla,YC S23 / Creandum,"London, UK (Remote)",atla-ai.com,Maurice Burger,Co-founder & CEO,maurice@atla-ai.com,AI Evaluation / Agent Benchmarking Intern,DRAFTED,"Agent trajectory grading, adversarial test design, and verifier correctness",09:00–11:00 recipient local time,Europe/London,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,agent trajectory grading & adversarial verifiers for Atla,"Hi Maurice,
+Direct / WhatsApp: +91 7982252971"
+3,Atla,YC S23 / Creandum,"London, UK (Remote)",atla-ai.com,Maurice Burger,Co-founder & CEO,maurice@atla-ai.com,AI Evaluation / Agent Benchmarking Intern,Drafted in Gmail,"Agent trajectory grading, adversarial test design, and verifier correctness",1:30 PM IST,9:00 AM BST (London),https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,2026-10-06,agent trajectory grading & adversarial verifiers for Atla,"Hi Maurice,
 
 Saw Atla's work on agent improvement engines and LLM-as-a-judge error pattern detection — the emphasis on automated failure attribution is exactly what agentic systems are missing.
 
-In my current contract role at Caudal AI, I author contamination-resistant tasks for frontier coding agent benchmarks inside Dockerized shell environments. My core focus is writing adversarial edge cases and pytest verifiers that reduce false passes/failures, and grading agent trajectories against strict rubrics to catch subtle logic slips.
+At Caudal AI, I author contamination-resistant tasks for frontier coding agent benchmarks inside Dockerized shell environments. My core focus is writing adversarial edge cases and pytest verifiers that reduce false passes/failures, and grading agent trajectories against strict rubrics to catch subtle logic slips.
 
 I'd love to join Atla for a 3-month remote internship or trial contract to help author adversarial test suites, build ground-truth agent benchmark tasks, or refine error taxonomy grading.
 
@@ -105,7 +105,7 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Phone / WhatsApp: +91 7982252971",,Re: agent trajectory grading & adversarial verifiers for Atla,"Hi Maurice,
+Phone / WhatsApp: +91 7982252971",2026-10-09,Re: agent trajectory grading & adversarial verifiers for Atla,"Hi Maurice,
 
 Quick thought regarding LLM judges: when evaluating frontier agents, we noticed LLM judges often suffer from length bias and overlook skipped steps in long shell histories. We addressed this by combining rubric-based deterministic verifiers with adversarial edge cases.
 
@@ -115,13 +115,13 @@ Worth a 10-minute call?
 
 Best,
 Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",,Re: agent trajectory grading & adversarial verifiers for Atla,"Hi Maurice,
+Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",2026-10-14,Re: agent trajectory grading & adversarial verifiers for Atla,"Hi Maurice,
 
 Understand you're fully focused on building Atla, so I'll keep this as my last note.
 
 If you ever need an agent benchmark researcher with production trajectory evaluation experience:
-- Caudal AI (Contract): Frontier coding benchmark tasks & pytest verifiers in Docker
-- Live Projects & Code: https://github.com/AvnishRana25
+- Caudal AI: Frontier coding benchmark tasks & pytest verifiers in Docker
+- Live Projects & Code: [GitHub Link]
 - Direct: +91 7982252971
 
 All the best with Atla's next milestone!
@@ -131,8 +131,8 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Direct / WhatsApp: +91 7982252971",,,,,,,EU,Europe/London,,
-4,Emergent,YC S24 / Unicorn,"San Francisco, US (Remote)",emergent.sh,Mukund Jha,Co-founder & CEO,mj@emergent.sh,AI Coding Agent / Eval & Integration Contractor,SENT,Stress-testing coding agents in Docker and multi-agent contract verification,09:00–11:00 recipient local time,America/Los_Angeles,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,stress-testing Emergent's multi-agent code generation pipelines,"Hi Mukund,
+Direct / WhatsApp: +91 7982252971"
+4,Emergent,YC S24 / Unicorn,"San Francisco, US (Remote)",emergent.sh,Mukund Jha,Co-founder & CEO,mj@emergent.sh,AI Coding Agent / Eval & Integration Contractor,Drafted in Gmail,Stress-testing coding agents in Docker and multi-agent contract verification,9:30 PM IST,9:00 AM PDT (San Francisco),https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,2026-10-06,stress-testing Emergent's multi-agent code generation pipelines,"Hi Mukund,
 
 Huge congrats on Emergent's trajectory — scaling multi-agent fullstack code generation (FastAPI + React) for non-technical creators is a massive achievement.
 
@@ -149,7 +149,7 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Phone / WhatsApp: +91 7982252971",,Re: stress-testing Emergent's multi-agent code generation pipelines,"Hi Mukund,
+Phone / WhatsApp: +91 7982252971",2026-10-09,Re: stress-testing Emergent's multi-agent code generation pipelines,"Hi Mukund,
 
 Quick follow-up: in multi-agent code generation, the most frequent failure point is handoff drift between architecture agents and frontend/backend subagents (e.g. mismatched API schemas or unhandled route states).
 
@@ -161,12 +161,12 @@ Open to a brief call this week?
 
 Best,
 Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",,Re: stress-testing Emergent's multi-agent code generation pipelines,"Hi Mukund,
+Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",2026-10-14,Re: stress-testing Emergent's multi-agent code generation pipelines,"Hi Mukund,
 
 Assuming you're flat out scaling Emergent's platform right now, so I'll bow out.
 
 If you ever need an engineer skilled in stress-testing coding agents, Docker sandboxes, and fullstack agent pipelines:
-- GitHub: https://github.com/AvnishRana25
+- GitHub: [GitHub Link]
 - Direct / WhatsApp: +91 7982252971
 
 Wishing Emergent massive continued success!
@@ -176,8 +176,8 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Direct / WhatsApp: +91 7982252971",1a10c41a9f89cd65,2026-10-05T16:29:22.871702+00:00,,,,,US,America/Los_Angeles,,
-5,Persana AI,YC W23,"San Francisco, US (Remote)",persana.ai,Sriya Maram,Co-founder & CEO,sriya@persana.ai,Forward Deployed Engineer (FDE) / Agent Workflow Contractor,SENT,"B2B sales agents, CRM data pipelines, and deterministic conversational guards",09:00–11:00 recipient local time,America/Los_Angeles,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,quick technical note: Persana agent data pipelines & CRM guards,"Hi Sriya,
+Direct / WhatsApp: +91 7982252971"
+5,Persana AI,YC W23,"San Francisco, US (Remote)",persana.ai,Sriya Maram,Co-founder & CEO,sriya@persana.ai,Forward Deployed Engineer (FDE) / Agent Workflow Contractor,Drafted in Gmail,"B2B sales agents, CRM data pipelines, and deterministic conversational guards",9:30 PM IST,9:00 AM PDT (San Francisco),https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,2026-10-06,quick technical note: Persana agent data pipelines & CRM guards,"Hi Sriya,
 
 Love what you and the Persana AI team are building to turn outbound into autonomous multi-source intelligence.
 
@@ -194,7 +194,7 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Phone / WhatsApp: +91 7982252971",,Re: quick technical note: Persana agent data pipelines & CRM guards,"Hi Sriya,
+Phone / WhatsApp: +91 7982252971",2026-10-09,Re: quick technical note: Persana agent data pipelines & CRM guards,"Hi Sriya,
 
 Following up with a quick thought on sales agent reliability: when ingesting diverse third-party CRM data, unstructured notes often trigger unintended state transitions. We mitigated this by enforcing strict state machines where LLM outputs can only trigger predefined transitions.
 
@@ -204,12 +204,12 @@ Still open to a quick 10-min chat?
 
 Best,
 Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",,Re: quick technical note: Persana agent data pipelines & CRM guards,"Hi Sriya,
+Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",2026-10-14,Re: quick technical note: Persana agent data pipelines & CRM guards,"Hi Sriya,
 
 I know you have a million priorities scaling Persana, so I won't follow up again.
 
 If you ever need an engineer who can build production CRM agent pipelines and deterministic sales workflows:
-- Realty Pandit CRM (4,000+ deals on WhatsApp): https://github.com/AvnishRana25
+- Realty Pandit CRM (4,000+ deals on WhatsApp): [GitHub Link]
 - WhatsApp / Phone: +91 7982252971
 
 Wishing you and the Persana team all the best!
@@ -219,12 +219,12 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Direct / WhatsApp: +91 7982252971",1a10c41ac885b0ad,2026-10-05T16:29:22.871702+00:00,,,,,US,America/Los_Angeles,,
-6,Dextr AI,Seed ($6.7M Elevation / Foundation),Bengaluru & US,dextr.ai,Sajid Shariff,Co-founder & CEO,sajid@dextr.ai,Junior FDE / Voice & Messaging Agent Integrations,DRAFTED,"Production conversational agents, zero hallucination guardrails, and customer ROI",09:00–11:00 recipient local time,Asia/Kolkata,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,dextr AI reservation agents + deterministic guardrails,"Hi Sajid,
+Direct / WhatsApp: +91 7982252971"
+6,Dextr AI,Seed ($6.7M Elevation / Foundation),Bengaluru & US,dextr.ai,Sajid Shariff,Co-founder & CEO,sajid@dextr.ai,Junior FDE / Voice & Messaging Agent Integrations,Drafted in Gmail,"Production conversational agents, zero hallucination guardrails, and customer ROI",9:30 AM IST,9:30 AM IST (India),https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,2026-10-06,dextr AI reservation agents + deterministic guardrails,"Hi Sajid,
 
 Congrats on the $6.7M seed round led by Elevation Capital. Replacing legacy reservation contact centers with autonomous hospitality agents is an enormous market.
 
-When deploying conversational agents in high-stakes hospitality/sales, preventing edge-case hallucinations is critical. I built a production WhatsApp sales agent for Realty Pandit handling 4,000+ active customer deals with strict deterministic trees so the LLM never improvises booking availability or rates. In my current contract role at Caudal AI, I author adversarial benchmark verifiers that catch logic failures in autonomous agents.
+When deploying conversational agents in high-stakes hospitality/sales, preventing edge-case hallucinations is critical. I built a production WhatsApp sales agent for Realty Pandit handling 4,000+ active customer deals with strict deterministic trees so the LLM never improvises booking availability or rates. At Caudal AI, I author adversarial benchmark verifiers that catch logic failures in autonomous agents.
 
 I'd love to join Dextr as a Junior Solutions Engineer / FDE intern to help build customer reservation connectors, integration test suites, and pilot deployments.
 
@@ -235,7 +235,7 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Phone / WhatsApp: +91 7982252971",,Re: dextr AI reservation agents + deterministic guardrails,"Hi Sajid,
+Phone / WhatsApp: +91 7982252971",2026-10-09,Re: dextr AI reservation agents + deterministic guardrails,"Hi Sajid,
 
 Thought of Dextr when reviewing contact center edge cases: guest date alterations and multi-room bookings often cause LLM state confusion. Implementing transactional rollbacks in the agent's dialog tree eliminated double-booking in our Realty Pandit deployment.
 
@@ -245,13 +245,13 @@ Worth 10 minutes this week?
 
 Best,
 Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",,Re: dextr AI reservation agents + deterministic guardrails,"Hi Sajid,
+Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",2026-10-14,Re: dextr AI reservation agents + deterministic guardrails,"Hi Sajid,
 
 Assuming you're flat out deploying seed capital and onboarding hotel properties, so I'll wrap up here.
 
 Feel free to keep my info on file if you need hands-on conversational agent engineering:
 - WhatsApp: +91 7982252971
-- GitHub: https://github.com/AvnishRana25
+- GitHub: [GitHub Link]
 
 Best of luck scaling Dextr!
 
@@ -260,8 +260,8 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Direct / WhatsApp: +91 7982252971",,,,,,,India,Asia/Kolkata,,
-7,Gumloop,YC W24,"San Francisco, US (Remote)",gumloop.com,Max Brodeur-Urbas,Co-founder & CEO,max@gumloop.com,Integration Engineer / FDE Intern,SENT,"Workflow nodes, API connectors, and execution reliability",09:00–11:00 recipient local time,America/Los_Angeles,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,building bespoke workflow nodes & eval verifiers for Gumloop,"Hi Max,
+Direct / WhatsApp: +91 7982252971"
+7,Gumloop,YC W24,"San Francisco, US (Remote)",gumloop.com,Max Brodeur-Urbas,Co-founder & CEO,max@gumloop.com,Integration Engineer / FDE Intern,Drafted in Gmail,"Workflow nodes, API connectors, and execution reliability",9:30 PM IST,9:00 AM PDT (San Francisco),https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,2026-10-06,building bespoke workflow nodes & eval verifiers for Gumloop,"Hi Max,
 
 Really impressive seeing Gumloop power automated workflows for teams like Instacart. The modular node approach is by far the cleanest abstraction in the agentic automation space.
 
@@ -276,7 +276,7 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Phone / WhatsApp: +91 7982252971",,Re: building bespoke workflow nodes & eval verifiers for Gumloop,"Hi Max,
+Phone / WhatsApp: +91 7982252971",2026-10-09,Re: building bespoke workflow nodes & eval verifiers for Gumloop,"Hi Max,
 
 Quick note on node execution: when users chain multiple web scraping and LLM nodes, silent structural changes on target pages frequently break downstream nodes. We tackled this at Caudal AI by embedding schema self-healing verifiers.
 
@@ -286,12 +286,12 @@ Still open to a quick chat?
 
 Best,
 Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",,Re: building bespoke workflow nodes & eval verifiers for Gumloop,"Hi Max,
+Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",2026-10-14,Re: building bespoke workflow nodes & eval verifiers for Gumloop,"Hi Max,
 
 Figure you're laser-focused on Gumloop's product velocity, so I'll bow out.
 
 If you ever need an engineer for node integrations, customer workflows, or agent verifiers:
-- GitHub: https://github.com/AvnishRana25
+- GitHub: [GitHub Link]
 - WhatsApp / Phone: +91 7982252971
 
 Rooting for Gumloop's continued growth!
@@ -301,8 +301,8 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Direct / WhatsApp: +91 7982252971",1a10c41b5de7fff8,2026-10-05T16:29:22.871702+00:00,,,,,US,America/Los_Angeles,,
-8,Erad,Series A ($22M MEVP),Riyadh & Dubai,erad.co,Salem Abu-Hammour,Co-founder & CEO,salem@erad.co,AI / Automation Contractor,DRAFTED,"Automated document/telemetry parsing, ROI modeling, and zero-hallucination pipelines",09:00–11:00 recipient local time,Asia/Dubai,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,automated underwriting data ingestion & financial telemetry,"Hi Salem,
+Direct / WhatsApp: +91 7982252971"
+8,Erad,Series A ($22M MEVP),Riyadh & Dubai,erad.co,Salem Abu-Hammour,Co-founder & CEO,salem@erad.co,AI / Automation Contractor,Drafted in Gmail,"Automated document/telemetry parsing, ROI modeling, and zero-hallucination pipelines",11:00 AM IST,8:30 AM - 9:00 AM AST (Riyadh),https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,2026-10-06,automated underwriting data ingestion & financial telemetry,"Hi Salem,
 
 Congrats on Erad's $22M Series A round to expand automated financing across the GCC.
 
@@ -317,7 +317,7 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Phone / WhatsApp: +91 7982252971",,Re: automated underwriting data ingestion & financial telemetry,"Hi Salem,
+Phone / WhatsApp: +91 7982252971",2026-10-09,Re: automated underwriting data ingestion & financial telemetry,"Hi Salem,
 
 Following up on SME underwriting telemetry: in energy and billing data at Klimashift, we found that combining deterministic rule engines (14-rule explainability) with LLM parsing captured anomalies that standard financial audits missed entirely.
 
@@ -327,13 +327,13 @@ Available for a 10-min call Thursday?
 
 Best,
 Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",,Re: automated underwriting data ingestion & financial telemetry,"Hi Salem,
+Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",2026-10-14,Re: automated underwriting data ingestion & financial telemetry,"Hi Salem,
 
 I know you have major regional expansion plans in motion, so I won't follow up again.
 
 If you ever need an engineer who merges financial telemetry parsing with strict, explainable LLM pipelines:
 - WhatsApp / Phone: +91 7982252971
-- GitHub: https://github.com/AvnishRana25
+- GitHub: [GitHub Link]
 
 Wishing Erad tremendous success across the GCC!
 
@@ -342,12 +342,12 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Direct / WhatsApp: +91 7982252971",,,,,,,ME,Asia/Dubai,,
-9,Archal,YC,"San Francisco, US (Remote)",archal.ai,Aidan Tiruvan,Founder,aidan@archal.ai,AI Sandbox & Evaluation Engineer Intern,SENT,"API sandboxes for coding agents, state inspection, and Docker environments",09:00–11:00 recipient local time,America/Los_Angeles,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,API sandboxes for coding agents + Dockerized state verifiers,"Hi Aidan,
+Direct / WhatsApp: +91 7982252971"
+9,Archal,YC,"San Francisco, US (Remote)",archal.ai,Aidan Tiruvan,Founder,aidan@archal.ai,AI Sandbox & Evaluation Engineer Intern,Drafted in Gmail,"API sandboxes for coding agents, state inspection, and Docker environments",9:30 PM IST,9:00 AM PDT (San Francisco),https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,2026-10-06,API sandboxes for coding agents + Dockerized state verifiers,"Hi Aidan,
 
 Love what you're building with Archal — providing API sandboxes where coding agents can run integrations and inspect state changes is critical for autonomous software engineering.
 
-In my current contract role at Caudal AI, I author contamination-resistant benchmark tasks for frontier coding agents in Dockerized shell environments where models must inspect systems, run commands, and debug failures end-to-end. I design adversarial pytest verifiers that validate state transitions across every valid solution path.
+At Caudal AI, I author contamination-resistant benchmark tasks for frontier coding agents in Dockerized shell environments where models must inspect systems, run commands, and debug failures end-to-end. I design adversarial pytest verifiers that validate state transitions across every valid solution path.
 
 I'd love to join Archal as an AI Sandbox / Systems intern or trial contractor to build realistic integration mocks, inspect sandbox side-effects, and author agent test suites.
 
@@ -358,7 +358,7 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Phone / WhatsApp: +91 7982252971",,Re: API sandboxes for coding agents + Dockerized state verifiers,"Hi Aidan,
+Phone / WhatsApp: +91 7982252971",2026-10-09,Re: API sandboxes for coding agents + Dockerized state verifiers,"Hi Aidan,
 
 Quick follow-up on agent sandboxes: in Docker benchmark environments at Caudal AI, the biggest headache was cleaning state leakages between adversarial agent runs. We built automated ephemeral teardowns and state verifiers to guarantee repeatability.
 
@@ -368,12 +368,12 @@ Free for a quick call?
 
 Best,
 Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",,Re: API sandboxes for coding agents + Dockerized state verifiers,"Hi Aidan,
+Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",2026-10-14,Re: API sandboxes for coding agents + Dockerized state verifiers,"Hi Aidan,
 
 Assuming you're heads-down shipping Archal sandboxes, so I'll leave this here.
 
 If you ever need an engineer experienced in Dockerized agent execution and sandbox verification:
-- Caudal AI Benchmark Work: https://github.com/AvnishRana25
+- Caudal AI Benchmark Work: [GitHub]
 - WhatsApp / Phone: +91 7982252971
 
 All the best with Archal's launch!
@@ -383,12 +383,12 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Direct / WhatsApp: +91 7982252971",1a10c41ba8b0f1c7,2026-10-05T16:29:22.871702+00:00,,,,,US,America/Los_Angeles,,
-10,Arga Labs,YC P26,"San Francisco, US (Remote)",argalabs.com,Phillip Li,Co-founder & CEO,phillip@argalabs.com,AI Agent Sandbox & Validation Engineer Intern,SENT,"Digital-twin staging environments, mock third-party services, and verifier design",09:00–11:00 recipient local time,America/Los_Angeles,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,digital-twin staging sandboxes for agent validation,"Hi Phillip,
+Direct / WhatsApp: +91 7982252971"
+10,Arga Labs,YC P26,"San Francisco, US (Remote)",argalabs.com,Phillip Li,Co-founder & CEO,phillip@argalabs.com,AI Agent Sandbox & Validation Engineer Intern,Drafted in Gmail,"Digital-twin staging environments, mock third-party services, and verifier design",9:30 PM IST,9:00 AM PDT (San Francisco),https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,2026-10-06,digital-twin staging sandboxes for agent validation,"Hi Phillip,
 
 Saw Arga Labs' work building digital-twin staging environments (mocking Stripe, Slack, Drive) for testing AI agents — creating high-fidelity sandbox state before production is the exact missing link for agent reliability.
 
-In my current contract role at Caudal AI, I author Dockerized shell environments and adversarial pytest verifiers that test whether autonomous coding agents can inspect systems and recover from runtime failures without hallucinated shortcuts.
+At Caudal AI, I author Dockerized shell environments and adversarial pytest verifiers that test whether autonomous coding agents can inspect systems and recover from runtime failures without hallucinated shortcuts.
 
 I’d love to help Arga Labs as an AI Validation / Sandbox Engineer intern or contractor building digital-twin mocks, adversarial test suites, and agent regression harnesses.
 
@@ -399,7 +399,7 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Phone / WhatsApp: +91 7982252971",,Re: digital-twin staging sandboxes for agent validation,"Hi Phillip,
+Phone / WhatsApp: +91 7982252971",2026-10-09,Re: digital-twin staging sandboxes for agent validation,"Hi Phillip,
 
 Following up on digital-twin sandboxes: one subtle challenge with mock third-party APIs is simulating asynchronous state changes (e.g. Stripe webhooks or Slack event subscriptions). At Caudal AI, we designed verifiers that handle non-deterministic timing gracefully.
 
@@ -409,12 +409,12 @@ Worth 10 minutes this week?
 
 Best,
 Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",,Re: digital-twin staging sandboxes for agent validation,"Hi Phillip,
+Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",2026-10-14,Re: digital-twin staging sandboxes for agent validation,"Hi Phillip,
 
 I'll assume you're fully occupied scaling Arga Labs, so I won't follow up again.
 
 Feel free to keep my details handy for agent validation and sandbox testing:
-- GitHub: https://github.com/AvnishRana25
+- GitHub: [GitHub Link]
 - Direct / WhatsApp: +91 7982252971
 
 Best of luck with Arga Labs!
@@ -424,8 +424,8 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Direct / WhatsApp: +91 7982252971",1a10c41bf15ea164,2026-10-05T16:29:22.871702+00:00,,,,,US,America/Los_Angeles,,
-11,Runable,Series A ($21M Nexus / Together),Bengaluru & US,runable.com,Umesh Kumar,Co-founder & CEO,umesh@runable.com,Forward Deployed Engineer (FDE) / Enterprise Agent Contractor,DRAFTED,"Enterprise agent workflows, state machines, and customer ROI metrics",09:00–11:00 recipient local time,Asia/Kolkata,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,enterprise business agents + zero-downtime state pipelines,"Hi Umesh,
+Direct / WhatsApp: +91 7982252971"
+11,Runable,Series A ($21M Nexus / Together),Bengaluru & US,runable.com,Umesh Kumar,Co-founder & CEO,umesh@runable.com,Forward Deployed Engineer (FDE) / Enterprise Agent Contractor,Drafted in Gmail,"Enterprise agent workflows, state machines, and customer ROI metrics",9:30 AM IST,9:30 AM IST (India),https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,2026-10-06,enterprise business agents + zero-downtime state pipelines,"Hi Umesh,
 
 Congratulations on Runable's $21M Series A co-led by Nexus and Together Fund. Scaling autonomous business agents across complex enterprise workflows is a tremendous opportunity.
 
@@ -440,7 +440,7 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Phone / WhatsApp: +91 7982252971",,Re: enterprise business agents + zero-downtime state pipelines,"Hi Umesh,
+Phone / WhatsApp: +91 7982252971",2026-10-09,Re: enterprise business agents + zero-downtime state pipelines,"Hi Umesh,
 
 Quick note on enterprise agent rollouts: in client deployments, business stakeholders demand strict explainability and rollback capabilities before giving agents operational authority.
 
@@ -452,13 +452,13 @@ Free for a 10-min chat?
 
 Best,
 Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",,Re: enterprise business agents + zero-downtime state pipelines,"Hi Umesh,
+Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",2026-10-14,Re: enterprise business agents + zero-downtime state pipelines,"Hi Umesh,
 
 Assuming you're completely immersed in scaling Runable post-Series A, so I'll wrap up here.
 
 If you need a Junior FDE who combines hands-on agent engineering with customer-facing ROI sense:
 - WhatsApp: +91 7982252971
-- GitHub: https://github.com/AvnishRana25
+- GitHub: [GitHub Link]
 
 Wishing Runable massive continued success!
 
@@ -467,8 +467,8 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Direct / WhatsApp: +91 7982252971",,,,,,,India,Asia/Kolkata,,
-12,Ignosis AI,Peak XV Surge ($4M),Bengaluru & Mumbai,ignosis.ai,Nirav Prajapati,Co-founder & CEO,nirav.prajapati@ignosis.ai,AI Data & Agent Integration Engineer,DRAFTED,"Financial data intelligence, debt-collection agent pipelines, and guardrails",09:00–11:00 recipient local time,Asia/Kolkata,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,debt collection agent pipelines + zero-hallucination financial guards,"Hi Nirav,
+Direct / WhatsApp: +91 7982252971"
+12,Ignosis AI,Peak XV Surge ($4M),Bengaluru & Mumbai,ignosis.ai,Nirav Prajapati,Co-founder & CEO,nirav.prajapati@ignosis.ai,AI Data & Agent Integration Engineer,Drafted in Gmail,"Financial data intelligence, debt-collection agent pipelines, and guardrails",9:30 AM IST,9:30 AM IST (India),https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,2026-10-06,debt collection agent pipelines + zero-hallucination financial guards,"Hi Nirav,
 
 Congrats on Ignosis securing $4M in pre-Series A funding led by Peak XV's Surge. Deploying AI data intelligence and automated collection agents in BFSI requires strict compliance and zero errors.
 
@@ -483,7 +483,7 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Phone / WhatsApp: +91 7982252971",,Re: debt collection agent pipelines + zero-hallucination financial guards,"Hi Nirav,
+Phone / WhatsApp: +91 7982252971",2026-10-09,Re: debt collection agent pipelines + zero-hallucination financial guards,"Hi Nirav,
 
 Following up on financial agent compliance: in collection workflows, auditory and textual hallucinations in settlement terms represent severe regulatory liabilities. We tackled this by wrapping LLM interactions in deterministic rule verifiers that reject unauthorized repayment proposals.
 
@@ -493,13 +493,13 @@ Worth a brief conversation?
 
 Best,
 Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",,Re: debt collection agent pipelines + zero-hallucination financial guards,"Hi Nirav,
+Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",2026-10-14,Re: debt collection agent pipelines + zero-hallucination financial guards,"Hi Nirav,
 
 I know you have major execution priorities scaling Ignosis with Surge, so I won't follow up again.
 
 If you ever need an engineer for compliance-first agent pipelines and financial data intelligence:
 - WhatsApp / Phone: +91 7982252971
-- GitHub: https://github.com/AvnishRana25
+- GitHub: [GitHub Link]
 
 All the best with Ignosis's growth!
 
@@ -508,12 +508,12 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Direct / WhatsApp: +91 7982252971",,,,,,,India,Asia/Kolkata,,
-13,Armature,YC P26,"San Francisco, US (Remote)",armature.tech,Theodore Otzenberger,Co-founder & CEO,theodore@armature.tech,AI Coding Agent Usability & Benchmarking Intern,SENT,"Benchmarking coding agents, SDK usability, and Docker test environments",09:00–11:00 recipient local time,America/Los_Angeles,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,evaluating SDK agent-usability + Dockerized coding benchmarks,"Hi Theodore,
+Direct / WhatsApp: +91 7982252971"
+13,Armature,YC P26,"San Francisco, US (Remote)",armature.tech,Theodore Otzenberger,Co-founder & CEO,theodore@armature.tech,AI Coding Agent Usability & Benchmarking Intern,Drafted in Gmail,"Benchmarking coding agents, SDK usability, and Docker test environments",9:30 PM IST,9:00 AM PDT (San Francisco),https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,2026-10-06,evaluating SDK agent-usability + Dockerized coding benchmarks,"Hi Theodore,
 
 Love Armature's focus on making products 'agent-usable' by monitoring how coding agents navigate codebases and SDKs — measuring agent friction is a massive blind spot for devtool companies.
 
-In my current contract role at Caudal AI, I author contamination-resistant benchmark tasks for frontier coding agents in Docker shell environments. My role is to grade agent trajectories, write adversarial edge cases, and design pytest verifiers that pinpoint where agents hallucinate fixes or fail to understand library interfaces.
+At Caudal AI, I author contamination-resistant benchmark tasks for frontier coding agents in Docker shell environments. My role is to grade agent trajectories, write adversarial edge cases, and design pytest verifiers that pinpoint where agents hallucinate fixes or fail to understand library interfaces.
 
 I’d love to help Armature author agentic benchmark tasks, stress-test SDK usability runners, or build developer telemetry analyzers on an internship or trial contract.
 
@@ -524,7 +524,7 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Phone / WhatsApp: +91 7982252971",,Re: evaluating SDK agent-usability + Dockerized coding benchmarks,"Hi Theodore,
+Phone / WhatsApp: +91 7982252971",2026-10-09,Re: evaluating SDK agent-usability + Dockerized coding benchmarks,"Hi Theodore,
 
 Quick follow-up on agent usability: coding agents consistently get tripped up by implicit dependencies, missing return type annotations, or incomplete CLI error outputs.
 
@@ -536,12 +536,12 @@ Free for a brief chat?
 
 Best,
 Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",,Re: evaluating SDK agent-usability + Dockerized coding benchmarks,"Hi Theodore,
+Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",2026-10-14,Re: evaluating SDK agent-usability + Dockerized coding benchmarks,"Hi Theodore,
 
 Assuming you're flat out scaling Armature, so I'll step aside.
 
 Feel free to keep my info on hand if you need an engineer for coding agent benchmarks and usability evals:
-- Caudal AI Benchmark Work: https://github.com/AvnishRana25
+- Caudal AI Benchmark Work: [GitHub Link]
 - WhatsApp / Phone: +91 7982252971
 
 Wishing Armature massive success!
@@ -551,8 +551,8 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Direct / WhatsApp: +91 7982252971",1a10c41c8da11eac,2026-10-05T16:29:22.871702+00:00,,,,,US,America/Los_Angeles,,
-14,Boom AI,YC F25,"San Francisco, US (Remote)",useboom.ai,Juan Casian,Co-founder & CEO,juan@useboom.ai,Junior FDE / eCommerce Conversational Agent Contractor,SENT,"Multimodal sales agents, WhatsApp commerce, and conversion telemetry",09:00–11:00 recipient local time,America/Los_Angeles,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,eCommerce recovery agents + WhatsApp multimodal pipelines,"Hi Juan,
+Direct / WhatsApp: +91 7982252971"
+14,Boom AI,YC F25,"San Francisco, US (Remote)",useboom.ai,Juan Casian,Co-founder & CEO,juan@useboom.ai,Junior FDE / eCommerce Conversational Agent Contractor,Drafted in Gmail,"Multimodal sales agents, WhatsApp commerce, and conversion telemetry",9:30 PM IST,9:00 AM PDT (San Francisco),https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,2026-10-06,eCommerce recovery agents + WhatsApp multimodal pipelines,"Hi Juan,
 
 Awesome seeing Boom AI tackle eCommerce revenue recovery through instant conversational agents.
 
@@ -567,7 +567,7 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Phone / WhatsApp: +91 7982252971",,Re: eCommerce recovery agents + WhatsApp multimodal pipelines,"Hi Juan,
+Phone / WhatsApp: +91 7982252971",2026-10-09,Re: eCommerce recovery agents + WhatsApp multimodal pipelines,"Hi Juan,
 
 Quick note on cart abandonment conversations: response latency and contextual photo/receipt parsing made the biggest difference in lead reactivation in our WhatsApp deployment.
 
@@ -579,13 +579,13 @@ Still open to a quick call?
 
 Best,
 Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",,Re: eCommerce recovery agents + WhatsApp multimodal pipelines,"Hi Juan,
+Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",2026-10-14,Re: eCommerce recovery agents + WhatsApp multimodal pipelines,"Hi Juan,
 
 I know you have your hands full scaling Boom AI, so I won't follow up further.
 
 If you ever need an engineer who has shipped conversational sales agents at scale:
 - WhatsApp: +91 7982252971
-- GitHub: https://github.com/AvnishRana25
+- GitHub: [GitHub Link]
 
 Best of luck with Boom AI!
 
@@ -594,8 +594,8 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Direct / WhatsApp: +91 7982252971",1a10c41cac10634b,2026-10-05T16:29:22.871702+00:00,,,,,US,America/Los_Angeles,,
-15,Veles,YC W24,"San Francisco, US (Remote)",getveles.com,Simon Ooley,Co-founder & CEO,simon@getveles.com,Forward Deployed Engineer (FDE) / CPQ Automation Contractor,SENT,"CPQ automation, deal documentation pipelines, and zero-downtime databases",09:00–11:00 recipient local time,America/Los_Angeles,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,sales CPQ deal pipelines + deterministic document guardrails,"Hi Simon,
+Direct / WhatsApp: +91 7982252971"
+15,Veles,YC W24,"San Francisco, US (Remote)",getveles.com,Simon Ooley,Co-founder & CEO,simon@getveles.com,Forward Deployed Engineer (FDE) / CPQ Automation Contractor,Drafted in Gmail,"CPQ automation, deal documentation pipelines, and zero-downtime databases",9:30 PM IST,9:00 AM PDT (San Francisco),https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,2026-10-06,sales CPQ deal pipelines + deterministic document guardrails,"Hi Simon,
 
 Really impressed by Veles automating the Configure, Price, Quote (CPQ) process and deal documentation for both human reps and agents — manual quoting is a massive drag on deal velocity.
 
@@ -610,7 +610,7 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Phone / WhatsApp: +91 7982252971",,Re: sales CPQ deal pipelines + deterministic document guardrails,"Hi Simon,
+Phone / WhatsApp: +91 7982252971",2026-10-09,Re: sales CPQ deal pipelines + deterministic document guardrails,"Hi Simon,
 
 Following up on CPQ automation: discount thresholds and multi-tiered billing rules are where LLMs most frequently make arithmetic and policy errors in quote generation. We resolved this by combining deterministic validation layers with LLM draft generators.
 
@@ -620,13 +620,13 @@ Do you have 10 minutes Thursday?
 
 Best,
 Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",,Re: sales CPQ deal pipelines + deterministic document guardrails,"Hi Simon,
+Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",2026-10-14,Re: sales CPQ deal pipelines + deterministic document guardrails,"Hi Simon,
 
 Assuming you're completely absorbed in growing Veles, so I'll wrap up here.
 
 If you ever need an FDE who understands complex deal pipelines and deterministic document guardrails:
 - WhatsApp / Phone: +91 7982252971
-- GitHub: https://github.com/AvnishRana25
+- GitHub: [GitHub Link]
 
 Wishing you and Veles tremendous success!
 
@@ -635,12 +635,12 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Direct / WhatsApp: +91 7982252971",1a10c41ce44df9eb,2026-10-05T16:29:22.871702+00:00,,,,,US,America/Los_Angeles,,
-16,Linzumi,YC,"San Francisco, US (Remote)",linzumi.com,Sean Grove,Co-Founder,sean@linzumi.com,AI Coding Agent Orchestration & Testing Engineer,SENT,"Managing fleets of coding agents, trajectory verification, and Docker harnesses",09:00–11:00 recipient local time,America/Los_Angeles,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,managing coding agent fleets + trajectory verifiers,"Hi Sean,
+Direct / WhatsApp: +91 7982252971"
+16,Linzumi,YC,"San Francisco, US (Remote)",linzumi.com,Sean Grove,Co-Founder,sean@linzumi.com,AI Coding Agent Orchestration & Testing Engineer,Drafted in Gmail,"Managing fleets of coding agents, trajectory verification, and Docker harnesses",9:30 PM IST,9:00 AM PDT (San Francisco),https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,2026-10-06,managing coding agent fleets + trajectory verifiers,"Hi Sean,
 
 Exciting to see Linzumi building a team chat command center for managing and verifying fleets of coding agents — managing multi-agent output without review bottlenecks is the next frontier.
 
-In my current contract role at Caudal AI, I author contamination-resistant benchmark tasks for frontier coding agents in Dockerized shell environments. I grade agent execution trajectories against strict rubrics and pytest verifiers, catching logic errors, loop states, and incomplete diffs before code merges.
+At Caudal AI, I author contamination-resistant benchmark tasks for frontier coding agents in Dockerized shell environments. I grade agent execution trajectories against strict rubrics and pytest verifiers, catching logic errors, loop states, and incomplete diffs before code merges.
 
 I’d love to contribute to Linzumi as an AI Systems / Verification intern or trial contractor to help build agent status inspectors, trajectory diff verifiers, or test environments.
 
@@ -651,7 +651,7 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Phone / WhatsApp: +91 7982252971",,Re: managing coding agent fleets + trajectory verifiers,"Hi Sean,
+Phone / WhatsApp: +91 7982252971",2026-10-09,Re: managing coding agent fleets + trajectory verifiers,"Hi Sean,
 
 Quick follow-up on agent fleet verification: when multiple agents execute concurrently on related code modules, catching race conditions and conflicting file modifications in the chat stream requires real-time AST or diff verifiers.
 
@@ -663,12 +663,12 @@ Worth a brief call?
 
 Best,
 Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",,Re: managing coding agent fleets + trajectory verifiers,"Hi Sean,
+Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",2026-10-14,Re: managing coding agent fleets + trajectory verifiers,"Hi Sean,
 
 Assuming your focus is 100% on Linzumi's product build, so I'll bow out.
 
 If you ever need an engineer who specializes in coding agent trajectory verification and Docker execution:
-- GitHub: https://github.com/AvnishRana25
+- GitHub: [GitHub Link]
 - WhatsApp / Phone: +91 7982252971
 
 Best of luck scaling Linzumi!
@@ -678,12 +678,12 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Direct / WhatsApp: +91 7982252971",1a10c41d2a7eb303,2026-10-05T16:29:22.871702+00:00,,,,,US,America/Los_Angeles,,
-17,Autosana,YC,"San Francisco, US (Remote)",autosana.ai,Yuvan Sundrani,Co-Founder,yuvan@autosana.ai,Autonomous QA & Benchmark Engineer Intern,SENT,"E2E testing agents, Docker shell environments, and adversarial test suites",09:00–11:00 recipient local time,America/Los_Angeles,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,autonomous E2E testing agents + adversarial pytest verifiers,"Hi Yuvan,
+Direct / WhatsApp: +91 7982252971"
+17,Autosana,YC,"San Francisco, US (Remote)",autosana.ai,Yuvan Sundrani,Co-Founder,yuvan@autosana.ai,Autonomous QA & Benchmark Engineer Intern,Drafted in Gmail,"E2E testing agents, Docker shell environments, and adversarial test suites",9:30 PM IST,9:00 AM PDT (San Francisco),https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,2026-10-06,autonomous E2E testing agents + adversarial pytest verifiers,"Hi Yuvan,
 
 Great mission with Autosana — using AI agents to autonomously generate and run end-to-end tests for mobile and web applications finally solves test maintenance debt.
 
-In my current contract role at Caudal AI, I author contamination-resistant benchmark tasks and adversarial pytest verifiers in Docker shell environments, testing whether autonomous agents can inspect systems, run commands, and debug failures end-to-end. Previously, I worked on mobile engineering at Manacle Tech cutting auth drop-off 25%.
+At Caudal AI, I author contamination-resistant benchmark tasks and adversarial pytest verifiers in Docker shell environments, testing whether autonomous agents can inspect systems, run commands, and debug failures end-to-end. Previously, I worked on mobile engineering at Manacle Tech cutting auth drop-off 25%.
 
 I’d love to join Autosana as an AI QA / Benchmark Engineer intern or trial contractor to author adversarial test suites, build web/mobile crawler harnesses, or refine trajectory grading.
 
@@ -694,7 +694,7 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Phone / WhatsApp: +91 7982252971",,Re: autonomous E2E testing agents + adversarial pytest verifiers,"Hi Yuvan,
+Phone / WhatsApp: +91 7982252971",2026-10-09,Re: autonomous E2E testing agents + adversarial pytest verifiers,"Hi Yuvan,
 
 Following up on E2E testing agents: a persistent bottleneck in agent-driven QA is handling dynamic DOM hydration and transient network flickers without creating flaky tests. We resolved this in our benchmarks by enforcing state assertions rather than timing sleeps.
 
@@ -704,12 +704,12 @@ Still open to a brief chat?
 
 Best,
 Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",,Re: autonomous E2E testing agents + adversarial pytest verifiers,"Hi Yuvan,
+Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",2026-10-14,Re: autonomous E2E testing agents + adversarial pytest verifiers,"Hi Yuvan,
 
 I'll assume you're heads-down driving Autosana's roadmap, so I won't follow up again.
 
 Feel free to keep my details handy for autonomous testing and benchmark engineering:
-- GitHub: https://github.com/AvnishRana25
+- GitHub: [GitHub Link]
 - WhatsApp / Phone: +91 7982252971
 
 Wishing Autosana huge success!
@@ -719,8 +719,8 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Direct / WhatsApp: +91 7982252971",1a10c41d75f051db,2026-10-05T16:29:22.871702+00:00,,,,,US,America/Los_Angeles,,
-18,Midplane,YC,"San Francisco, US (Remote)",midplane.ai,Dustin Lange,Co-founder & CEO,dustin@midplane.ai,AI Security & Policy Enforcement Engineer Intern,SENT,"Database guardrails for coding agents, SQL AST parsing, and zero-downtime migrations",09:00–11:00 recipient local time,America/Los_Angeles,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,coding agent database security + SQL AST policy enforcement,"Hi Dustin,
+Direct / WhatsApp: +91 7982252971"
+18,Midplane,YC,"San Francisco, US (Remote)",midplane.ai,Dustin Lange,Co-founder & CEO,dustin@midplane.ai,AI Security & Policy Enforcement Engineer Intern,Drafted in Gmail,"Database guardrails for coding agents, SQL AST parsing, and zero-downtime migrations",9:30 PM IST,9:00 AM PDT (San Francisco),https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,2026-10-06,coding agent database security + SQL AST policy enforcement,"Hi Dustin,
 
 Midplane's security layer sitting between AI coding agents and databases is brilliant — letting Cursor or Claude touch databases without strict query parsing and audit policies is a disaster waiting to happen.
 
@@ -735,7 +735,7 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Phone / WhatsApp: +91 7982252971",,Re: coding agent database security + SQL AST policy enforcement,"Hi Dustin,
+Phone / WhatsApp: +91 7982252971",2026-10-09,Re: coding agent database security + SQL AST policy enforcement,"Hi Dustin,
 
 Quick note on agent database interactions: beyond destructive DROP/DELETE calls, agents often execute unindexed table scans or un-paginated queries that lock production tables. Building query cost estimators into the policy proxy provides a vital safeguard.
 
@@ -745,13 +745,13 @@ Worth 10 minutes?
 
 Best,
 Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",,Re: coding agent database security + SQL AST policy enforcement,"Hi Dustin,
+Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",2026-10-14,Re: coding agent database security + SQL AST policy enforcement,"Hi Dustin,
 
 Figure your plate is completely full with Midplane, so I'll leave this here.
 
 If you ever need an engineer who understands database systems, migration safety, and agent verification:
 - WhatsApp / Phone: +91 7982252971
-- GitHub: https://github.com/AvnishRana25
+- GitHub: [GitHub Link]
 
 Rooting for Midplane's growth!
 
@@ -760,12 +760,12 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Direct / WhatsApp: +91 7982252971",1a10c41d96a9a8cc,2026-10-05T16:29:22.871702+00:00,,,,,US,America/Los_Angeles,,
-19,Maihem,YC W24,"San Francisco, US (Remote)",tekton-dynamics.com,Max Ahrens,Co-Founder,max@tekton-dynamics.com,AI Agent Simulation & Testing Engineer,SENT,"Adversarial simulations, agent trajectory grading, and Docker test beds",09:00–11:00 recipient local time,America/Los_Angeles,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,adversarial agent simulations + Dockerized test harnesses,"Hi Max,
+Direct / WhatsApp: +91 7982252971"
+19,Maihem,YC W24,"San Francisco, US (Remote)",tekton-dynamics.com,Max Ahrens,Co-Founder,max@tekton-dynamics.com,AI Agent Simulation & Testing Engineer,Drafted in Gmail,"Adversarial simulations, agent trajectory grading, and Docker test beds",9:30 PM IST,9:00 AM PDT (San Francisco),https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,2026-10-06,adversarial agent simulations + Dockerized test harnesses,"Hi Max,
 
 Loving Maihem's mission to make AI agents reliable through automated adversarial testing and simulation — simulating edge cases before deployment is essential for production agents.
 
-In my current contract role at Caudal AI, I author contamination-resistant benchmark tasks for frontier coding agents in Dockerized shell environments. My primary focus is designing adversarial edge cases and pytest verifiers that catch hallucinated fixes and logic loops across complex trajectories.
+At Caudal AI, I author contamination-resistant benchmark tasks for frontier coding agents in Dockerized shell environments. My primary focus is designing adversarial edge cases and pytest verifiers that catch hallucinated fixes and logic loops across complex trajectories.
 
 I’d love to join Maihem as an AI Testing / Simulation Engineer intern or contractor to build synthetic user personas, adversarial prompt test beds, or verifier suites.
 
@@ -776,7 +776,7 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Phone / WhatsApp: +91 7982252971",,Re: adversarial agent simulations + Dockerized test harnesses,"Hi Max,
+Phone / WhatsApp: +91 7982252971",2026-10-09,Re: adversarial agent simulations + Dockerized test harnesses,"Hi Max,
 
 Quick follow-up: in agent stress-testing, static jailbreaks are easy to detect, but multi-turn social engineering (e.g. slowly coercing an agent to bypass authorization) requires stateful conversational simulation.
 
@@ -788,12 +788,12 @@ Free for a brief chat?
 
 Best,
 Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",,Re: adversarial agent simulations + Dockerized test harnesses,"Hi Max,
+Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",2026-10-14,Re: adversarial agent simulations + Dockerized test harnesses,"Hi Max,
 
 I'll assume you're 100% focused on product execution at Maihem, so I won't follow up again.
 
 Keep my details on file if you ever need an engineer who lives and breathes adversarial agent testing:
-- GitHub: https://github.com/AvnishRana25
+- GitHub: [GitHub Link]
 - WhatsApp / Phone: +91 7982252971
 
 All the best with Maihem!
@@ -803,12 +803,12 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Direct / WhatsApp: +91 7982252971",1a10c41dc518db5c,2026-10-05T16:29:22.871702+00:00,,,,,US,America/Los_Angeles,,
-20,Marr Labs,YC W24,"San Francisco, US (Remote)",marrlabs.com,Dave Grannan,Co-Founder & CEO,dave@marrlabs.com,Conversational AI Integration / FDE Intern,SENT,"Voice agent workflows, deterministic dialog trees, and telemetry monitoring",09:00–11:00 recipient local time,America/Los_Angeles,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,conversational voice agents + deterministic state guards,"Hi Dave,
+Direct / WhatsApp: +91 7982252971"
+20,Marr Labs,YC W24,"San Francisco, US (Remote)",marrlabs.com,Dave Grannan,Co-Founder & CEO,dave@marrlabs.com,Conversational AI Integration / FDE Intern,Drafted in Gmail,"Voice agent workflows, deterministic dialog trees, and telemetry monitoring",9:30 PM IST,9:00 AM PDT (San Francisco),https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,2026-10-06,conversational voice agents + deterministic state guards,"Hi Dave,
 
 Exciting to see Marr Labs pushing the frontier of human-like conversational voice agents for enterprise phone operations.
 
-When handling live customer calls, models must navigate interruptions and ambient noise without hallucinating commitments. In my recent project Realty Pandit CRM, I deployed an agent handling 4,000+ customer deals using deterministic state trees so rates and schedules were strictly regulated. In my current contract role at Caudal AI, I author adversarial verifiers for autonomous agents.
+When handling live customer calls, models must navigate interruptions and ambient noise without hallucinating commitments. In my recent project Realty Pandit CRM, I deployed an agent handling 4,000+ customer deals using deterministic state trees so rates and schedules were strictly regulated. At Caudal AI, I author adversarial verifiers for autonomous agents.
 
 I’d love to join Marr Labs as a Junior Solutions Engineer / FDE intern to help build customer telephony connectors, dialog state verifiers, or call telemetry analytics.
 
@@ -819,7 +819,7 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Phone / WhatsApp: +91 7982252971",,Re: conversational voice agents + deterministic state guards,"Hi Dave,
+Phone / WhatsApp: +91 7982252971",2026-10-09,Re: conversational voice agents + deterministic state guards,"Hi Dave,
 
 Following up on voice agent reliability: customer barge-ins and mid-sentence corrections often corrupt context buffers. Implementing transactional rollback nodes in our dialog pipeline helped maintain conversational continuity without dropped variables.
 
@@ -829,13 +829,13 @@ Worth a brief call?
 
 Best,
 Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",,Re: conversational voice agents + deterministic state guards,"Hi Dave,
+Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",2026-10-14,Re: conversational voice agents + deterministic state guards,"Hi Dave,
 
 Figure you have high-priority operational demands scaling Marr Labs, so I'll wrap up here.
 
 If you ever need an engineer for conversational state pipelines and agent integrations:
 - WhatsApp / Phone: +91 7982252971
-- GitHub: https://github.com/AvnishRana25
+- GitHub: [GitHub Link]
 
 Wishing you and Marr Labs tremendous success!
 
@@ -844,8 +844,8 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Direct / WhatsApp: +91 7982252971",1a10c41e01e4a0f1,2026-10-05T16:29:22.871702+00:00,,,,,US,America/Los_Angeles,,
-21,Topo,YC W24,"San Francisco, US (Remote)",topo.io,Dan Elkaïm,Co-founder & CEO,dan@topo.io,Forward Deployed Engineer (FDE) / Outbound Agent Integrations,SENT,"Outbound sales agents, CRM data pipelines, and conversion analytics",09:00–11:00 recipient local time,America/Los_Angeles,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,outbound sales agents + CRM data state pipelines,"Hi Dan,
+Direct / WhatsApp: +91 7982252971"
+21,Topo,YC W24,"San Francisco, US (Remote)",topo.io,Dan Elkaïm,Co-founder & CEO,dan@topo.io,Forward Deployed Engineer (FDE) / Outbound Agent Integrations,Drafted in Gmail,"Outbound sales agents, CRM data pipelines, and conversion analytics",1:00 PM IST,9:30 AM CEST (Paris),https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,2026-10-06,outbound sales agents + CRM data state pipelines,"Hi Dan,
 
 Love Topo's vision of building AI agents that reproduce top-performing SDR behaviors by grounding in CRM data and call transcripts.
 
@@ -860,7 +860,7 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Phone / WhatsApp: +91 7982252971",,Re: outbound sales agents + CRM data state pipelines,"Hi Dan,
+Phone / WhatsApp: +91 7982252971",2026-10-09,Re: outbound sales agents + CRM data state pipelines,"Hi Dan,
 
 Quick note on SDR agent grounding: when pulling signals from heterogeneous CRM custom fields, subtle schema discrepancies often derail dynamic message generation. Building pre-flight normalization adapters reduced deal drop-off significantly in our deployment.
 
@@ -870,13 +870,13 @@ Still open to a quick call?
 
 Best,
 Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",,Re: outbound sales agents + CRM data state pipelines,"Hi Dan,
+Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",2026-10-14,Re: outbound sales agents + CRM data state pipelines,"Hi Dan,
 
 I'll assume you're laser-focused on Topo's expansion, so I won't follow up again.
 
 If you ever need an FDE who has built production sales agents and CRM pipelines:
 - WhatsApp: +91 7982252971
-- GitHub: https://github.com/AvnishRana25
+- GitHub: [GitHub Link]
 
 Best of luck scaling Topo!
 
@@ -885,12 +885,12 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Direct / WhatsApp: +91 7982252971",1a10c41e56892274,2026-10-05T16:29:22.871702+00:00,,,,,US,America/Los_Angeles,,
-22,Domu Technology,YC S24,"San Francisco, US (Remote)",domu.ai,Nick Diaz,Co-founder & CEO,nick@domu.ai,AI Workflow & Compliance Engineer Contractor,SENT,"Automated collections workflows, compliance guardrails, and transactional safety",09:00–11:00 recipient local time,America/Los_Angeles,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,collections agent pipelines + transactional compliance guardrails,"Hi Nick,
+Direct / WhatsApp: +91 7982252971"
+22,Domu Technology,YC S24,"San Francisco, US (Remote)",domu.ai,Nick Diaz,Co-founder & CEO,nick@domu.ai,AI Workflow & Compliance Engineer Contractor,Drafted in Gmail,"Automated collections workflows, compliance guardrails, and transactional safety",9:30 PM IST,9:00 AM PDT (San Francisco),https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,2026-10-06,collections agent pipelines + transactional compliance guardrails,"Hi Nick,
 
 Incredible momentum with Domu automating collections interactions across calls, texts, and emails for major financial institutions.
 
-In high-stakes debt servicing, models cannot deviate from compliance guidelines. For Realty Pandit CRM, I deployed an agent across 4,000+ active deals with deterministic state machines ensuring the model never improvised pricing or terms. In my current contract role at Caudal AI, I author adversarial verifiers testing autonomous agent execution.
+In high-stakes debt servicing, models cannot deviate from compliance guidelines. For Realty Pandit CRM, I deployed an agent across 4,000+ active deals with deterministic state machines ensuring the model never improvised pricing or terms. At Caudal AI, I author adversarial verifiers testing autonomous agent execution.
 
 I’d love to assist Domu as a Junior FDE or contract engineer building banking CRM connectors, regulatory verification layers, or omnichannel message adapters.
 
@@ -901,7 +901,7 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Phone / WhatsApp: +91 7982252971",,Re: collections agent pipelines + transactional compliance guardrails,"Hi Nick,
+Phone / WhatsApp: +91 7982252971",2026-10-09,Re: collections agent pipelines + transactional compliance guardrails,"Hi Nick,
 
 Following up on collections compliance: debtor dispute handling requires immediate branching to human escalation without looping. Enforcing deterministic decision trees allowed our agents to qualify complex customer objections safely.
 
@@ -911,13 +911,13 @@ Worth 10 minutes?
 
 Best,
 Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",,Re: collections agent pipelines + transactional compliance guardrails,"Hi Nick,
+Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",2026-10-14,Re: collections agent pipelines + transactional compliance guardrails,"Hi Nick,
 
 Assuming you're flat out scaling Domu's enterprise pilots, so I'll leave this here.
 
 Feel free to keep my info on file if you need an engineer for compliance-first agent pipelines:
 - WhatsApp / Phone: +91 7982252971
-- GitHub: https://github.com/AvnishRana25
+- GitHub: [GitHub Link]
 
 All the best with Domu!
 
@@ -926,12 +926,12 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Direct / WhatsApp: +91 7982252971",1a10c41e7c73ddab,2026-10-05T16:29:22.871702+00:00,,,,,US,America/Los_Angeles,,
-23,Basepilot,YC W24,"San Francisco, US (Remote)",basepilot.com,Ken Hendricks,Co-Founder,ken@basepilot.com,AI Browser Automation & Integration Contractor,SENT,"Browser-based automation, claims processing workflows, and DOM state verification",09:00–11:00 recipient local time,America/Los_Angeles,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,browser-based back-office agents + DOM state verifiers,"Hi Ken,
+Direct / WhatsApp: +91 7982252971"
+23,Basepilot,YC W24,"San Francisco, US (Remote)",basepilot.com,Ken Hendricks,Co-Founder,ken@basepilot.com,AI Browser Automation & Integration Contractor,Drafted in Gmail,"Browser-based automation, claims processing workflows, and DOM state verification",9:30 PM IST,9:00 AM PDT (San Francisco),https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,2026-10-06,browser-based back-office agents + DOM state verifiers,"Hi Ken,
 
 Loving Basepilot's approach to browser-based AI coworkers for insurance and back-office operations — automating legacy web portals without APIs is where the highest operational ROI lies.
 
-In my current contract role at Caudal AI, I author Dockerized shell environments and adversarial pytest verifiers for autonomous agents where models must inspect interfaces, run commands, and debug runtime failures. At Klimashift, I automated operations dashboards and analyzed 1 Hz telemetry.
+At Caudal AI, I author Dockerized shell environments and adversarial pytest verifiers for autonomous agents where models must inspect interfaces, run commands, and debug runtime failures. At Klimashift, I automated operations dashboards and analyzed 1 Hz telemetry.
 
 I’d love to join Basepilot as an Automation / Integration contractor building portal crawlers, claims processing workflows, or execution verification checks.
 
@@ -942,7 +942,7 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Phone / WhatsApp: +91 7982252971",,Re: browser-based back-office agents + DOM state verifiers,"Hi Ken,
+Phone / WhatsApp: +91 7982252971",2026-10-09,Re: browser-based back-office agents + DOM state verifiers,"Hi Ken,
 
 Quick thought on browser automation: legacy insurance portals frequently present dynamic iframes and modal popups that derail autonomous agents. In our benchmark tasks, we built state verifiers that inspect DOM mutations to confirm successful payload submission.
 
@@ -952,12 +952,12 @@ Free for a quick chat?
 
 Best,
 Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",,Re: browser-based back-office agents + DOM state verifiers,"Hi Ken,
+Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",2026-10-14,Re: browser-based back-office agents + DOM state verifiers,"Hi Ken,
 
 Figure you're fully occupied expanding Basepilot's customer deployments, so I'll bow out.
 
 If you ever need an engineer for browser automation, agent verifiers, and portal integrations:
-- GitHub: https://github.com/AvnishRana25
+- GitHub: [GitHub Link]
 - WhatsApp / Phone: +91 7982252971
 
 Rooting for Basepilot's success!
@@ -967,12 +967,12 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Direct / WhatsApp: +91 7982252971",1a10c41ea9dfb356,2026-10-05T16:29:22.871702+00:00,,,,,US,America/Los_Angeles,,
-24,Bluejay,YC S25,"San Francisco, US (Remote)",getbluejay.ai,Rohan Vasishth,Co-founder & CEO,rohan@getbluejay.ai,AI Voice/Text Agent QA & Benchmark Engineer Intern,SENT,"Synthetic customer stress-testing, diverse accents/noise, and verifier design",09:00–11:00 recipient local time,America/Los_Angeles,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,stress-testing voice agents with synthetic personas + pytest verifiers,"Hi Rohan,
+Direct / WhatsApp: +91 7982252971"
+24,Bluejay,YC S25,"San Francisco, US (Remote)",getbluejay.ai,Rohan Vasishth,Co-founder & CEO,rohan@getbluejay.ai,AI Voice/Text Agent QA & Benchmark Engineer Intern,Drafted in Gmail,"Synthetic customer stress-testing, diverse accents/noise, and verifier design",9:30 PM IST,9:00 AM PDT (San Francisco),https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,2026-10-06,stress-testing voice agents with synthetic personas + pytest verifiers,"Hi Rohan,
 
 Saw Bluejay's launch to engineer trust into AI interactions by stress-testing voice and text agents with synthetic customers across diverse accents, emotional tones, and noise conditions — this is the exact testing layer agent deployments need.
 
-In my current contract role at Caudal AI, I author contamination-resistant benchmark tasks and adversarial pytest verifiers for frontier agents in Docker environments. I focus on reducing false passes/failures and grading trajectories against strict rubrics. Previously, I shipped a production WhatsApp sales agent running 4,000+ live deals.
+At Caudal AI, I author contamination-resistant benchmark tasks and adversarial pytest verifiers for frontier agents in Docker environments. I focus on reducing false passes/failures and grading trajectories against strict rubrics. Previously, I shipped a production WhatsApp sales agent running 4,000+ live deals.
 
 I’d love to join Bluejay as an AI QA / Benchmark Engineer intern or trial contractor building synthetic customer generators, audio edge-case benchmarks, or regression harnesses.
 
@@ -983,7 +983,7 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Phone / WhatsApp: +91 7982252971",,Re: stress-testing voice agents with synthetic personas + pytest verifiers,"Hi Rohan,
+Phone / WhatsApp: +91 7982252971",2026-10-09,Re: stress-testing voice agents with synthetic personas + pytest verifiers,"Hi Rohan,
 
 Following up on synthetic customer stress-testing: audio latency and rapid topic-switching are where voice agents experience the highest failure rate. In our benchmark design, adversarial interruption tests revealed critical logic leaks that static transcript evals missed.
 
@@ -993,12 +993,12 @@ Worth 10 minutes this week?
 
 Best,
 Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",,Re: stress-testing voice agents with synthetic personas + pytest verifiers,"Hi Rohan,
+Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",2026-10-14,Re: stress-testing voice agents with synthetic personas + pytest verifiers,"Hi Rohan,
 
 I'll assume you're completely absorbed in building Bluejay, so I won't follow up again.
 
 Feel free to keep my details handy for agent testing and benchmark engineering:
-- GitHub: https://github.com/AvnishRana25
+- GitHub: [GitHub Link]
 - WhatsApp / Phone: +91 7982252971
 
 All the best with Bluejay!
@@ -1008,8 +1008,8 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Direct / WhatsApp: +91 7982252971",1a10c41eeaf01952,2026-10-05T16:29:22.871702+00:00,,,,,US,America/Los_Angeles,,
-25,Lucidya,Growth / Funded,"Riyadh, Saudi Arabia",lucidya.com,Abdullah Asiri,Co-founder & CEO,asiri@lucidya.com,AI Solutions / Customer Experience Agent Contractor,DRAFTED,"Enterprise CX agents, Arabic NLP, customer telemetry, and explainable rule engines",09:00–11:00 recipient local time,Asia/Riyadh,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,enterprise CX agents + explainable telemetry rule engines,"Hi Abdullah,
+Direct / WhatsApp: +91 7982252971"
+25,Lucidya,Growth / Funded,"Riyadh, Saudi Arabia",lucidya.com,Abdullah Asiri,Co-founder & CEO,asiri@lucidya.com,AI Solutions / Customer Experience Agent Contractor,Drafted in Gmail,"Enterprise CX agents, Arabic NLP, customer telemetry, and explainable rule engines",11:30 AM IST,9:00 AM AST (Riyadh),https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,2026-10-06,enterprise CX agents + explainable telemetry rule engines,"Hi Abdullah,
 
 Impressive seeing Lucidya lead the charge in Arabic-first autonomous customer experience agents across the Middle East.
 
@@ -1024,7 +1024,7 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Phone / WhatsApp: +91 7982252971",,Re: enterprise CX agents + explainable telemetry rule engines,"Hi Abdullah,
+Phone / WhatsApp: +91 7982252971",2026-10-09,Re: enterprise CX agents + explainable telemetry rule engines,"Hi Abdullah,
 
 Quick note on enterprise CX agents: managing customer sentiment shifts across multilingual interactions requires coupling LLM dialog with deterministic business rules (like our 14-rule explainability engine) to prevent erratic escalation.
 
@@ -1034,13 +1034,13 @@ Do you have 10 minutes Thursday?
 
 Best,
 Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",,Re: enterprise CX agents + explainable telemetry rule engines,"Hi Abdullah,
+Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing | GitHub: https://github.com/AvnishRana25",2026-10-14,Re: enterprise CX agents + explainable telemetry rule engines,"Hi Abdullah,
 
 Assuming you're fully occupied with Lucidya's regional expansion, so I'll wrap up here.
 
 If you ever need an engineer who merges conversational agent pipelines with strict, explainable rule engines:
 - WhatsApp / Phone: +91 7982252971
-- GitHub: https://github.com/AvnishRana25
+- GitHub: [GitHub Link]
 
 Wishing Lucidya tremendous continued growth across the Kingdom and GCC!
 
@@ -1049,1084 +1049,4 @@ Avnish Rana
 Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
 GitHub: https://github.com/AvnishRana25
 LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-Direct / WhatsApp: +91 7982252971",,,,,,,ME,Asia/Riyadh,,
-26,LatentForce.ai,Not recorded,"Bengaluru, India",latentforce.ai,Siddharth Sharma,Co-Founder & CEO,siddharth@latentforce.ai,AI / Automation Engineer,DRAFTED,Agent reliability and business automation,09:00–11:00 recipient local time,Asia/Kolkata,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,evaluating LatentForce.ai's agent workflows & sandboxes / FDE trial,"Hi Siddharth Sharma,
-
-Came across LatentForce.ai's work in coding agents & knowledge graphs. In my current contract role at Caudal AI, our core focus is handling context degradation and graph state drift during complex multi-file code editing runs—specifically how agents behave when tool payloads return unexpected schemas or partial outputs.
-
-I designed containerized Docker evaluation harnesses with automated pytest verifiers and grading to catch agent drift before production rollout. Previously, I also engineered a deterministic state machine managing 4,000+ live transactions on Realty Pandit.
-
-I want to join LatentForce.ai as an FDE or AI Evaluation Engineer (or tackle a 2-week trial sprint / 48-hour work sample).
-
-Open to a 10-minute technical chat this week?
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-WhatsApp: +91 7982252971
-",,Re: evaluating LatentForce.ai's agent workflows & sandboxes / FDE trial,"Hi Siddharth Sharma,
-
-Following up on LatentForce.ai's agent verification architecture.
-
-In my contract role at Caudal AI, we saw that prompt tweaking yielded diminishing returns compared to building automated pytest verifiers that grade agent trajectories across multi-step API calls.
-
-Happy to put together a 48-hour benchmark harness for LatentForce.ai's core agent workflows at zero cost before you decide on anything.
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-",,Re: evaluating LatentForce.ai's agent workflows & sandboxes / FDE trial,"Hi Siddharth Sharma,
-
-I know you're busy building LatentForce.ai, so I won't follow up further.
-
-If you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.
-
-Wishing you and the LatentForce.ai team all the best!
-
-Avnish Rana
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-GitHub: https://github.com/AvnishRana25
-",,,,,,,India,Asia/Kolkata,,
-27,Portkey AI,Not recorded,"Bengaluru, India",portkey.ai,Rohit Agarwal,Co-Founder,rohit@portkey.ai,AI / Automation Engineer,DRAFTED,Agent reliability and business automation,09:00–11:00 recipient local time,Asia/Kolkata,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,evaluating Portkey AI's agent workflows & sandboxes / FDE trial,"Hi Rohit Agarwal,
-
-Came across Portkey AI's work in ai gateway & observability. In my current contract role at Caudal AI, our core focus is deterministic evaluation harnesses and automated synthetic benchmark suites for enterprise routing—specifically how agents behave when tool payloads return unexpected schemas or partial outputs.
-
-I designed containerized Docker evaluation harnesses with automated pytest verifiers and grading to catch agent drift before production rollout. Previously, I also engineered a deterministic state machine managing 4,000+ live transactions on Realty Pandit.
-
-I want to join Portkey AI as an FDE or AI Evaluation Engineer (or tackle a 2-week trial sprint / 48-hour work sample).
-
-Open to a 10-minute technical chat this week?
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-WhatsApp: +91 7982252971
-",,Re: evaluating Portkey AI's agent workflows & sandboxes / FDE trial,"Hi Rohit Agarwal,
-
-Following up on Portkey AI's agent verification architecture.
-
-In my contract role at Caudal AI, we saw that prompt tweaking yielded diminishing returns compared to building automated pytest verifiers that grade agent trajectories across multi-step API calls.
-
-Happy to put together a 48-hour benchmark harness for Portkey AI's core agent workflows at zero cost before you decide on anything.
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-",,Re: evaluating Portkey AI's agent workflows & sandboxes / FDE trial,"Hi Rohit Agarwal,
-
-I know you're busy building Portkey AI, so I won't follow up further.
-
-If you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.
-
-Wishing you and the Portkey AI team all the best!
-
-Avnish Rana
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-GitHub: https://github.com/AvnishRana25
-",,,,,,,India,Asia/Kolkata,,
-28,Ressl AI,Not recorded,"Bengaluru, India",ressl.ai,Aditya V.,Founder & CEO,aditya@ressl.ai,AI / Automation Engineer,DRAFTED,Agent reliability and business automation,09:00–11:00 recipient local time,Asia/Kolkata,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,scaling Ressl AI's agent reliability / FDE trial,"Hi Aditya V.,
-
-Impressed by Ressl AI's trajectory in enterprise autonomous agents. When deploying production AI systems, the hardest failure mode is preventing tool parameter hallucination and state synchronization failures in live enterprise backends.
-
-In my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.
-
-I want to join Ressl AI as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).
-
-Would you be open to a 10-minute chat this week?
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-WhatsApp: +91 7982252971
-",,Re: scaling Ressl AI's agent reliability / FDE trial,"Hi Aditya V.,
-
-Quick follow-up on Ressl AI's agent architecture.
-
-Across my contract role at Caudal AI and building Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.
-
-Happy to build a 48-hour prototype or review an open technical issue for Ressl AI at zero risk.
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-",,Re: scaling Ressl AI's agent reliability / FDE trial,"Hi Aditya V.,
-
-I know you're busy building Ressl AI, so I won't follow up further.
-
-If you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.
-
-Wishing you and the Ressl AI team all the best!
-
-Avnish Rana
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-GitHub: https://github.com/AvnishRana25
-",,,,,,,India,Asia/Kolkata,,
-29,Segmind,Not recorded,"Bengaluru, India",segmind.com,Steve Edison,Co-Founder,steve@segmind.com,AI / Automation Engineer,DRAFTED,Agent reliability and business automation,09:00–11:00 recipient local time,Asia/Kolkata,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,scaling Segmind's agent reliability / FDE trial,"Hi Steve Edison,
-
-Impressed by Segmind's trajectory in fast generative ai & agent apis. When deploying production AI systems, the hardest failure mode is building automated benchmarking harnesses that stress-test API latency under concurrent agent tool calls.
-
-In my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.
-
-I want to join Segmind as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).
-
-Would you be open to a 10-minute chat this week?
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-WhatsApp: +91 7982252971
-",,Re: scaling Segmind's agent reliability / FDE trial,"Hi Steve Edison,
-
-Quick follow-up on Segmind's agent architecture.
-
-Across my contract role at Caudal AI and building Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.
-
-Happy to build a 48-hour prototype or review an open technical issue for Segmind at zero risk.
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-",,Re: scaling Segmind's agent reliability / FDE trial,"Hi Steve Edison,
-
-I know you're busy building Segmind, so I won't follow up further.
-
-If you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.
-
-Wishing you and the Segmind team all the best!
-
-Avnish Rana
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-GitHub: https://github.com/AvnishRana25
-",,,,,,,India,Asia/Kolkata,,
-30,Huspy,Not recorded,"Dubai, UAE & Riyadh",huspy.com,Jad Antoun,Co-Founder & CEO,jad@huspy.com,AI / Automation Engineer,DRAFTED,Agent reliability and business automation,09:00–11:00 recipient local time,Asia/Dubai,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,scaling Huspy's transaction workflows / FDE trial,"Hi Jad Antoun,
-
-Noticed how Huspy is automating complex property transactions across the region. When building Realty Pandit CRM, the biggest technical challenge wasn't conversational flow—it was engineering a deterministic deal state machine handling 4,000+ live WhatsApp transactions with zero pricing hallucination.
-
-In my current contract role at Caudal AI, I also engineer Dockerized pytest eval harnesses benchmarking LLM agents under adversarial edge cases.
-
-I want to join Huspy as an FDE or AI Automation Engineer (or take on a 48-hour take-home / 2-week trial sprint to prove velocity).
-
-Would you be open to a 10-minute chat this week?
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-WhatsApp: +91 7982252971
-",,Re: scaling Huspy's transaction workflows / FDE trial,"Hi Jad Antoun,
-
-Quick follow-up regarding Huspy's deal automation pipeline.
-
-One concrete challenge I solved on Realty Pandit was preventing race conditions when buyers and brokers updated transaction terms simultaneously over WhatsApp. I implemented deterministic state locks and automated webhook reconciliation.
-
-Happy to build a customized 48-hour proof-of-concept or integration audit for Huspy at zero risk.
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-",,Re: scaling Huspy's transaction workflows / FDE trial,"Hi Jad Antoun,
-
-I know you're busy building Huspy, so I won't follow up further.
-
-If you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.
-
-Wishing you and the Huspy team all the best!
-
-Avnish Rana
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-GitHub: https://github.com/AvnishRana25
-",,,,,,,ME,Asia/Dubai,,
-31,Keep Converting,Not recorded,"Dubai, UAE",keepconverting.com,Omar Mansour,Founder & CEO,omar@keepconverting.com,AI / Automation Engineer,DRAFTED,Agent reliability and business automation,09:00–11:00 recipient local time,Asia/Dubai,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,scaling Keep Converting's agent reliability / FDE trial,"Hi Omar Mansour,
-
-Impressed by Keep Converting's trajectory in ai e-commerce personalization agents. When deploying production AI systems, the hardest failure mode is deterministic guardrails ensuring generative UI components don't hallucinate pricing or catalog schemas.
-
-In my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.
-
-I want to join Keep Converting as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).
-
-Would you be open to a 10-minute chat this week?
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-WhatsApp: +91 7982252971
-",,Re: scaling Keep Converting's agent reliability / FDE trial,"Hi Omar Mansour,
-
-Quick follow-up on Keep Converting's agent architecture.
-
-Across my contract role at Caudal AI and building Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.
-
-Happy to build a 48-hour prototype or review an open technical issue for Keep Converting at zero risk.
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-",,Re: scaling Keep Converting's agent reliability / FDE trial,"Hi Omar Mansour,
-
-I know you're busy building Keep Converting, so I won't follow up further.
-
-If you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.
-
-Wishing you and the Keep Converting team all the best!
-
-Avnish Rana
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-GitHub: https://github.com/AvnishRana25
-",,,,,,,ME,Asia/Dubai,,
-32,Lean Technologies,Not recorded,"Riyadh, Saudi Arabia",leantech.me,Hisham Al-Falih,Co-Founder & CEO,hisham@leantech.me,AI / Automation Engineer,DRAFTED,Agent reliability and business automation,09:00–11:00 recipient local time,Asia/Riyadh,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,scaling Lean Technologies's agent reliability / FDE trial,"Hi Hisham Al-Falih,
-
-Impressed by Lean Technologies's trajectory in open banking & financial automation. When deploying production AI systems, the hardest failure mode is building high-reliability telemetry pipelines and deterministic state machines for transactional workflows.
-
-In my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.
-
-I want to join Lean Technologies as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).
-
-Would you be open to a 10-minute chat this week?
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-WhatsApp: +91 7982252971
-",,Re: scaling Lean Technologies's agent reliability / FDE trial,"Hi Hisham Al-Falih,
-
-Quick follow-up on Lean Technologies's agent architecture.
-
-Across my contract role at Caudal AI and building Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.
-
-Happy to build a 48-hour prototype or review an open technical issue for Lean Technologies at zero risk.
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-",,Re: scaling Lean Technologies's agent reliability / FDE trial,"Hi Hisham Al-Falih,
-
-I know you're busy building Lean Technologies, so I won't follow up further.
-
-If you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.
-
-Wishing you and the Lean Technologies team all the best!
-
-Avnish Rana
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-GitHub: https://github.com/AvnishRana25
-",,,,,,,ME,Asia/Riyadh,,
-33,Omniful,Not recorded,"Riyadh, Saudi Arabia",omniful.com,Mostafa E.,Co-Founder & CEO,mostafa@omniful.com,AI / Automation Engineer,DRAFTED,Agent reliability and business automation,09:00–11:00 recipient local time,Asia/Riyadh,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,scaling Omniful's agent reliability / FDE trial,"Hi Mostafa E.,
-
-Impressed by Omniful's trajectory in supply chain & warehouse automation. When deploying production AI systems, the hardest failure mode is streaming 1 Hz telemetry and deterministic workflow state machines handling physical inventory anomalies.
-
-In my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.
-
-I want to join Omniful as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).
-
-Would you be open to a 10-minute chat this week?
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-WhatsApp: +91 7982252971
-",,Re: scaling Omniful's agent reliability / FDE trial,"Hi Mostafa E.,
-
-Quick follow-up on Omniful's agent architecture.
-
-Across my contract role at Caudal AI and building Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.
-
-Happy to build a 48-hour prototype or review an open technical issue for Omniful at zero risk.
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-",,Re: scaling Omniful's agent reliability / FDE trial,"Hi Mostafa E.,
-
-I know you're busy building Omniful, so I won't follow up further.
-
-If you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.
-
-Wishing you and the Omniful team all the best!
-
-Avnish Rana
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-GitHub: https://github.com/AvnishRana25
-",,,,,,,ME,Asia/Riyadh,,
-34,Fleuret AI,Not recorded,"Paris, France",fleuret.ai,Arthur Fleuret,Co-Founder & CEO,arthur@fleuret.ai,AI / Automation Engineer,DRAFTED,Agent reliability and business automation,09:00–11:00 recipient local time,Europe/Paris,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,evaluating Fleuret AI's agent workflows & sandboxes / FDE trial,"Hi Arthur Fleuret,
-
-Came across Fleuret AI's work in autonomous cybersecurity penetration agents. In my current contract role at Caudal AI, our core focus is Dockerized sandbox verification harnesses testing agent exploit payloads without environment contamination—specifically how agents behave when tool payloads return unexpected schemas or partial outputs.
-
-I designed containerized Docker evaluation harnesses with automated pytest verifiers and grading to catch agent drift before production rollout. Previously, I also engineered a deterministic state machine managing 4,000+ live transactions on Realty Pandit.
-
-I want to join Fleuret AI as an FDE or AI Evaluation Engineer (or tackle a 2-week trial sprint / 48-hour work sample).
-
-Open to a 10-minute technical chat this week?
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-WhatsApp: +91 7982252971
-",,Re: evaluating Fleuret AI's agent workflows & sandboxes / FDE trial,"Hi Arthur Fleuret,
-
-Following up on Fleuret AI's agent verification architecture.
-
-In my contract role at Caudal AI, we saw that prompt tweaking yielded diminishing returns compared to building automated pytest verifiers that grade agent trajectories across multi-step API calls.
-
-Happy to put together a 48-hour benchmark harness for Fleuret AI's core agent workflows at zero cost before you decide on anything.
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-",,Re: evaluating Fleuret AI's agent workflows & sandboxes / FDE trial,"Hi Arthur Fleuret,
-
-I know you're busy building Fleuret AI, so I won't follow up further.
-
-If you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.
-
-Wishing you and the Fleuret AI team all the best!
-
-Avnish Rana
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-GitHub: https://github.com/AvnishRana25
-",,,,,,,EU,Europe/Paris,,
-35,Dust.tt,Not recorded,Paris & London,dust.tt,Stanislas Polu,Co-Founder & CEO,spolu@dust.tt,AI / Automation Engineer,DRAFTED,Agent reliability and business automation,09:00–11:00 recipient local time,Europe/Paris,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,evaluating Dust.tt's agent workflows & sandboxes / FDE trial,"Hi Stanislas Polu,
-
-Came across Dust.tt's work in custom enterprise ai assistants. In my current contract role at Caudal AI, our core focus is evaluating multi-agent retrieval accuracy and containerized pytest verifiers for third-party tool harnesses—specifically how agents behave when tool payloads return unexpected schemas or partial outputs.
-
-I designed containerized Docker evaluation harnesses with automated pytest verifiers and grading to catch agent drift before production rollout. Previously, I also engineered a deterministic state machine managing 4,000+ live transactions on Realty Pandit.
-
-I want to join Dust.tt as an FDE or AI Evaluation Engineer (or tackle a 2-week trial sprint / 48-hour work sample).
-
-Open to a 10-minute technical chat this week?
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-WhatsApp: +91 7982252971
-",,Re: evaluating Dust.tt's agent workflows & sandboxes / FDE trial,"Hi Stanislas Polu,
-
-Following up on Dust.tt's agent verification architecture.
-
-In my contract role at Caudal AI, we saw that prompt tweaking yielded diminishing returns compared to building automated pytest verifiers that grade agent trajectories across multi-step API calls.
-
-Happy to put together a 48-hour benchmark harness for Dust.tt's core agent workflows at zero cost before you decide on anything.
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-",,Re: evaluating Dust.tt's agent workflows & sandboxes / FDE trial,"Hi Stanislas Polu,
-
-I know you're busy building Dust.tt, so I won't follow up further.
-
-If you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.
-
-Wishing you and the Dust.tt team all the best!
-
-Avnish Rana
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-GitHub: https://github.com/AvnishRana25
-",,,,,,,EU,Europe/Paris,,
-36,PolyAI,Not recorded,"London, UK",poly.ai,Nikola Mrksic,Co-Founder & CEO,nikola@poly.ai,AI / Automation Engineer,DRAFTED,Agent reliability and business automation,09:00–11:00 recipient local time,Europe/London,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,scaling PolyAI's agent reliability / FDE trial,"Hi Nikola Mrksic,
-
-Impressed by PolyAI's trajectory in voice ai agents for enterprise. When deploying production AI systems, the hardest failure mode is zero-latency deterministic fallback machines and audio telemetry pipelines handling phone dropouts.
-
-In my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.
-
-I want to join PolyAI as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).
-
-Would you be open to a 10-minute chat this week?
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-WhatsApp: +91 7982252971
-",,Re: scaling PolyAI's agent reliability / FDE trial,"Hi Nikola Mrksic,
-
-Quick follow-up on PolyAI's agent architecture.
-
-Across my contract role at Caudal AI and building Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.
-
-Happy to build a 48-hour prototype or review an open technical issue for PolyAI at zero risk.
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-",,Re: scaling PolyAI's agent reliability / FDE trial,"Hi Nikola Mrksic,
-
-I know you're busy building PolyAI, so I won't follow up further.
-
-If you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.
-
-Wishing you and the PolyAI team all the best!
-
-Avnish Rana
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-GitHub: https://github.com/AvnishRana25
-",,,,,,,EU,Europe/London,,
-37,Mindee,Not recorded,"Paris, France",mindee.com,Jonathan Grandperrin,Co-Founder & CEO,jonathan@mindee.com,AI / Automation Engineer,DRAFTED,Agent reliability and business automation,09:00–11:00 recipient local time,Europe/Paris,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,scaling Mindee's agent reliability / FDE trial,"Hi Jonathan Grandperrin,
-
-Impressed by Mindee's trajectory in document parsing & autonomous ocr agents. When deploying production AI systems, the hardest failure mode is schema-sanitized evaluation harnesses ensuring 100% precision on noisy enterprise invoices and receipts.
-
-In my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.
-
-I want to join Mindee as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).
-
-Would you be open to a 10-minute chat this week?
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-WhatsApp: +91 7982252971
-",,Re: scaling Mindee's agent reliability / FDE trial,"Hi Jonathan Grandperrin,
-
-Quick follow-up on Mindee's agent architecture.
-
-Across my contract role at Caudal AI and building Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.
-
-Happy to build a 48-hour prototype or review an open technical issue for Mindee at zero risk.
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-",,Re: scaling Mindee's agent reliability / FDE trial,"Hi Jonathan Grandperrin,
-
-I know you're busy building Mindee, so I won't follow up further.
-
-If you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.
-
-Wishing you and the Mindee team all the best!
-
-Avnish Rana
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-GitHub: https://github.com/AvnishRana25
-",,,,,,,EU,Europe/Paris,,
-38,Decagon,Not recorded,"San Francisco, US",decagon.ai,Jesse Zhang,Co-Founder & CEO,jesse@decagon.ai,AI / Automation Engineer,SENT,Agent reliability and business automation,09:00–11:00 recipient local time,America/Los_Angeles,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,scaling Decagon's agent reliability / FDE trial,"Hi Jesse Zhang,
-
-Impressed by Decagon's trajectory in enterprise customer support agents. When deploying production AI systems, the hardest failure mode is deterministic state machines preventing rogue action execution and Dockerized tool-call benchmark suites.
-
-In my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.
-
-I want to join Decagon as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).
-
-Would you be open to a 10-minute chat this week?
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-WhatsApp: +91 7982252971
-",,Re: scaling Decagon's agent reliability / FDE trial,"Hi Jesse Zhang,
-
-Quick follow-up on Decagon's agent architecture.
-
-Across my contract role at Caudal AI and building Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.
-
-Happy to build a 48-hour prototype or review an open technical issue for Decagon at zero risk.
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-",,Re: scaling Decagon's agent reliability / FDE trial,"Hi Jesse Zhang,
-
-I know you're busy building Decagon, so I won't follow up further.
-
-If you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.
-
-Wishing you and the Decagon team all the best!
-
-Avnish Rana
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-GitHub: https://github.com/AvnishRana25
-",1a10c421e80fdf9b,2026-10-05T16:29:22.871702+00:00,,,,,US,America/Los_Angeles,,
-39,Factory AI,Not recorded,"San Francisco, US",factory.ai,Eno Reyes,Co-Founder & CEO,eno@factory.ai,AI / Automation Engineer,SENT,Agent reliability and business automation,09:00–11:00 recipient local time,America/Los_Angeles,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,evaluating Factory AI's agent workflows & sandboxes / FDE trial,"Hi Eno Reyes,
-
-Came across Factory AI's work in autonomous software engineering droids. In my current contract role at Caudal AI, our core focus is designing pytest verification harnesses and isolated container sandboxes that grade multi-file code diffs—specifically how agents behave when tool payloads return unexpected schemas or partial outputs.
-
-I designed containerized Docker evaluation harnesses with automated pytest verifiers and grading to catch agent drift before production rollout. Previously, I also engineered a deterministic state machine managing 4,000+ live transactions on Realty Pandit.
-
-I want to join Factory AI as an FDE or AI Evaluation Engineer (or tackle a 2-week trial sprint / 48-hour work sample).
-
-Open to a 10-minute technical chat this week?
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-WhatsApp: +91 7982252971
-",,Re: evaluating Factory AI's agent workflows & sandboxes / FDE trial,"Hi Eno Reyes,
-
-Following up on Factory AI's agent verification architecture.
-
-In my contract role at Caudal AI, we saw that prompt tweaking yielded diminishing returns compared to building automated pytest verifiers that grade agent trajectories across multi-step API calls.
-
-Happy to put together a 48-hour benchmark harness for Factory AI's core agent workflows at zero cost before you decide on anything.
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-",,Re: evaluating Factory AI's agent workflows & sandboxes / FDE trial,"Hi Eno Reyes,
-
-I know you're busy building Factory AI, so I won't follow up further.
-
-If you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.
-
-Wishing you and the Factory AI team all the best!
-
-Avnish Rana
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-GitHub: https://github.com/AvnishRana25
-",1a10c422397ef7f2,2026-10-05T16:29:22.871702+00:00,,,,,US,America/Los_Angeles,,
-40,Bland AI,Not recorded,"San Francisco, US",bland.ai,Isaiah Singer,Founder & CEO,isaiah@bland.ai,AI / Automation Engineer,SENT,Agent reliability and business automation,09:00–11:00 recipient local time,America/Los_Angeles,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,scaling Bland AI's agent reliability / FDE trial,"Hi Isaiah Singer,
-
-Impressed by Bland AI's trajectory in ultra-low latency phone call ai agents. When deploying production AI systems, the hardest failure mode is streaming telemetry and deterministic state tracking under high-throughput concurrent audio streams.
-
-In my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.
-
-I want to join Bland AI as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).
-
-Would you be open to a 10-minute chat this week?
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-WhatsApp: +91 7982252971
-",,Re: scaling Bland AI's agent reliability / FDE trial,"Hi Isaiah Singer,
-
-Quick follow-up on Bland AI's agent architecture.
-
-Across my contract role at Caudal AI and building Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.
-
-Happy to build a 48-hour prototype or review an open technical issue for Bland AI at zero risk.
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-",,Re: scaling Bland AI's agent reliability / FDE trial,"Hi Isaiah Singer,
-
-I know you're busy building Bland AI, so I won't follow up further.
-
-If you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.
-
-Wishing you and the Bland AI team all the best!
-
-Avnish Rana
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-GitHub: https://github.com/AvnishRana25
-",1a10c42279ac825f,2026-10-05T16:29:22.871702+00:00,,,,,US,America/Los_Angeles,,
-41,Sarvam AI,Not recorded,"Bengaluru, India",sarvam.ai,Vivek Raghavan,Co-Founder,vivek@sarvam.ai,AI / Automation Engineer,DRAFTED,Agent reliability and business automation,09:00–11:00 recipient local time,Asia/Kolkata,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,scaling Sarvam AI's agent reliability / FDE trial,"Hi Vivek Raghavan,
-
-Impressed by Sarvam AI's trajectory in sovereign indic llms & enterprise agents. When deploying production AI systems, the hardest failure mode is benchmarking agent tool-call execution under regional language code-mixing and schema variations.
-
-In my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.
-
-I want to join Sarvam AI as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).
-
-Would you be open to a 10-minute chat this week?
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-WhatsApp: +91 7982252971
-",,Re: scaling Sarvam AI's agent reliability / FDE trial,"Hi Vivek Raghavan,
-
-Quick follow-up on Sarvam AI's agent architecture.
-
-Across my contract role at Caudal AI and building Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.
-
-Happy to build a 48-hour prototype or review an open technical issue for Sarvam AI at zero risk.
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-",,Re: scaling Sarvam AI's agent reliability / FDE trial,"Hi Vivek Raghavan,
-
-I know you're busy building Sarvam AI, so I won't follow up further.
-
-If you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.
-
-Wishing you and the Sarvam AI team all the best!
-
-Avnish Rana
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-GitHub: https://github.com/AvnishRana25
-",,,,,,,India,Asia/Kolkata,,
-42,TrueFoundry,Not recorded,"Bengaluru, India",truefoundry.com,Nikunj Bajaj,Co-Founder & CEO,nikunj@truefoundry.com,AI / Automation Engineer,DRAFTED,Agent reliability and business automation,09:00–11:00 recipient local time,Asia/Kolkata,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,scaling TrueFoundry's agent reliability / FDE trial,"Hi Nikunj Bajaj,
-
-Impressed by TrueFoundry's trajectory in llm & agent deployment platform. When deploying production AI systems, the hardest failure mode is Dockerized eval harnesses and automated container health checks for agentic microservices.
-
-In my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.
-
-I want to join TrueFoundry as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).
-
-Would you be open to a 10-minute chat this week?
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-WhatsApp: +91 7982252971
-",,Re: scaling TrueFoundry's agent reliability / FDE trial,"Hi Nikunj Bajaj,
-
-Quick follow-up on TrueFoundry's agent architecture.
-
-Across my contract role at Caudal AI and building Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.
-
-Happy to build a 48-hour prototype or review an open technical issue for TrueFoundry at zero risk.
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-",,Re: scaling TrueFoundry's agent reliability / FDE trial,"Hi Nikunj Bajaj,
-
-I know you're busy building TrueFoundry, so I won't follow up further.
-
-If you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.
-
-Wishing you and the TrueFoundry team all the best!
-
-Avnish Rana
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-GitHub: https://github.com/AvnishRana25
-",,,,,,,India,Asia/Kolkata,,
-43,Decentro,Not recorded,"Bengaluru, India",decentro.tech,Rohit Taneja,Founder & CEO,rohit@decentro.tech,AI / Automation Engineer,DRAFTED,Agent reliability and business automation,09:00–11:00 recipient local time,Asia/Kolkata,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,scaling Decentro's agent reliability / FDE trial,"Hi Rohit Taneja,
-
-Impressed by Decentro's trajectory in fintech workflow automation & whatsapp rails. When deploying production AI systems, the hardest failure mode is deterministic state machines managing 4,000+ live transactions with zero transaction dropouts.
-
-In my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.
-
-I want to join Decentro as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).
-
-Would you be open to a 10-minute chat this week?
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-WhatsApp: +91 7982252971
-",,Re: scaling Decentro's agent reliability / FDE trial,"Hi Rohit Taneja,
-
-Quick follow-up on Decentro's agent architecture.
-
-Across my contract role at Caudal AI and building Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.
-
-Happy to build a 48-hour prototype or review an open technical issue for Decentro at zero risk.
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-",,Re: scaling Decentro's agent reliability / FDE trial,"Hi Rohit Taneja,
-
-I know you're busy building Decentro, so I won't follow up further.
-
-If you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.
-
-Wishing you and the Decentro team all the best!
-
-Avnish Rana
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-GitHub: https://github.com/AvnishRana25
-",,,,,,,India,Asia/Kolkata,,
-44,Mozn,Not recorded,"Riyadh, Saudi Arabia",mozn.sa,Mohammed Alhussein,Founder & CEO,malhussein@mozn.sa,AI / Automation Engineer,DRAFTED,Agent reliability and business automation,09:00–11:00 recipient local time,Asia/Riyadh,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,scaling Mozn's agent reliability / FDE trial,"Hi Mohammed Alhussein,
-
-Impressed by Mozn's trajectory in enterprise ai & anti-money laundering agents. When deploying production AI systems, the hardest failure mode is deterministic transaction state locks and high-throughput real-time telemetry pipelines.
-
-In my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.
-
-I want to join Mozn as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).
-
-Would you be open to a 10-minute chat this week?
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-WhatsApp: +91 7982252971
-",,Re: scaling Mozn's agent reliability / FDE trial,"Hi Mohammed Alhussein,
-
-Quick follow-up on Mozn's agent architecture.
-
-Across my contract role at Caudal AI and building Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.
-
-Happy to build a 48-hour prototype or review an open technical issue for Mozn at zero risk.
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-",,Re: scaling Mozn's agent reliability / FDE trial,"Hi Mohammed Alhussein,
-
-I know you're busy building Mozn, so I won't follow up further.
-
-If you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.
-
-Wishing you and the Mozn team all the best!
-
-Avnish Rana
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-GitHub: https://github.com/AvnishRana25
-",,,,,,,ME,Asia/Riyadh,,
-45,Dapi,Not recorded,"Dubai, UAE",dapi.com,Ahmed Szegedi,Co-Founder & CTO,ahmed@dapi.com,AI / Automation Engineer,DRAFTED,Agent reliability and business automation,09:00–11:00 recipient local time,Asia/Dubai,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,scaling Dapi's agent reliability / FDE trial,"Hi Ahmed Szegedi,
-
-Impressed by Dapi's trajectory in open banking & real-time financial workflows. When deploying production AI systems, the hardest failure mode is building schema-sanitized evaluation harnesses and deterministic transaction pipelines.
-
-In my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.
-
-I want to join Dapi as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).
-
-Would you be open to a 10-minute chat this week?
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-WhatsApp: +91 7982252971
-",,Re: scaling Dapi's agent reliability / FDE trial,"Hi Ahmed Szegedi,
-
-Quick follow-up on Dapi's agent architecture.
-
-Across my contract role at Caudal AI and building Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.
-
-Happy to build a 48-hour prototype or review an open technical issue for Dapi at zero risk.
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-",,Re: scaling Dapi's agent reliability / FDE trial,"Hi Ahmed Szegedi,
-
-I know you're busy building Dapi, so I won't follow up further.
-
-If you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.
-
-Wishing you and the Dapi team all the best!
-
-Avnish Rana
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-GitHub: https://github.com/AvnishRana25
-",,,,,,,ME,Asia/Dubai,,
-46,Baraka,Not recorded,"Dubai, UAE",getbaraka.com,Feras Jalbout,Founder & CEO,feras@getbaraka.com,AI / Automation Engineer,DRAFTED,Agent reliability and business automation,09:00–11:00 recipient local time,Asia/Dubai,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,scaling Baraka's agent reliability / FDE trial,"Hi Feras Jalbout,
-
-Impressed by Baraka's trajectory in wealthtech & autonomous portfolio agents. When deploying production AI systems, the hardest failure mode is deterministic state machines preventing rogue trades and 1 Hz telemetry streaming.
-
-In my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.
-
-I want to join Baraka as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).
-
-Would you be open to a 10-minute chat this week?
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-WhatsApp: +91 7982252971
-",,Re: scaling Baraka's agent reliability / FDE trial,"Hi Feras Jalbout,
-
-Quick follow-up on Baraka's agent architecture.
-
-Across my contract role at Caudal AI and building Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.
-
-Happy to build a 48-hour prototype or review an open technical issue for Baraka at zero risk.
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-",,Re: scaling Baraka's agent reliability / FDE trial,"Hi Feras Jalbout,
-
-I know you're busy building Baraka, so I won't follow up further.
-
-If you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.
-
-Wishing you and the Baraka team all the best!
-
-Avnish Rana
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-GitHub: https://github.com/AvnishRana25
-",,,,,,,ME,Asia/Dubai,,
-47,Causaly,Not recorded,"London, UK",causaly.com,Yiannis Kiachopoulos,Co-Founder & CEO,yiannis@causaly.com,AI / Automation Engineer,DRAFTED,Agent reliability and business automation,09:00–11:00 recipient local time,Europe/London,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,scaling Causaly's agent reliability / FDE trial,"Hi Yiannis Kiachopoulos,
-
-Impressed by Causaly's trajectory in biomedical ai research agents. When deploying production AI systems, the hardest failure mode is evaluating multi-hop reasoning graphs and Dockerized verification harnesses for scientific literature.
-
-In my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.
-
-I want to join Causaly as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).
-
-Would you be open to a 10-minute chat this week?
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-WhatsApp: +91 7982252971
-",,Re: scaling Causaly's agent reliability / FDE trial,"Hi Yiannis Kiachopoulos,
-
-Quick follow-up on Causaly's agent architecture.
-
-Across my contract role at Caudal AI and building Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.
-
-Happy to build a 48-hour prototype or review an open technical issue for Causaly at zero risk.
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-",,Re: scaling Causaly's agent reliability / FDE trial,"Hi Yiannis Kiachopoulos,
-
-I know you're busy building Causaly, so I won't follow up further.
-
-If you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.
-
-Wishing you and the Causaly team all the best!
-
-Avnish Rana
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-GitHub: https://github.com/AvnishRana25
-",,,,,,,EU,Europe/London,,
-48,Kive,Not recorded,Stockholm & London,kive.ai,Olle Frejd,Founder & CEO,olle@kive.ai,AI / Automation Engineer,DRAFTED,Agent reliability and business automation,09:00–11:00 recipient local time,Europe/London,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,scaling Kive's agent reliability / FDE trial,"Hi Olle Frejd,
-
-Impressed by Kive's trajectory in generative media & creative ai workflows. When deploying production AI systems, the hardest failure mode is stress-testing multimodal agent tool pipelines and automated pytest grading harnesses.
-
-In my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.
-
-I want to join Kive as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).
-
-Would you be open to a 10-minute chat this week?
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-WhatsApp: +91 7982252971
-",,Re: scaling Kive's agent reliability / FDE trial,"Hi Olle Frejd,
-
-Quick follow-up on Kive's agent architecture.
-
-Across my contract role at Caudal AI and building Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.
-
-Happy to build a 48-hour prototype or review an open technical issue for Kive at zero risk.
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-",,Re: scaling Kive's agent reliability / FDE trial,"Hi Olle Frejd,
-
-I know you're busy building Kive, so I won't follow up further.
-
-If you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.
-
-Wishing you and the Kive team all the best!
-
-Avnish Rana
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-GitHub: https://github.com/AvnishRana25
-",,,,,,,EU,Europe/London,,
-49,Cradle,Not recorded,Amsterdam & London,cradle.bio,Stef van Grieken,Co-Founder & CEO,stef@cradle.bio,AI / Automation Engineer,DRAFTED,Agent reliability and business automation,09:00–11:00 recipient local time,Europe/London,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,scaling Cradle's agent reliability / FDE trial,"Hi Stef van Grieken,
-
-Impressed by Cradle's trajectory in generative ai agents for protein engineering. When deploying production AI systems, the hardest failure mode is Dockerized simulation benchmarks and physics-grounded telemetry tracking.
-
-In my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.
-
-I want to join Cradle as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).
-
-Would you be open to a 10-minute chat this week?
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-WhatsApp: +91 7982252971
-",,Re: scaling Cradle's agent reliability / FDE trial,"Hi Stef van Grieken,
-
-Quick follow-up on Cradle's agent architecture.
-
-Across my contract role at Caudal AI and building Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.
-
-Happy to build a 48-hour prototype or review an open technical issue for Cradle at zero risk.
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-",,Re: scaling Cradle's agent reliability / FDE trial,"Hi Stef van Grieken,
-
-I know you're busy building Cradle, so I won't follow up further.
-
-If you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.
-
-Wishing you and the Cradle team all the best!
-
-Avnish Rana
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-GitHub: https://github.com/AvnishRana25
-",,,,,,,EU,Europe/London,,
-50,Sierra,Not recorded,"San Francisco, US",sierra.ai,Bret Taylor,Co-Founder,bret@sierra.ai,AI / Automation Engineer,SENT,Agent reliability and business automation,09:00–11:00 recipient local time,America/Los_Angeles,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,scaling Sierra's agent reliability / FDE trial,"Hi Bret Taylor,
-
-Impressed by Sierra's trajectory in enterprise customer ai agents with zero hallucination. When deploying production AI systems, the hardest failure mode is deterministic state machines and containerized eval harnesses ensuring zero transaction hallucination.
-
-In my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.
-
-I want to join Sierra as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).
-
-Would you be open to a 10-minute chat this week?
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-WhatsApp: +91 7982252971
-",,Re: scaling Sierra's agent reliability / FDE trial,"Hi Bret Taylor,
-
-Quick follow-up on Sierra's agent architecture.
-
-Across my contract role at Caudal AI and building Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.
-
-Happy to build a 48-hour prototype or review an open technical issue for Sierra at zero risk.
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-",,Re: scaling Sierra's agent reliability / FDE trial,"Hi Bret Taylor,
-
-I know you're busy building Sierra, so I won't follow up further.
-
-If you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.
-
-Wishing you and the Sierra team all the best!
-
-Avnish Rana
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-GitHub: https://github.com/AvnishRana25
-",1a10c424816e2cbe,2026-10-05T16:29:22.871702+00:00,,,,,US,America/Los_Angeles,,
-51,Cognition,Not recorded,"San Francisco, US",cognition.ai,Scott Wu,Co-Founder & CEO,scott@cognition.ai,AI / Automation Engineer,SENT,Agent reliability and business automation,09:00–11:00 recipient local time,America/Los_Angeles,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,scaling Cognition's agent reliability / FDE trial,"Hi Scott Wu,
-
-Impressed by Cognition's trajectory in autonomous coding agent (devin). When deploying production AI systems, the hardest failure mode is containerized pytest grading harnesses and dynamic environment verification.
-
-In my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.
-
-I want to join Cognition as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).
-
-Would you be open to a 10-minute chat this week?
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-WhatsApp: +91 7982252971
-",,Re: scaling Cognition's agent reliability / FDE trial,"Hi Scott Wu,
-
-Quick follow-up on Cognition's agent architecture.
-
-Across my contract role at Caudal AI and building Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.
-
-Happy to build a 48-hour prototype or review an open technical issue for Cognition at zero risk.
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-",,Re: scaling Cognition's agent reliability / FDE trial,"Hi Scott Wu,
-
-I know you're busy building Cognition, so I won't follow up further.
-
-If you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.
-
-Wishing you and the Cognition team all the best!
-
-Avnish Rana
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-GitHub: https://github.com/AvnishRana25
-",1a10c424cd18f6e2,2026-10-05T16:29:22.871702+00:00,,,,,US,America/Los_Angeles,,
-52,Mercor,Not recorded,"San Francisco, US",mercor.com,Brendan Foody,Co-Founder & CEO,brendan@mercor.com,AI / Automation Engineer,SENT,Agent reliability and business automation,09:00–11:00 recipient local time,America/Los_Angeles,https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing,https://github.com/AvnishRana25,https://www.linkedin.com/in/avnish-rana-83523b2a3/,,scaling Mercor's agent reliability / FDE trial,"Hi Brendan Foody,
-
-Impressed by Mercor's trajectory in autonomous technical hiring & interview agents. When deploying production AI systems, the hardest failure mode is designing objective Docker-based coding benchmark suites and deterministic candidate scoring.
-
-In my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.
-
-I want to join Mercor as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).
-
-Would you be open to a 10-minute chat this week?
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-WhatsApp: +91 7982252971
-",,Re: scaling Mercor's agent reliability / FDE trial,"Hi Brendan Foody,
-
-Quick follow-up on Mercor's agent architecture.
-
-Across my contract role at Caudal AI and building Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.
-
-Happy to build a 48-hour prototype or review an open technical issue for Mercor at zero risk.
-
-Best,
-Avnish Rana
-Resume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing
-GitHub: https://github.com/AvnishRana25
-",,Re: scaling Mercor's agent reliability / FDE trial,"Hi Brendan Foody,
-
-I know you're busy building Mercor, so I won't follow up further.
-
-If you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.
-
-Wishing you and the Mercor team all the best!
-
-Avnish Rana
-LinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/
-GitHub: https://github.com/AvnishRana25
-",1a10c424f8ece017,2026-10-05T16:29:22.871702+00:00,,,,,US,America/Los_Angeles,,
+Direct / WhatsApp: +91 7982252971"

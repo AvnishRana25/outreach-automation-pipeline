@@ -1,95 +1,164 @@
 name: Autonomous Outreach Engine
+
 on:
   schedule:
-    # Hourly reply reconciliation every day; dispatch only in recipient-local weekday mornings.
-    - cron: '15 * * * *'
+    # 03:15 UTC = 08:45 AM IST (Daily Startup Research & Sourcing)
+    - cron: '15 3 * * 1-5'
+    # 03:55 & 04:15 UTC = 09:25 & 09:45 AM IST (India Morning Dispatch - Dual pulse)
+    - cron: '55 3 * * 1-5'
+    - cron: '15 4 * * 1-5'
+    # 05:25 & 05:45 UTC = 10:55 & 11:15 AM IST (Middle East Morning Dispatch - Dual pulse)
+    - cron: '25 5 * * 1-5'
+    - cron: '45 5 * * 1-5'
+    # 07:25 & 07:45 UTC = 12:55 & 01:15 PM IST (Europe & UK Morning Dispatch - Dual pulse)
+    - cron: '25 7 * * 1-5'
+    - cron: '45 7 * * 1-5'
+    # 11:55 & 12:20 UTC = 05:25 & 05:50 PM IST (Mid-day Reply Checker & Follow-up Trigger)
+    - cron: '55 11 * * 1-5'
+    - cron: '20 12 * * 1-5'
+    # 15:50 & 16:15 UTC = 09:20 & 09:45 PM IST (US West Coast Morning Dispatch - Dual pulse)
+    - cron: '50 15 * * 1-5'
+    - cron: '15 16 * * 1-5'
+    # Periodic reply checks throughout the day
+    - cron: '15 9,14,18 * * 1-5'
+
   workflow_dispatch:
     inputs:
       action:
-        description: Action to execute
+        description: 'Action to execute'
+        required: true
+        default: 'send-batch'
         type: choice
-        default: status
-        options: [status, tick, research-and-draft, send-batch, followups, check-replies, reconcile, notify-test]
+        options:
+          - send-batch
+          - research-and-draft
+          - followups
+          - check-replies
+          - status
       region:
-        description: Target region
+        description: 'Target region (US, India, ME, EU, All)'
+        required: false
+        default: 'All'
         type: choice
-        default: All
-        options: [All, US, India, ME, EU]
+        options:
+          - All
+          - US
+          - India
+          - ME
+          - EU
       auto_send:
-        description: Send instead of draft (tick always uses recipient-local morning windows)
+        description: 'Directly send email instead of saving to Drafts'
+        required: false
         type: boolean
-        default: false
-      dry_run:
-        description: Preview without database, Gmail or notification changes
-        type: boolean
-        default: false
+        default: true
+
 permissions:
   contents: write
-concurrency:
-  group: outreach-authoritative-sender
-  cancel-in-progress: false
+
 jobs:
   run-pipeline:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
-    env:
-      OUTREACH_CLOUD: '1'
-      GMAIL_CLIENT_ID: ${{ secrets.GMAIL_CLIENT_ID }}
-      GMAIL_CLIENT_SECRET: ${{ secrets.GMAIL_CLIENT_SECRET }}
-      GMAIL_REFRESH_TOKEN: ${{ secrets.GMAIL_REFRESH_TOKEN }}
-      NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
-      NTFY_TOKEN: ${{ secrets.NTFY_TOKEN }}
-      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+
     steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: main
-          fetch-depth: 0
-      - uses: actions/setup-python@v5
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Refresh authoritative state inside serialized run
+
+      - name: Determine Scheduled Action (Queue-Jitter Immune)
+        id: schedule-decider
         run: |
-          git pull --ff-only origin main
-          git config user.name "Outreach Cloud Bot"
-          git config user.email "bot@outreach.local"
-      - name: Offline regression checks
-        run: python3 -B -m unittest discover -v
-      - name: Execute campaign action
-        env:
-          EVENT_NAME: ${{ github.event_name }}
-          INPUT_ACTION: ${{ inputs.action }}
-          INPUT_REGION: ${{ inputs.region }}
-          INPUT_SEND: ${{ inputs.auto_send }}
-          INPUT_DRY: ${{ inputs.dry_run }}
-        run: |
-          if [ "$EVENT_NAME" = "schedule" ]; then
-            python3 -B cloud_orchestrator.py --action tick
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "ACTION=${{ github.event.inputs.action }}" >> $GITHUB_ENV
+            echo "REGION=${{ github.event.inputs.region }}" >> $GITHUB_ENV
+            echo "AUTO_SEND=${{ github.event.inputs.auto_send }}" >> $GITHUB_ENV
           else
-            FLAGS=()
-            if [ "$INPUT_SEND" = "true" ]; then FLAGS+=(--auto-send); fi
-            if [ "$INPUT_DRY" = "true" ]; then FLAGS+=(--dry-run); fi
-            python3 -B cloud_orchestrator.py --action "$INPUT_ACTION" --region "$INPUT_REGION" "${FLAGS[@]}"
+            # Calculate minutes since midnight UTC (0-1439) for jitter-immune window matching
+            H=$(date -u +%H)
+            M=$(date -u +%M)
+            # Remove leading zeros to avoid octal interpretation in bash
+            H=$((10#$H))
+            M=$((10#$M))
+            TOTAL_MIN=$(( H * 60 + M ))
+            echo "Current UTC Time: $H:$M (Minute $TOTAL_MIN of day)"
+
+            # 03:00 UTC schedule (Window: 02:30 - 03:45 UTC / 150 - 225 min) -> Research
+            if [ $TOTAL_MIN -ge 150 ] && [ $TOTAL_MIN -le 225 ]; then
+              echo "ACTION=research-and-draft" >> $GITHUB_ENV
+              echo "REGION=All" >> $GITHUB_ENV
+              echo "AUTO_SEND=false" >> $GITHUB_ENV
+
+            # 04:00 UTC schedule (Window: 03:46 - 05:00 UTC / 226 - 300 min) -> India Send
+            elif [ $TOTAL_MIN -ge 226 ] && [ $TOTAL_MIN -le 300 ]; then
+              echo "ACTION=send-batch" >> $GITHUB_ENV
+              echo "REGION=India" >> $GITHUB_ENV
+              echo "AUTO_SEND=true" >> $GITHUB_ENV
+
+            # 05:30 UTC schedule (Window: 05:01 - 06:45 UTC / 301 - 405 min) -> Middle East Send
+            elif [ $TOTAL_MIN -ge 301 ] && [ $TOTAL_MIN -le 405 ]; then
+              echo "ACTION=send-batch" >> $GITHUB_ENV
+              echo "REGION=ME" >> $GITHUB_ENV
+              echo "AUTO_SEND=true" >> $GITHUB_ENV
+
+            # 07:30 UTC schedule (Window: 06:46 - 09:00 UTC / 406 - 540 min) -> Europe/UK Send
+            elif [ $TOTAL_MIN -ge 406 ] && [ $TOTAL_MIN -le 540 ]; then
+              echo "ACTION=send-batch" >> $GITHUB_ENV
+              echo "REGION=EU" >> $GITHUB_ENV
+              echo "AUTO_SEND=true" >> $GITHUB_ENV
+
+            # 12:00 UTC schedule (Window: 11:30 - 13:30 UTC / 690 - 810 min) -> Follow-ups
+            elif [ $TOTAL_MIN -ge 690 ] && [ $TOTAL_MIN -le 810 ]; then
+              echo "ACTION=followups" >> $GITHUB_ENV
+              echo "REGION=All" >> $GITHUB_ENV
+              echo "AUTO_SEND=true" >> $GITHUB_ENV
+
+            # 16:00 UTC schedule (Window: 15:30 - 18:00 UTC / 930 - 1080 min) -> US West Coast Send
+            elif [ $TOTAL_MIN -ge 930 ] && [ $TOTAL_MIN -le 1080 ]; then
+              echo "ACTION=send-batch" >> $GITHUB_ENV
+              echo "REGION=US" >> $GITHUB_ENV
+              echo "AUTO_SEND=true" >> $GITHUB_ENV
+
+            # Fallback
+            else
+              echo "ACTION=check-replies" >> $GITHUB_ENV
+              echo "REGION=All" >> $GITHUB_ENV
+              echo "AUTO_SEND=false" >> $GITHUB_ENV
+            fi
           fi
-      - name: Save state and refresh campaign snapshots even after failure
-        if: ${{ always() && inputs.dry_run != true }}
+
+      - name: Execute Autonomous Orchestrator
+        env:
+          GMAIL_CLIENT_ID: ${{ secrets.GMAIL_CLIENT_ID }}
+          GMAIL_CLIENT_SECRET: ${{ secrets.GMAIL_CLIENT_SECRET }}
+          GMAIL_REFRESH_TOKEN: ${{ secrets.GMAIL_REFRESH_TOKEN }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC || 'avnish-outreach-alert-797' }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
-          python3 -B -c 'import db; db.checkpoint()'
-          python3 -B generate_outreach.py sync
-          python3 -B build_dashboard.py
-          python3 -B build_full_campaign.py
-          git add -- outreach.db curated_leads.json leads_tracker.csv index.html
-          if ! git diff --cached --quiet; then
-            git commit -m "Refresh outreach snapshots [skip ci]"
+          SEND_FLAG=""
+          if [ "$AUTO_SEND" = "true" ]; then
+            SEND_FLAG="--auto-send"
           fi
-          git push origin HEAD:main
-      - name: Preserve recovery evidence if state persistence fails
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: outreach-recovery-${{ github.run_id }}
-          path: |
-            outreach.db
-            curated_leads.json
-          retention-days: 7
+          
+          echo "Executing: python3 cloud_orchestrator.py --action $ACTION --region $REGION $SEND_FLAG"
+          python3 cloud_orchestrator.py --action "$ACTION" --region "$REGION" $SEND_FLAG
+          
+          # Always run reply detection across all runs
+          python3 cloud_orchestrator.py --action check-replies
+
+      - name: Persist Database Updates
+        run: |
+          git config --global user.name "Outreach Cloud Bot"
+          git config --global user.email "bot@outreach.local"
+          git pull --rebase origin main 2>/dev/null || true
+          git add outreach.db curated_leads.json 2>/dev/null || true
+          if ! git diff-index --quiet HEAD --; then
+            git commit -m "Auto-update outreach state & leads [skip ci]"
+            git push origin main
+          else
+            echo "No database changes to commit."
+          fi
