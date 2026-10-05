@@ -11,6 +11,11 @@ import json
 import base64
 import urllib.request
 import urllib.parse
+import urllib.error
+import html
+import re
+from email.utils import getaddresses
+import db
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
@@ -81,112 +86,147 @@ class GmailClient:
                     return json.loads(content2) if content2 else {}
             raise
 
-    def get_thread_message_id(self, thread_id: str) -> str:
-        """Fetches the Message-ID header of the first message in a thread for RFC 2822 compliance."""
+    def get_thread(self, thread_id):
+        return self._api_request(f"threads/{urllib.parse.quote(thread_id, safe='')}?format=metadata")
+
+    @staticmethod
+    def headers(message):
+        return {h['name'].lower(): h['value'] for h in message.get('payload', {}).get('headers', [])}
+
+    def get_thread_message_id(self, thread_id):
+        messages = self.get_thread(thread_id).get('messages', [])
+        for message in messages:
+            value = self.headers(message).get('message-id')
+            if value and 'SENT' in message.get('labelIds', []):
+                return value
+        raise ValueError('Original sent Message-ID is unavailable; refusing an unthreaded follow-up')
+
+    def format_email_html(self, plain_body):
+        """Escape plain text; only recognized signature URL lines become hyperlinks."""
+        blocks = []
+        for paragraph in plain_body.split('\n\n'):
+            if not paragraph.strip():
+                continue
+            lines = []
+            for line in paragraph.splitlines():
+                match = re.fullmatch(r'(Resume|GitHub|LinkedIn|WhatsApp|Phone / WhatsApp):\s*(https://[^\s]+)', line)
+                if match:
+                    lines.append(f'<a href="{html.escape(match[2], quote=True)}">{html.escape(match[1])}</a>')
+                else:
+                    lines.append(html.escape(line))
+            blocks.append('<br>'.join(lines))
+        return '<div dir="ltr">' + '<br><br>'.join(blocks) + '</div>'
+
+    def _build_mime_message(self, to_email, subject, body, thread_id=None, message_id=None):
+        if not isinstance(to_email, str) or not re.fullmatch(r'[^\s<>@,;\r\n]+@[^\s<>@,;\r\n]+\.[^\s<>@,;\r\n]+', to_email):
+            raise ValueError('One valid recipient email is required')
+        if not isinstance(subject, str) or not subject.strip() or '\r' in subject or '\n' in subject:
+            raise ValueError('A nonempty, single-line subject is required')
+        if not isinstance(body, str) or not body.strip():
+            raise ValueError('Email body cannot be empty')
+        msg = MIMEMultipart('alternative')
+        msg['To'], msg['Subject'] = to_email, subject
+        if message_id:
+            if not re.fullmatch(r'<[^<>\s@]+@[^<>\s@]+>',message_id): raise ValueError('Invalid Message-ID')
+            msg['Message-ID'] = message_id
+            msg['X-Outreach-ID'] = message_id
+        if thread_id:
+            original = self.get_thread_message_id(thread_id)
+            msg['In-Reply-To'] = original
+            msg['References'] = original
+        msg.attach(MIMEText(body, 'plain', 'utf-8'))
+        msg.attach(MIMEText(self.format_email_html(body), 'html', 'utf-8'))
+        payload = {'raw': base64.urlsafe_b64encode(msg.as_bytes()).decode('ascii')}
+        if thread_id: payload['threadId'] = thread_id
+        return payload
+
+    def create_draft(self, to_email, subject, body, thread_id=None, message_id=None):
+        return self._api_request('drafts', method='POST', payload={'message': self._build_mime_message(to_email, subject, body, thread_id, message_id)})
+
+    def update_draft(self, draft_id, to_email, subject, body, thread_id=None, message_id=None):
+        return self._api_request(f'drafts/{draft_id}', method='PUT', payload={'id':draft_id, 'message':self._build_mime_message(to_email, subject, body, thread_id, message_id)})
+
+    def send_draft(self, draft_id):
+        return self._api_request('drafts/send', method='POST', payload={'id':draft_id})
+
+    def send_message(self, to_email, subject, body, thread_id=None, message_id=None):
+        return self._api_request('messages/send', method='POST', payload=self._build_mime_message(to_email, subject, body, thread_id, message_id))
+
+    def get_draft(self, draft_id):
         try:
-            res = self._api_request(f"threads/{thread_id}?format=metadata&metadataHeaders=Message-ID")
-            messages = res.get("messages", [])
-            if messages:
-                for header in messages[0].get("payload", {}).get("headers", []):
-                    if header.get("name", "").lower() == "message-id":
-                        return header.get("value")
-        except Exception as e:
-            print(f"[GmailClient] Warning fetching thread Message-ID: {e}", file=sys.stderr)
+            return self._api_request(f'drafts/{urllib.parse.quote(draft_id, safe="")}?format=metadata')
+        except urllib.error.HTTPError as exc:
+            if exc.code == 404: return None
+            raise
+
+    def list_all(self, endpoint, key, query=''):
+        items, token = [], None
+        while True:
+            params = {'maxResults':100}
+            if query: params['q'] = query
+            if token: params['pageToken'] = token
+            page = self._api_request(endpoint + '?' + urllib.parse.urlencode(params))
+            items.extend(page.get(key, []))
+            token = page.get('nextPageToken')
+            if not token: return items
+
+    def find_delivery(self, message_id, created_at=None):
+        candidates = self.list_all('messages','messages', f'in:anywhere rfc822msgid:{message_id.strip("<>")}')
+        matching = []
+        for candidate in candidates:
+            message = self._api_request(f'messages/{candidate["id"]}?format=metadata')
+            if self.headers(message).get('message-id') == message_id: matching.append(message)
+        if not matching and created_at:
+            # Gmail can replace RFC Message-ID. Our retained custom header identifies the attempt.
+            # ponytail: scan metadata since attempt creation; use Gmail history if mailbox throughput grows.
+            since = int(db.parse_time(created_at).timestamp()) - 300
+            for candidate in self.list_all('messages','messages',f'in:anywhere after:{since}'):
+                message = self._api_request(f'messages/{candidate["id"]}?format=metadata')
+                if self.headers(message).get('x-outreach-id') == message_id: matching.append(message)
+        sent = [m for m in matching if 'SENT' in m.get('labelIds', [])]
+        if len(sent) > 1: raise RuntimeError('Multiple sends found for one campaign attempt; review required')
+        if sent: return {'state':'SENT', 'message':sent[0]}
+        drafts = [m for m in matching if 'DRAFT' in m.get('labelIds', [])]
+        if drafts:
+            # ponytail: linear draft lookup; Gmail history/watch can replace this if the mailbox grows large.
+            found = [d for d in self.list_all('drafts','drafts') if d['message']['id'] in {m['id'] for m in drafts}]
+            if len(found) != 1: raise RuntimeError('Ambiguous campaign draft; review required')
+            return {'state':'DRAFTED','draft':found[0]}
         return None
 
-    def format_email_html(self, plain_body: str) -> str:
-        """Converts plain body to 100% native Gmail compose format (<div dir="ltr"> with standard paragraph breaks)."""
-        paragraphs = [p.strip() for p in plain_body.split('\n\n') if p.strip()]
-        html_blocks = []
-        
-        for p in paragraphs:
-            # Detect signature block
-            if p.startswith('Best,') or p.startswith('Best regards,') or 'Avnish Rana' in p:
-                sig_html = """Best,<br>
-Avnish Rana<br>
-<span style="color:#666; font-size: 13px;">
-<a href="https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing" style="color:#1155cc;">Resume</a> | 
-<a href="https://github.com/AvnishRana25" style="color:#1155cc;">GitHub</a> | 
-<a href="https://www.linkedin.com/in/avnish-rana-83523b2a3/" style="color:#1155cc;">LinkedIn</a> | 
-<a href="https://wa.me/917982252971" style="color:#1155cc;">+91 7982252971</a>
-</span>"""
-                html_blocks.append(sig_html)
-                break
-            else:
-                # Clean multi-space / hard-wrap artifacts so sentences flow naturally
-                clean_lines = ' '.join(p.split())
-                html_blocks.append(clean_lines)
+    def find_legacy_sent(self, recipient, subject, created_at):
+        """Conservative migration for old manually-sent drafts that lacked a stored RFC ID."""
+        since = int(db.parse_time(created_at).timestamp())
+        query = f'in:sent to:{recipient} after:{since}'
+        found = []
+        for candidate in self.list_all('messages','messages',query):
+            message = self._api_request(f'messages/{candidate["id"]}?format=metadata')
+            headers = self.headers(message)
+            recipients = {a.lower() for _,a in getaddresses([headers.get('to','')])}
+            if recipient.lower() in recipients and headers.get('subject') == subject and int(message['internalDate']) >= since * 1000:
+                found.append(message)
+        if len(found) > 1: raise RuntimeError('Multiple matching legacy sends; review required')
+        return found[0] if found else None
 
-        full_content = '<br><br>\n'.join(html_blocks)
-        return f'<div dir="ltr">\n{full_content}\n</div>'
+    def check_recipient_replied(self, recipient_email, thread_id=None, sent_at=None):
+        if not thread_id or not sent_at: raise ValueError('Campaign thread and original send time are required')
+        since = db.parse_time(sent_at).timestamp() * 1000
+        for message in self.get_thread(thread_id).get('messages', []):
+            labels = set(message.get('labelIds', []))
+            headers = self.headers(message)
+            if labels & {'SENT','DRAFT','TRASH','SPAM'} or int(message.get('internalDate',0)) <= since: continue
+            if headers.get('auto-submitted','no').lower() != 'no': continue
+            if headers.get('precedence','').lower() in ('bulk','junk','list'): continue
+            if headers.get('x-autoreply') or headers.get('x-autorespond'): continue
+            senders = getaddresses([headers.get('from','')])
+            if any(address for _,address in senders): return True
+        return False
 
-    def _build_mime_message(self, to_email: str, subject: str, body: str, thread_id: str = None) -> dict:
-        """Builds a multipart email with both clean fluid plain text and beautiful rich HTML."""
-        msg = MIMEMultipart("alternative")
-        msg["to"] = to_email
-        msg["subject"] = subject
-        
-        if thread_id:
-            orig_msg_id = self.get_thread_message_id(thread_id)
-            if orig_msg_id:
-                msg["In-Reply-To"] = orig_msg_id
-                msg["References"] = orig_msg_id
-
-        # Clean plain text version (remove artificial line wraps)
-        clean_plain_paragraphs = []
-        for p in [p.strip() for p in body.split('\n\n') if p.strip()]:
-            if p.startswith('Best,') or 'Avnish Rana' in p:
-                clean_plain_paragraphs.append(p)
-            else:
-                clean_plain_paragraphs.append(' '.join(p.split()))
-        clean_plain = '\n\n'.join(clean_plain_paragraphs)
-
-        html_content = self.format_email_html(body)
-
-        part_plain = MIMEText(clean_plain, "plain", "utf-8")
-        part_html = MIMEText(html_content, "html", "utf-8")
-
-        msg.attach(part_plain)
-        msg.attach(part_html)
-
-        raw_msg = base64.urlsafe_b64encode(msg.as_bytes()).decode("utf-8")
-        msg_payload = {"raw": raw_msg}
-        if thread_id:
-            msg_payload["threadId"] = thread_id
-
-        return msg_payload
-
-    def create_draft(self, to_email: str, subject: str, body: str, thread_id: str = None) -> dict:
-        """Creates a draft email in Gmail."""
-        msg_payload = self._build_mime_message(to_email, subject, body, thread_id)
-        payload = {"message": msg_payload}
-        return self._api_request("drafts", method="POST", payload=payload)
-
-    def update_draft(self, draft_id: str, to_email: str, subject: str, body: str, thread_id: str = None) -> dict:
-        """Updates an existing draft email in Gmail."""
-        msg_payload = self._build_mime_message(to_email, subject, body, thread_id)
-        payload = {"id": draft_id, "message": msg_payload}
-        return self._api_request(f"drafts/{draft_id}", method="PUT", payload=payload)
-
-    def send_draft(self, draft_id: str) -> dict:
-        """Sends an existing draft directly, removing it from drafts."""
-        payload = {"id": draft_id}
-        return self._api_request("drafts/send", method="POST", payload=payload)
-
-    def send_message(self, to_email: str, subject: str, body: str, thread_id: str = None) -> dict:
-        """Sends an email directly through Gmail."""
-        msg_payload = self._build_mime_message(to_email, subject, body, thread_id)
-        return self._api_request("messages/send", method="POST", payload=msg_payload)
-
-    def check_recipient_replied(self, recipient_email: str) -> bool:
-        """
-        Checks if the recipient has sent an email to us (replied).
-        Searches: 'from:<recipient_email>'
-        """
-        query = urllib.parse.quote(f"from:{recipient_email}")
-        res = self._api_request(f"messages?q={query}&maxResults=5")
-        messages = res.get("messages", [])
-        return len(messages) > 0
+    def delete_draft(self, draft_id):
+        try:
+            return self._api_request(f'drafts/{draft_id}', method='DELETE')
+        except urllib.error.HTTPError as exc:
+            if exc.code != 404: raise
 
     def list_recent_drafts(self, max_results=25):
         """Lists recent drafts."""
@@ -195,4 +235,4 @@ Avnish Rana<br>
 if __name__ == "__main__":
     client = GmailClient()
     token = client.refresh_access_token()
-    print(f"Gmail Client authenticated successfully! Token starts with: {token[:12]}...")
+    print("Gmail Client authenticated successfully.")

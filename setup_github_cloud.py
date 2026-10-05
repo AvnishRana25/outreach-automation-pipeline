@@ -1,72 +1,59 @@
 #!/usr/bin/env python3
-"""
-Automated Cloud Deployment Setup
-1. Reads existing Google Workspace credentials from ~/.google_workspace_mcp
-2. Creates private GitHub repository via gh CLI
-3. Uploads secrets directly to GitHub Secrets (GMAIL_CLIENT_ID, GMAIL_CLIENT_SECRET, GMAIL_REFRESH_TOKEN, NTFY_TOPIC)
-4. Commits and pushes codebase to GitHub
-"""
-
-import os
-import sys
+"""Explicit cloud setup; every command is checked and credentials use stdin."""
 import json
+import os
+import shlex
 import subprocess
+import sys
+from pathlib import Path
+import db
 
-REPO_NAME = "outreach-automation-pipeline"
-CREDS_FILE = os.path.expanduser("~/.google_workspace_mcp/credentials/avnishrana797@gmail.com.json")
-NTFY_TOPIC = "avnish-outreach-alert-797"
+REPO_NAME='AvnishRana25/outreach-automation-pipeline'
+CREDS_FILE=Path.home()/'.google_workspace_mcp/credentials/avnishrana797@gmail.com.json'
 
-def run_cmd(cmd, check=True):
-    print(f"Executing: {cmd}")
-    res = subprocess.run(cmd, shell=True, capture_output=True, text=True)
-    if check and res.returncode != 0:
-        print(f"Command failed with error: {res.stderr}")
-        return False, res.stderr
-    return True, res.stdout
+
+def run_cmd(cmd,check=True,input=None):
+    args=shlex.split(cmd) if isinstance(cmd,str) else cmd
+    result=subprocess.run(args,cwd=db.ROOT,input=input,capture_output=True,text=True,timeout=120)
+    success=result.returncode==0
+    if check and not success:
+        raise RuntimeError(f'{args[0]} command failed (exit {result.returncode}); setup stopped')
+    return success,result.stdout if success else result.stderr
+
 
 def setup():
-    if not os.path.exists(CREDS_FILE):
-        print(f"Error: Credentials file not found at {CREDS_FILE}")
-        return False
-
-    with open(CREDS_FILE, "r") as f:
-        creds = json.load(f)
-
-    client_id = creds.get("client_id")
-    client_secret = creds.get("client_secret")
-    refresh_token = creds.get("refresh_token")
-
-    if not (client_id and client_secret and refresh_token):
-        print("Error: Missing client_id, client_secret, or refresh_token in credentials file.")
-        return False
-
-    print("Step 1: Initializing git and committing files...")
-    run_cmd("git add -A")
-    run_cmd('git commit -m "Initialize autonomous cold outreach pipeline"')
-    run_cmd("git branch -M main")
-
-    print(f"Step 2: Creating private GitHub repository: {REPO_NAME}...")
-    success, out = run_cmd(f"gh repo create {REPO_NAME} --private --source=. --remote=origin", check=False)
-    if not success and "already exists" in out:
-        print(f"Repository {REPO_NAME} already exists, using existing remote.")
-
-    print("Step 3: Uploading encrypted GitHub Secrets...")
-    # Set secrets via stdin to prevent leaking in process lists
-    subprocess.run(f"gh secret set GMAIL_CLIENT_ID", input=client_id, text=True, shell=True)
-    subprocess.run(f"gh secret set GMAIL_CLIENT_SECRET", input=client_secret, text=True, shell=True)
-    subprocess.run(f"gh secret set GMAIL_REFRESH_TOKEN", input=refresh_token, text=True, shell=True)
-    subprocess.run(f"gh secret set NTFY_TOPIC", input=NTFY_TOPIC, text=True, shell=True)
-    print("Secrets uploaded successfully!")
-
-    print("Step 4: Pushing code to GitHub...")
-    run_cmd("git push -u origin main", check=False)
-    
-    print("\n" + "=" * 55)
-    print("🚀 CLOUD DEPLOYMENT COMPLETED SUCCESSFULLY!")
-    print(f"Private Repo: https://github.com/AvnishRana25/{REPO_NAME}")
-    print(f"Mobile Notifications: Subscribe to '{NTFY_TOPIC}' on the free ntfy mobile app")
-    print("=" * 55)
+    credentials=json.loads(CREDS_FILE.read_text())
+    names={'GMAIL_CLIENT_ID':'client_id','GMAIL_CLIENT_SECRET':'client_secret','GMAIL_REFRESH_TOKEN':'refresh_token'}
+    if not all(credentials.get(key) for key in names.values()): raise ValueError('Missing Gmail credential fields')
+    _,root=run_cmd(['git','rev-parse','--show-toplevel'])
+    if Path(root.strip()).resolve()!=db.ROOT: raise ValueError('Setup must run in the outreach repository')
+    _,branch=run_cmd(['git','branch','--show-current'])
+    if branch.strip()!='main': raise ValueError('Switch to main before cloud setup')
+    run_cmd(['gh','api','user'])
+    exists,_=run_cmd(['gh','repo','view',REPO_NAME],check=False)
+    if not exists: run_cmd(['gh','repo','create',REPO_NAME,'--private'])
+    _,visibility=run_cmd(['gh','repo','view',REPO_NAME,'--json','visibility'])
+    if json.loads(visibility).get('visibility')!='PRIVATE':
+        raise ValueError('Campaign data requires a private repository')
+    has_remote,remote=run_cmd(['git','remote','get-url','origin'],check=False)
+    if has_remote:
+        allowed={f'https://github.com/{REPO_NAME}',f'https://github.com/{REPO_NAME}.git',f'git@github.com:{REPO_NAME}.git',f'ssh://git@github.com/{REPO_NAME}.git'}
+        if remote.strip().lower() not in {url.lower() for url in allowed}: raise ValueError('Existing origin points to a different repository')
+    else: run_cmd(['git','remote','add','origin',f'https://github.com/{REPO_NAME}.git'])
+    files=[p.name for p in db.ROOT.glob('*.py')]+['.github/workflows/outreach_pipeline.yml','.gitignore','README.md','outreach.db','curated_leads.json','leads_tracker.csv','index.html']
+    run_cmd(['git','add','--',*files])
+    clean,_=run_cmd(['git','diff','--cached','--quiet'],check=False)
+    if not clean: run_cmd(['git','commit','-m','Repair outreach campaign reliability'])
+    for name,key in names.items(): run_cmd(['gh','secret','set',name,'--repo',REPO_NAME],input=credentials[key])
+    for name in ('NTFY_TOPIC','NTFY_TOKEN','TELEGRAM_BOT_TOKEN','TELEGRAM_CHAT_ID'):
+        if os.getenv(name): run_cmd(['gh','secret','set',name,'--repo',REPO_NAME],input=os.environ[name])
+    run_cmd(['git','push','-u','origin','main'])
+    print(f'Cloud setup completed: https://github.com/{REPO_NAME}')
     return True
 
-if __name__ == "__main__":
-    setup()
+
+if __name__=='__main__':
+    try: setup()
+    except Exception as exc:
+        print(f'Setup failed: {type(exc).__name__}',file=sys.stderr)
+        sys.exit(1)

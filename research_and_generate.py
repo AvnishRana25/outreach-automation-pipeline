@@ -1,22 +1,9 @@
 #!/usr/bin/env python3
-"""
-Autonomous Multi-Region Lead Researcher & Engine
-Sources high-signal AI agent startups across:
-- India (Bengaluru, Gurgaon, Mumbai)
-- Middle East (Riyadh, Dubai, Abu Dhabi)
-- Europe & UK (London, Paris, Berlin)
-- US (San Francisco, Silicon Valley, NYC)
+"""Verified JSON imports and existing outreach-copy templates."""
 
-Enforces strict deduplication via SQLite outreach.db, generates hyper-personalized
-pitches tailored to Avnish's actual projects (Caudal AI, Realty Pandit CRM, Klimashift),
-creates drafts directly in Gmail, and sends phone push alerts.
-"""
-
-import os
+from pathlib import Path
 import sys
 import json
-import urllib.request
-import urllib.parse
 from datetime import datetime, timezone
 
 import db
@@ -505,102 +492,61 @@ GitHub: {GITHUB_LINK}
         "fu2_body": fu2_body
     }
 
-def run_multi_region_expansion(target_regions=None, dry_run=False, create_drafts=True):
-    """
-    Scans prospects across India, Middle East, Europe/UK, and US.
-    Enforces deduplication against outreach.db.
-    Inserts newly discovered leads, creates drafts in Gmail, and notifies phone.
-    """
-    print("=" * 60)
-    print("       MULTI-REGION COLD OUTREACH SOURCING & TEST       ")
-    print("=" * 60)
-    
-    if target_regions:
-        target_regions = [r.lower() for r in target_regions]
-    
-    added_leads = []
-    skipped_count = 0
-    client = GmailClient() if create_drafts and not dry_run else None
-
-    for prospect in MULTI_REGION_PROSPECTS:
-        comp_name = prospect["company"]
-        domain = prospect["domain"]
-        region = prospect["region"]
-        founder = prospect["founder"]
-        email = prospect["email"]
-        role = prospect["role"]
-
-        # Filter by region if specified
-        if target_regions:
-            matched = any(t in region.lower() or t in comp_name.lower() for t in target_regions)
-            if not matched:
-                continue
-
-        # 1. Enforce Deduplication
-        if db.is_company_contacted(domain, comp_name):
-            print(f"[Deduplication] ⏩ Skipping {comp_name} ({domain}) - already exists in database.")
-            skipped_count += 1
-            continue
-
-        print(f"\n[Lead Sourced] 🎯 {comp_name} [{region}]")
-        print(f"               Founder: {founder} <{email}>")
-        print(f"               Category: {prospect.get('category')}")
-
-        # 2. Generate Pitch
-        pitch = generate_custom_pitch(prospect)
-
-        draft_id = None
-        if client and not dry_run:
-            try:
-                draft_res = client.create_draft(email, pitch["initial_subject"], pitch["initial_body"])
-                draft_id = draft_res.get("id")
-                print(f"[Gmail Draft]  ✅ Saved draft in Gmail (ID: {draft_id})")
-            except Exception as e:
-                print(f"[Gmail Draft]  ⚠️ Could not draft in Gmail: {e}")
-
-        lead_dict = {
-            "company_name": comp_name,
-            "domain": domain,
-            "founder_name": founder,
-            "verified_email": email,
-            "founder_role": role,
-            "location": region,
-            "status": "Drafted in Gmail" if draft_id else "DRAFTED",
-            "initial_subject": pitch["initial_subject"],
-            "initial_body": pitch["initial_body"],
-            "fu1_subject": pitch["fu1_subject"],
-            "fu1_body": pitch["fu1_body"],
-            "fu2_subject": pitch["fu2_subject"],
-            "fu2_body": pitch["fu2_body"],
-            "gmail_draft_id": draft_id
-        }
-
+def run_multi_region_expansion(target_regions=None, dry_run=False, create_drafts=True, leads_file=None):
+    """Import user-verified JSON. No inferred/discovered addresses."""
+    regions = {db.normalize_region(r) for r in (target_regions or ['All'])}
+    leads_file = leads_file or db.ROOT / 'verified_leads.json'
+    if not Path(leads_file).exists():
+        if dry_run:
+            print('No verified import file available; nothing would be imported')
+            return []
+        raise ValueError('Provide --leads-file or create verified_leads.json with verified contacts')
+    with open(leads_file, encoding='utf-8') as handle:
+        data = json.load(handle)
+    prospects = data if isinstance(data,list) else data['leads']
+    validated = []
+    for prospect in prospects:
+        if leads_file:
+            # Verification is supplied by the importer, not inferred from a valid email shape.
+            if not prospect.get('email_verified_at') or not prospect.get('email_verification_source'):
+                raise ValueError('Imported leads require email_verified_at and email_verification_source')
+            if db.parse_time(prospect['email_verified_at']) > datetime.now(timezone.utc):
+                raise ValueError('Email verification timestamp cannot be in the future')
+        lead = dict(prospect)
+        if not lead.get('initial_body'):
+            pitch_input = dict(prospect, company=prospect.get('company') or prospect.get('company_name'),founder=prospect.get('founder') or prospect.get('founder_name'))
+            lead.update(generate_custom_pitch(pitch_input))
+        lead = db.validate_lead(lead)
+        if 'All' in regions or lead['region_code'] in regions:
+            validated.append(lead)
+    added=[]
+    from cloud_orchestrator import deliver, checkpoint, fail, finish
+    with db.campaign_lock():
         if not dry_run:
-            db.insert_or_update_lead(lead_dict)
-            
-        added_leads.append(prospect)
+            db.init_db()
+            checkpoint()
+        client=GmailClient() if create_drafts and not dry_run else None
+        failures=0
+        for lead in validated:
+            if dry_run and Path(db.DB_PATH).exists() and db.is_company_contacted(lead['domain'],lead['company_name']):
+                print(f"Would update verification for existing {lead['company_name']}");continue
+            if dry_run:
+                print(f"Would import {lead['company_name']} ({lead['region_code']})")
+                added.append(lead);continue
+            if not db.insert_or_update_lead(lead):
+                checkpoint();continue
+            checkpoint()
+            with db.connection() as conn:
+                row=dict(conn.execute('SELECT * FROM leads WHERE domain=?',(lead['domain'],)).fetchone())
+            added.append(lead)
+            if client:
+                try: deliver(row,'initial',client,False)
+                except Exception as exc:
+                    fail(row,exc);failures+=1
+        finish(len(added),failures,dry_run,'Imported')
+    return added
 
-    print("\n" + "=" * 60)
-    print(f"Summary: Added {len(added_leads)} new multi-region leads, Skipped {skipped_count} duplicates.")
-    print("=" * 60)
 
-    # 3. Mobile Push Notification
-    if added_leads:
-        by_region = {}
-        for l in added_leads:
-            r = l["region"].split(",")[0].strip()
-            by_region[r] = by_region.get(r, 0) + 1
-        breakdown_str = ", ".join([f"{k}: {v}" for k, v in by_region.items()])
-        
-        notify_user_mobile(
-            title=f"🚀 Multi-Region Outreach Expansion",
-            message=f"Added {len(added_leads)} new AI startups across India, Middle East, Europe & US. Breakdown: {breakdown_str}.",
-            click_url="https://mail.google.com/mail/u/0/#drafts"
-        )
-    return added_leads
-
-if __name__ == "__main__":
-    regions = None
-    if len(sys.argv) > 1:
-        regions = sys.argv[1].split(",")
-    run_multi_region_expansion(target_regions=regions, dry_run=False, create_drafts=True)
+if __name__ == '__main__':
+    from cloud_orchestrator import main
+    main(['--action','research-and-draft',*sys.argv[1:]])

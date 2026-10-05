@@ -1,300 +1,347 @@
 #!/usr/bin/env python3
-"""
-Cloud Outreach Orchestrator
-Designed to run in GitHub Actions (or locally) without user interaction.
-Executes timezone dispatches, reply detection, follow-up queues, and mobile phone alerts.
-"""
-
+"""Serialized, checkpointed Gmail outreach with conservative recovery."""
+import argparse
+import functools
+import inspect
+import json
 import os
 import sys
-import argparse
+import time
+import uuid
 from datetime import datetime, timezone, timedelta
-import sqlite3
+from pathlib import Path
 
+import db
 from gmail_client import GmailClient
 from notify_mobile import notify_user_mobile
-import db
 
-def get_db():
-    return db.get_connection()
 
-def action_check_replies():
-    """Checks Gmail inbox to detect if any prospect has replied."""
-    print("[Reply Engine] Checking Gmail inbox for prospect replies...")
-    client = GmailClient()
-    conn = get_db()
-    cursor = conn.cursor()
-    
-    cursor.execute("SELECT id, name, founder_name, founder_email, status FROM leads WHERE status IN ('SENT', 'FU1_SENT', 'FU2_SENT')")
-    contacted_leads = cursor.fetchall()
-    
-    replied_count = 0
-    now = datetime.now(timezone.utc).isoformat()
-    
-    for row in contacted_leads:
-        lead_id = row["id"]
-        company = row["name"]
-        founder = row["founder_name"]
-        email = row["founder_email"]
-        
-        if not email or "@" not in email:
-            continue
-            
-        try:
-            has_replied = client.check_recipient_replied(email)
-            if has_replied:
-                print(f"🔥 FOUNDER REPLIED: {founder} at {company} ({email})")
-                cursor.execute(
-                    "UPDATE leads SET status = 'REPLIED', replied_at = ?, last_checked_reply_at = ? WHERE id = ?",
-                    (now, now, lead_id)
-                )
-                conn.commit()
-                replied_count += 1
-                
-                # High priority phone notification!
-                notify_user_mobile(
-                    title=f"🔥 REPLIED: {company}",
-                    message=f"{founder} responded to your email! Open Gmail to reply.",
-                    click_url="https://mail.google.com/mail/u/0/#inbox"
-                )
-            else:
-                cursor.execute("UPDATE leads SET last_checked_reply_at = ? WHERE id = ?", (now, lead_id))
-                conn.commit()
-        except Exception as e:
-            print(f"[Reply Engine] Error checking {email}: {e}")
-            
-    conn.close()
-    print(f"[Reply Engine] Completed reply check. {replied_count} new replies detected.")
-    return replied_count
+class PersistenceError(RuntimeError):
+    pass
 
-import time
-import random
 
-def action_send_batch(region: str = "US", dry_run: bool = False, auto_send: bool = False):
-    """
-    Processes emails for a given region according to founder local morning hours.
-    If auto_send is True, sends them directly via Gmail API with human-like deliverability pacing.
-    If auto_send is False, ensures they are drafted in Gmail and alerts mobile.
-    """
-    print(f"[Batch Engine] Processing batch for region: {region} (auto_send={auto_send})")
-    conn = get_db()
-    cursor = conn.cursor()
-    
-    # Flexible keyword mapping for regions with strict disambiguation
-    region_upper = region.upper()
-    if "US" in region_upper or "AMERICA" in region_upper:
-        # Exclude Indian and Middle East hybrid profiles from US batch so they send at local morning
-        region_clause = "((region LIKE '%US%' OR region LIKE '%SF%' OR region LIKE '%San Francisco%' OR region LIKE '%California%') AND region NOT LIKE '%Bengaluru%' AND region NOT LIKE '%Mumbai%' AND region NOT LIKE '%India%' AND region NOT LIKE '%Riyadh%' AND region NOT LIKE '%Dubai%')"
-    elif "INDIA" in region_upper or "IN" in region_upper:
-        region_clause = "(region LIKE '%Bengaluru%' OR region LIKE '%Mumbai%' OR region LIKE '%India%')"
-    elif "ME" in region_upper or "MIDDLE" in region_upper or "DUBAI" in region_upper or "RIYADH" in region_upper:
-        region_clause = "(region LIKE '%Riyadh%' OR region LIKE '%Dubai%' OR region LIKE '%Saudi%' OR region LIKE '%Middle East%')"
-    elif "EU" in region_upper or "UK" in region_upper or "EUROPE" in region_upper or "LONDON" in region_upper:
-        region_clause = "(region LIKE '%London%' OR region LIKE '%UK%' OR region LIKE '%Europe%' OR region LIKE '%Paris%')"
-    elif "ALL" in region_upper:
-        region_clause = "1=1"
+def checkpoint():
+    try:
+        db.checkpoint()
+    except Exception as exc:
+        raise PersistenceError('State checkpoint failed; Gmail writes stopped') from exc
+
+
+def locked(function):
+    signature = inspect.signature(function)
+    @functools.wraps(function)
+    def wrapper(*args, **kwargs):
+        with db.campaign_lock():
+            if not signature.bind_partial(*args, **kwargs).arguments.get('dry_run', False):
+                db.init_db()
+                checkpoint()
+            return function(*args, **kwargs)
+    return wrapper
+
+
+def rows():
+    if not Path(db.DB_PATH).exists(): return []
+    with db.connection(readonly=True) as conn:
+        return [dict(r) for r in conn.execute('SELECT * FROM leads ORDER BY id')]
+
+
+def update_lead(lead_id, **fields):
+    with db.connection() as conn:
+        conn.execute('UPDATE leads SET ' + ','.join(f'{k}=?' for k in fields) + ' WHERE id=?', (*fields.values(),lead_id))
+    checkpoint()
+
+
+def update_attempt(lead_id,stage,**fields):
+    with db.connection() as conn:
+        conn.execute('UPDATE attempts SET '+','.join(f'{k}=?' for k in fields)+' WHERE lead_id=? AND stage=?',(*fields.values(),lead_id,stage))
+    checkpoint()
+
+
+def get_attempt(lead_id,stage):
+    with db.connection() as conn:
+        row=conn.execute('SELECT * FROM attempts WHERE lead_id=? AND stage=?',(lead_id,stage)).fetchone()
+    return dict(row) if row else None
+
+
+def complete(lead,stage,message):
+    if not message.get('id') or not message.get('threadId'): raise ValueError('Incomplete Gmail send response')
+    stamp=datetime.fromtimestamp(int(message['internalDate'])/1000,timezone.utc).isoformat() if message.get('internalDate') else db.utcnow()
+    attempt=get_attempt(lead['id'],stage)
+    if attempt and attempt['thread_id'] and message['threadId'] != attempt['thread_id']:
+        raise RuntimeError('Gmail returned a different follow-up thread; review required')
+    update_attempt(lead['id'],stage,state='SENT',sent_at=stamp,gmail_message_id=message['id'],thread_id=message['threadId'],draft_id=None,error=None)
+    fields={'status':{'initial':'SENT','fu1':'FU1_SENT','fu2':'FU2_SENT'}[stage],'gmail_thread_id':message['threadId'],'last_error':None}
+    fields['sent_at' if stage=='initial' else stage+'_sent_at']=stamp
+    if stage=='initial': fields['gmail_draft_id']=None
+    update_lead(lead['id'],**fields)
+    lead.update(fields)
+
+
+def reconcile_attempt(lead,stage,client):
+    attempt=get_attempt(lead['id'],stage)
+    if not attempt: return None
+    if attempt['state']=='SENT':
+        # Heal a crash between saving the attempt and updating the lead.
+        ranks = {'DRAFTED':0,'Drafted in Gmail':0,'Ready to Send':0,'INITIAL_QUEUED':0,'INITIAL_UNCERTAIN':0,'SENT':1,'FU1_QUEUED':1,'FU1_UNCERTAIN':1,'FU1_SENT':2,'FU2_QUEUED':2,'FU2_UNCERTAIN':2,'FU2_SENT':3,'REPLIED':99}
+        if ranks.get(lead['status'],99) < {'initial':1,'fu1':2,'fu2':3}[stage]:
+            complete(lead,stage,{'id':attempt['gmail_message_id'],'threadId':attempt['thread_id'],'internalDate':str(int(db.parse_time(attempt['sent_at']).timestamp()*1000))})
+        return get_attempt(lead['id'],stage)
+    found=client.find_delivery(attempt['message_id'],attempt['created_at'])
+    if found and found['state']=='SENT':
+        complete(lead,stage,found['message'])
+    elif found and found['state']=='DRAFTED' and attempt['state'] in ('PREPARING','DRAFTED'):
+        update_attempt(lead['id'],stage,state='DRAFTED',draft_id=found['draft']['id'],error=None)
+        if stage=='initial': update_lead(lead['id'],gmail_draft_id=found['draft']['id'])
+    elif attempt['state'] != 'DRAFTED':
+        raise RuntimeError(f'{stage} outcome is uncertain; reconciliation will retry, sending is held')
+    return get_attempt(lead['id'],stage)
+
+
+def prepare(lead,stage,client):
+    attempt=get_attempt(lead['id'],stage)
+    if attempt: return reconcile_attempt(lead,stage,client)
+    legacy=client.get_draft(lead['gmail_draft_id']) if stage=='initial' and lead.get('gmail_draft_id') else None
+    if stage=='initial' and lead.get('gmail_draft_id') and not legacy:
+        sent=client.find_legacy_sent(lead['founder_email'],lead['initial_subject'],lead['created_at'])
+        if not sent: raise RuntimeError('Existing draft disappeared and no unique sent message was found; review required')
+        message_id=client.headers(sent).get('message-id')
+        if not message_id: raise ValueError('Legacy sent email has no Message-ID')
     else:
-        region_clause = f"region LIKE '%{region}%'"
-
-    sql = f"SELECT * FROM leads WHERE {region_clause} AND LOWER(status) LIKE '%draft%'"
-    cursor.execute(sql)
-    leads = cursor.fetchall()
-    
-    if not leads:
-        print(f"[Batch Engine] No pending drafted leads found for region query: {region}")
-        conn.close()
-        return 0
-        
-    print(f"[Batch Engine] Found {len(leads)} leads for {region}:")
-    client = GmailClient()
-    processed_count = 0
-    now = datetime.now(timezone.utc).isoformat()
-    
-    for row in leads:
-        company = row["name"]
-        founder = row["founder_name"]
-        email = row["founder_email"]
-        subject = row["initial_subject"]
-        body = row["initial_body"]
-        draft_id = row["gmail_draft_id"]
-        lead_id = row["id"]
-        
-        print(f" -> {company} ({founder} <{email}>)")
-        
-        if dry_run:
-            processed_count += 1
-            continue
-            
+        sent=None
+        message_id=client.headers(legacy['message']).get('message-id') if legacy else f'<outreach.{uuid.uuid4().hex}@outreach.local>'
+        if not message_id: raise ValueError('Existing draft has no Message-ID; review required')
+    with db.connection() as conn:
+        conn.execute('INSERT INTO attempts(lead_id,stage,message_id,draft_id,thread_id,state,created_at) VALUES(?,?,?,?,?,?,?)',
+                     (lead['id'],stage,message_id,lead.get('gmail_draft_id') if legacy else None,lead.get('gmail_thread_id') if stage!='initial' else None,'DRAFTED' if legacy else 'PREPARING',db.utcnow()))
+    checkpoint()
+    if sent:
+        complete(lead,stage,sent)
+    elif not legacy:
+        subject=lead['initial_subject']
+        body=lead[stage+'_body']
         try:
-            if auto_send:
-                if draft_id:
-                    send_res = client.send_draft(draft_id)
-                else:
-                    send_res = client.send_message(email, subject, body)
-                thread_id = send_res.get("threadId")
-                cursor.execute(
-                    "UPDATE leads SET status = 'SENT', sent_at = ?, gmail_thread_id = ? WHERE id = ?",
-                    (now, thread_id, lead_id)
-                )
-                conn.commit()
-                processed_count += 1
-                print(f"   🚀 Sent automatically to {email}")
-                # Rate limit & deliverability delay (2.5 - 4.5s random jitter)
-                time.sleep(random.uniform(2.5, 4.5))
-            else:
-                # If not drafted yet in Gmail, create draft
-                if not draft_id:
-                    draft_res = client.create_draft(email, subject, body)
-                    new_draft_id = draft_res.get("id")
-                    thread_id = draft_res.get("message", {}).get("threadId")
-                    cursor.execute(
-                        "UPDATE leads SET gmail_draft_id = ?, gmail_thread_id = ? WHERE id = ?",
-                        (new_draft_id, thread_id, lead_id)
-                    )
-                    conn.commit()
-                processed_count += 1
-        except Exception as e:
-            print(f"[Batch Engine] Error processing {company}: {e}")
-            
-    conn.close()
-    
-    # Send mobile push alert
-    status_text = "sent automatically" if auto_send else "ready in Gmail Drafts"
-    notify_user_mobile(
-        title=f"Outreach Alert: {region} Batch",
-        message=f"{processed_count} emails for {region} startups are {status_text}.",
-        click_url="https://mail.google.com/mail/u/0/#drafts"
-    )
-    
-    return processed_count
+            result=client.create_draft(lead['founder_email'],subject,body,thread_id=lead.get('gmail_thread_id') if stage!='initial' else None,message_id=message_id)
+            if not result.get('id'): raise ValueError('Gmail did not return a draft ID')
+            update_attempt(lead['id'],stage,state='DRAFTED',draft_id=result['id'])
+            if stage=='initial': update_lead(lead['id'],gmail_draft_id=result['id'],gmail_thread_id=result.get('message',{}).get('threadId'))
+        except PersistenceError:
+            raise
+        except Exception as exc:
+            update_attempt(lead['id'],stage,error=type(exc).__name__)
+            raise
+    return get_attempt(lead['id'],stage)
 
-def action_process_followups(auto_send: bool = False):
-    """
-    Finds sent leads that are 3+ days old with no reply and creates Follow-Up 1,
-    or 7+ days old for Follow-Up 2.
-    """
-    print("[Follow-Up Engine] Evaluating sent leads for scheduled follow-ups...")
-    conn = get_db()
-    cursor = conn.cursor()
-    client = GmailClient()
-    
-    now = datetime.now(timezone.utc)
-    cursor.execute("SELECT * FROM leads WHERE status IN ('SENT', 'FU1_SENT')")
-    leads = cursor.fetchall()
-    
-    fu_count = 0
-    for row in leads:
-        lead_id = row["id"]
-        company = row["name"]
-        founder = row["founder_name"]
-        email = row["founder_email"]
-        status = row["status"]
-        sent_at_str = row["sent_at"]
-        thread_id = row["gmail_thread_id"]
-        
-        if not sent_at_str:
-            continue
-            
-        sent_at = datetime.fromisoformat(sent_at_str)
-        days_passed = (now - sent_at).days
-        
-        # Follow-Up 1 (Day +3)
-        if status == "SENT" and days_passed >= 3:
-            # First verify they haven't replied
-            if client.check_recipient_replied(email):
-                cursor.execute("UPDATE leads SET status = 'REPLIED', replied_at = ? WHERE id = ?", (now.isoformat(), lead_id))
-                conn.commit()
-                continue
-                
-            subject = row["fu1_subject"] or f"Re: {row['initial_subject']}"
-            body = row["fu1_body"]
-            
-            if auto_send:
-                client.send_message(email, subject, body, thread_id=thread_id)
-                cursor.execute("UPDATE leads SET status = 'FU1_SENT', sent_at = ? WHERE id = ?", (now.isoformat(), lead_id))
-            else:
-                draft_res = client.create_draft(email, subject, body, thread_id=thread_id)
-                cursor.execute("UPDATE leads SET status = 'FU1_QUEUED' WHERE id = ?", (lead_id,))
-                
-            conn.commit()
-            fu_count += 1
-            print(f"[Follow-Up Engine] Queued FU1 for {company} ({founder})")
-            
-        # Follow-Up 2 (Day +7)
-        elif status == "FU1_SENT" and days_passed >= 4:
-            if client.check_recipient_replied(email):
-                cursor.execute("UPDATE leads SET status = 'REPLIED', replied_at = ? WHERE id = ?", (now.isoformat(), lead_id))
-                conn.commit()
-                continue
-                
-            subject = row["fu2_subject"] or f"Re: {row['initial_subject']}"
-            body = row["fu2_body"]
-            
-            if auto_send:
-                client.send_message(email, subject, body, thread_id=thread_id)
-                cursor.execute("UPDATE leads SET status = 'FU2_SENT', sent_at = ? WHERE id = ?", (now.isoformat(), lead_id))
-            else:
-                draft_res = client.create_draft(email, subject, body, thread_id=thread_id)
-                cursor.execute("UPDATE leads SET status = 'FU2_QUEUED' WHERE id = ?", (lead_id,))
-                
-            conn.commit()
-            fu_count += 1
-            print(f"[Follow-Up Engine] Queued FU2 for {company} ({founder})")
-            
-    conn.close()
-    
-    if fu_count > 0:
-        notify_user_mobile(
-            title="Follow-Up Alert",
-            message=f"{fu_count} personalized follow-up emails queued in Gmail for unreplied leads.",
-            click_url="https://mail.google.com/mail/u/0/#drafts"
-        )
-    return fu_count
 
-def action_status():
-    """Prints campaign state breakdown."""
-    conn = get_db()
-    cursor = conn.cursor()
-    cursor.execute("SELECT status, COUNT(*) as count FROM leads GROUP BY status")
-    rows = cursor.fetchall()
-    print("=" * 45)
-    print("           OUTREACH PIPELINE STATUS          ")
-    print("=" * 45)
-    total = 0
-    for r in rows:
-        print(f"  {r['status']:<18}: {r['count']}")
-        total += r['count']
-    print("-" * 45)
-    print(f"  {'TOTAL LEADS':<18}: {total}")
-    print("=" * 45)
-    conn.close()
+def deliver(lead,stage,client,auto_send):
+    if not lead.get('region_code') or not lead.get('recipient_timezone'): raise ValueError('Set a region and recipient timezone')
+    if stage=='initial' and auto_send:
+        metadata=json.loads(lead.get('metadata') or '{}')
+        if not metadata.get('email_verified_at') or not metadata.get('email_verification_source'):
+            raise ValueError('Recipient verification is not recorded; import verified JSON before automatic sending')
+        if db.parse_time(metadata['email_verified_at']) > datetime.now(timezone.utc): raise ValueError('Invalid email verification date')
+    attempt=prepare(lead,stage,client)
+    if attempt['state']=='SENT': return False
+    if not auto_send:
+        if lead['status'] == ('INITIAL_QUEUED' if stage=='initial' else stage.upper()+'_QUEUED'): return False
+        update_lead(lead['id'],status='INITIAL_QUEUED' if stage=='initial' else stage.upper()+'_QUEUED')
+        return True
+    if attempt['state']!='DRAFTED' or not attempt['draft_id']: raise RuntimeError('No confirmed draft available; sending held')
+    # Durable intent is pushed before the only send request. Unknown outcomes never get an automatic second send.
+    update_attempt(lead['id'],stage,state='SENDING')
+    update_lead(lead['id'],status=stage.upper()+'_UNCERTAIN')
+    try:
+        message=client.send_draft(attempt['draft_id'])
+        complete(lead,stage,message)
+    except PersistenceError:
+        raise
+    except Exception as exc:
+        update_attempt(lead['id'],stage,state='UNKNOWN',error=type(exc).__name__)
+        raise
+    time.sleep(float(os.getenv('OUTREACH_SEND_DELAY','3')))
+    return True
 
-from research_and_generate import run_multi_region_expansion
 
-def action_research_and_draft(region: str = None):
-    """Sources new multi-region startups, deduplicates, and drafts them into Gmail."""
-    print(f"[Research & Draft Engine] Sourcing new startups (region filter: {region})...")
-    target_regions = [region] if region and region.upper() != "ALL" else None
-    leads = run_multi_region_expansion(target_regions=target_regions, dry_run=False, create_drafts=True)
-    print(f"[Research & Draft Engine] Finished. {len(leads)} new emails drafted in Gmail.")
-    return len(leads)
+def check_reply(lead,client):
+    if not lead.get('sent_at') or not lead.get('gmail_thread_id'): return False
+    replied=client.check_recipient_replied(lead['founder_email'],thread_id=lead['gmail_thread_id'],sent_at=lead['sent_at'])
+    update_lead(lead['id'],last_checked_reply_at=db.utcnow())
+    if replied:
+        update_lead(lead['id'],status='REPLIED',replied_at=lead.get('replied_at') or db.utcnow())
+        lead['status']='REPLIED'
+        for stage in ('fu1','fu2'):
+            attempt=get_attempt(lead['id'],stage)
+            if attempt and attempt['state']=='DRAFTED' and attempt['draft_id']:
+                client.delete_draft(attempt['draft_id'])
+                update_attempt(lead['id'],stage,state='CANCELLED',draft_id=None)
+        notify_reply(lead)
+    return replied
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Cloud Outreach Orchestrator")
-    parser.add_argument("--action", choices=["research-and-draft", "send-batch", "check-replies", "followups", "status"], default="research-and-draft")
-    parser.add_argument("--region", default="All", help="Target region (India, Middle East, Europe, US, All)")
-    parser.add_argument("--auto-send", action="store_true", help="Send directly instead of creating drafts")
-    parser.add_argument("--dry-run", action="store_true", help="Dry run without writing to Gmail")
-    args = parser.parse_args()
-    
-    if args.action == "research-and-draft":
-        action_research_and_draft(region=args.region)
-    elif args.action == "status":
-        action_status()
-    elif args.action == "check-replies":
-        action_check_replies()
-    elif args.action == "send-batch":
-        action_send_batch(region=args.region, dry_run=args.dry_run, auto_send=args.auto_send)
-    elif args.action == "followups":
-        action_process_followups(auto_send=args.auto_send)
 
+def notify_reply(lead):
+    if lead.get('reply_notified_at'): return
+    if notify_user_mobile(title=f"Reply: {lead['name']}",message=f"{lead['founder_name']} replied. Open Gmail to respond.",click_url='https://mail.google.com/mail/u/0/#inbox'):
+        update_lead(lead['id'],reply_notified_at=db.utcnow())
+
+
+def reconcile(lead,client):
+    if lead['status']=='REPLIED':
+        # Retry queued-draft cancellation/notification after a transient failure.
+        for stage in ('fu1','fu2'):
+            attempt=get_attempt(lead['id'],stage)
+            if attempt and attempt['state']=='DRAFTED' and attempt['draft_id']:
+                client.delete_draft(attempt['draft_id'])
+                update_attempt(lead['id'],stage,state='CANCELLED',draft_id=None)
+        notify_reply(lead)
+        return
+    for stage in ('initial','fu1','fu2'):
+        if get_attempt(lead['id'],stage): reconcile_attempt(lead,stage,client)
+    if lead['status'] in db.PENDING or lead['status']=='INITIAL_QUEUED':
+        if lead.get('gmail_draft_id') and not get_attempt(lead['id'],'initial'): prepare(lead,'initial',client)
+
+
+def fail(lead,exc):
+    if isinstance(exc,PersistenceError): raise exc
+    update_lead(lead['id'],last_error=f'{type(exc).__name__}: '+str(exc) if isinstance(exc,(ValueError,RuntimeError)) else type(exc).__name__)
+    print(f"Failed {lead['name']}: {type(exc).__name__}",file=sys.stderr)
+
+
+def finish(count,failures,dry_run=False,label='Processed'):
+    print(f'{label}: {count}; failed: {failures}' + (' (dry run)' if dry_run else ''))
+    if failures: raise RuntimeError(f'{failures} lead(s) need attention; successful progress was saved')
+    return count
+
+
+def require_sender(auto_send,dry_run):
+    if auto_send and not dry_run and os.getenv('OUTREACH_CLOUD')!='1' and os.getenv('OUTREACH_ALLOW_LOCAL_SEND')!='1':
+        raise RuntimeError('Cloud is the authoritative sender. For exclusive local operation, disable cloud dispatch and set OUTREACH_ALLOW_LOCAL_SEND=1')
+
+
+@locked
+def action_check_replies(dry_run=False):
+    client=None if dry_run else GmailClient()
+    count=failures=0
+    for lead in rows():
+        if dry_run:
+            print(f"Would reconcile/check {lead['name']}");continue
+        try:
+            if check_reply(lead,client):
+                count+=1;continue
+            reconcile(lead,client)
+            if lead['status']=='REPLIED': continue
+            if check_reply(lead,client): count+=1
+        except Exception as exc:
+            fail(lead,exc);failures+=1
+    return finish(count,failures,dry_run,'Replies')
+
+
+@locked
+def action_send_batch(region='All',dry_run=False,auto_send=False,respect_window=False):
+    region=db.normalize_region(region)
+    require_sender(auto_send,dry_run)
+    client=None if dry_run else GmailClient()
+    count=failures=0
+    for lead in rows():
+        if region!='All' and lead.get('region_code')!=region: continue
+        if lead['status'] not in (*db.PENDING,'INITIAL_QUEUED','INITIAL_UNCERTAIN'): continue
+        try:
+            if respect_window and not db.in_send_window(lead): continue
+            if dry_run:
+                print(f"Would {'send' if auto_send else 'draft'} {lead['name']}");count+=1;continue
+            reconcile(lead,client)
+            if lead['status'] not in (*db.PENDING,'INITIAL_QUEUED','INITIAL_UNCERTAIN'): continue
+            count+=int(deliver(lead,'initial',client,auto_send))
+        except Exception as exc:
+            fail(lead,exc);failures+=1
+    if count and not dry_run:
+        notify_user_mobile(title='Outreach batch',message=f"{count} initial emails {'sent' if auto_send else 'drafted'}; {failures} failed.")
+    return finish(count,failures,dry_run)
+
+
+@locked
+def action_process_followups(auto_send=False,dry_run=False,region='All',respect_window=False):
+    region=db.normalize_region(region)
+    require_sender(auto_send,dry_run)
+    client=None if dry_run else GmailClient()
+    count=failures=0
+    for lead in rows():
+        if region!='All' and lead.get('region_code')!=region: continue
+        if lead['status'] not in ('SENT','FU1_SENT','FU1_QUEUED','FU2_QUEUED','FU1_UNCERTAIN','FU2_UNCERTAIN'): continue
+        try:
+            if respect_window and not db.in_send_window(lead): continue
+            if not dry_run:
+                if check_reply(lead,client): continue
+                reconcile(lead,client)
+                if lead['status']=='REPLIED': continue
+            now=datetime.now(timezone.utc)
+            initial=db.parse_time(lead['sent_at'])
+            stage=None
+            if lead['status'] in ('SENT','FU1_QUEUED','FU1_UNCERTAIN') and now-initial>=timedelta(days=3): stage='fu1'
+            if lead['status'] in ('FU1_SENT','FU2_QUEUED','FU2_UNCERTAIN'):
+                # Day +7 from initial, and never less than 24 hours after FU1 when its processing was delayed.
+                due=max(initial+timedelta(days=7),db.parse_time(lead['fu1_sent_at'])+timedelta(days=1))
+                if now>=due: stage='fu2'
+            if not stage: continue
+            if dry_run:
+                print(f"Would {'send' if auto_send else 'draft'} {stage} for {lead['name']}");count+=1
+            else: count+=int(deliver(lead,stage,client,auto_send))
+        except Exception as exc:
+            if not dry_run: fail(lead,exc)
+            failures+=1
+    if count and not dry_run:
+        notify_user_mobile(title='Follow-ups',message=f"{count} follow-ups {'sent' if auto_send else 'drafted'}; {failures} failed.")
+    return finish(count,failures,dry_run)
+
+
+def action_status(dry_run=False):
+    counts={}
+    for lead in rows(): counts[lead['status']]=counts.get(lead['status'],0)+1
+    for status,count in sorted(counts.items()): print(f'{status}: {count}')
+    print(f'TOTAL: {sum(counts.values())}')
+    return counts
+
+
+def action_research_and_draft(region='All',dry_run=False,leads_file=None):
+    from research_and_generate import run_multi_region_expansion
+    return len(run_multi_region_expansion(target_regions=[db.normalize_region(region)],dry_run=dry_run,create_drafts=True,leads_file=leads_file))
+
+
+def action_tick():
+    failures=[]
+    for fn,kwargs in [(action_check_replies,{}),(action_send_batch,{'auto_send':True,'respect_window':True}),(action_process_followups,{'auto_send':True,'respect_window':True})]:
+        try: fn(**kwargs)
+        except Exception as exc:
+            if isinstance(exc,PersistenceError): raise
+            failures.append(type(exc).__name__)
+    if failures: raise RuntimeError(f'{len(failures)} scheduled action(s) failed')
+
+
+def main(argv=None):
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--action',choices=['research-and-draft','send-batch','check-replies','reconcile','followups','status','tick','notify-test'],default='status')
+    parser.add_argument('--region',default='All',type=db.normalize_region)
+    parser.add_argument('--auto-send',action='store_true')
+    parser.add_argument('--dry-run',action='store_true')
+    parser.add_argument('--leads-file',help='Verified JSON import; defaults to verified_leads.json')
+    args=parser.parse_args(argv)
+    if args.action=='notify-test':
+        if args.dry_run: print('Would send one configured private mobile test alert')
+        elif not notify_user_mobile('Outreach acceptance test','Private mobile delivery test. Confirm receipt in Codex.'):
+            raise RuntimeError('Private notification delivery failed or is not configured')
+    elif args.action=='tick':
+        if args.dry_run:
+            action_check_replies(dry_run=True)
+            action_send_batch(dry_run=True,auto_send=True,respect_window=True)
+            action_process_followups(dry_run=True,auto_send=True,respect_window=True)
+        else: action_tick()
+    elif args.action in ('check-replies','reconcile'): action_check_replies(dry_run=args.dry_run)
+    elif args.action=='send-batch': action_send_batch(region=args.region,dry_run=args.dry_run,auto_send=args.auto_send)
+    elif args.action=='followups': action_process_followups(region=args.region,dry_run=args.dry_run,auto_send=args.auto_send)
+    elif args.action=='research-and-draft': action_research_and_draft(region=args.region,dry_run=args.dry_run,leads_file=args.leads_file)
+    else: action_status(dry_run=args.dry_run)
+
+
+if __name__=='__main__':
+    try: main()
+    except Exception as exc:
+        print(f'Pipeline failed: {type(exc).__name__}: {exc}' if isinstance(exc,(ValueError,RuntimeError)) else f'Pipeline failed: {type(exc).__name__}',file=sys.stderr)
+        sys.exit(1)
