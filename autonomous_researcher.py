@@ -44,18 +44,77 @@ class AutonomousResearcher:
             except Exception:
                 return False
 
-    def find_founder_email(self, domain: str, first_name: str, last_name: str = "") -> dict:
+    def _lookup_prospeo(self, domain: str, first: str, last: str, company_name: str = "") -> dict:
+        """Helper to query Prospeo for verified emails."""
+        if not self.prospeo_key:
+            return None
+
+        # 1. Try enrich-person with verified email requirement
+        try:
+            payload = json.dumps({
+                "first_name": first,
+                "last_name": last,
+                "full_name": f"{first} {last}".strip(),
+                "company_website": domain,
+                "company_name": company_name or domain.split('.')[0].capitalize(),
+                "only_verified_email": True
+            })
+            req = urllib.request.Request(
+                "https://api.prospeo.io/enrich-person",
+                data=payload.encode("utf-8"),
+                headers={"Content-Type": "application/json", "X-KEY": self.prospeo_key}
+            )
+            with urllib.request.urlopen(req, timeout=12) as resp:
+                if resp.status == 200:
+                    data = json.loads(resp.read().decode("utf-8"))
+                    person = data.get("person", {})
+                    email = person.get("email")
+                    status = person.get("email_status", "VERIFIED")
+                    if email and status in ("VERIFIED", "VALID"):
+                        return {"email": email, "confidence": 98, "source": f"Prospeo Rollback ({status})"}
+        except Exception as e:
+            # Fall through to email-finder endpoint
+            pass
+
+        # 2. Try email-finder endpoint as secondary Prospeo attempt
+        try:
+            payload = json.dumps({
+                "first_name": first,
+                "last_name": last or first,
+                "company": domain
+            })
+            req = urllib.request.Request(
+                "https://api.prospeo.io/email-finder",
+                data=payload.encode("utf-8"),
+                headers={"Content-Type": "application/json", "X-KEY": self.prospeo_key}
+            )
+            with urllib.request.urlopen(req, timeout=12) as resp:
+                if resp.status == 200:
+                    data = json.loads(resp.read().decode("utf-8"))
+                    res = data.get("response", {})
+                    email = res.get("email")
+                    status = res.get("email_status", "VERIFIED")
+                    if email:
+                        return {"email": email, "confidence": 92, "source": f"Prospeo Rollback ({status})"}
+        except Exception as e:
+            print(f"[Email Finder] Prospeo error for {domain}: {e}", file=sys.stderr)
+
+        return None
+
+    def find_founder_email(self, domain: str, first_name: str, last_name: str = "", company_name: str = "") -> dict:
         """
-        Attempts to locate and verify the founder's email address using:
-        1. Hunter.io API (if HUNTER_API_KEY is configured)
-        2. Prospeo API (if PROSPEO_API_KEY is configured)
-        3. Intelligent pattern inference + MX validation fallback
+        Locates and verifies the founder's email address using a resilient pipeline:
+        1. PRIMARY: Hunter.io API (High deliverability verification)
+        2. ROLLBACK: Prospeo API (Fallback if Hunter fails, quota exhausted, or low score)
+        3. SAFETY FALLBACK: Pattern Inference ({first}@{domain}) + DNS MX deliverability validation
         """
         clean_domain = domain.lower().strip().replace("http://", "").replace("https://", "").split("/")[0]
         first = re.sub(r'[^a-zA-Z]', '', first_name).lower()
         last = re.sub(r'[^a-zA-Z]', '', last_name).lower()
 
-        # 1. Try Hunter.io
+        hunter_success = False
+
+        # --- STAGE 1: Primary Lookup via Hunter.io ---
         if self.hunter_key:
             try:
                 params = {"domain": clean_domain, "first_name": first, "last_name": last, "api_key": self.hunter_key}
@@ -64,38 +123,38 @@ class AutonomousResearcher:
                 with urllib.request.urlopen(req, timeout=10) as resp:
                     if resp.status == 200:
                         data = json.loads(resp.read().decode("utf-8"))
-                        email = data.get("data", {}).get("email")
-                        score = data.get("data", {}).get("score", 0)
-                        if email:
-                            return {"email": email, "confidence": score, "source": "Hunter.io"}
+                        payload_data = data.get("data", {})
+                        email = payload_data.get("email")
+                        score = payload_data.get("score", 0)
+                        verification = payload_data.get("verification", {}).get("status", "")
+                        
+                        # Accept if score >= 65 or marked valid
+                        if email and (score >= 65 or verification in ("valid", "accept_all")):
+                            print(f"[Email Finder] 🎯 Hunter.io verified email for {first} at {clean_domain}: {email} (Score: {score}%)")
+                            return {"email": email, "confidence": score, "source": f"Hunter.io ({score}%)"}
+                        elif email:
+                            print(f"[Email Finder] ⚠️ Hunter.io email {email} had low confidence ({score}%). Triggering Prospeo rollback...")
             except Exception as e:
-                print(f"[Email Finder] Hunter.io lookup error for {clean_domain}: {e}", file=sys.stderr)
+                print(f"[Email Finder] Hunter.io lookup failed or limit reached: {e}. Triggering Prospeo rollback...", file=sys.stderr)
 
-        # 2. Try Prospeo
+        # --- STAGE 2: Rollback Option via Prospeo ---
         if self.prospeo_key:
-            try:
-                payload = json.dumps({"first_name": first, "last_name": last or first, "company": clean_domain})
-                req = urllib.request.Request(
-                    "https://api.prospeo.io/email-finder",
-                    data=payload.encode("utf-8"),
-                    headers={"Content-Type": "application/json", "X-KEY": self.prospeo_key}
-                )
-                with urllib.request.urlopen(req, timeout=10) as resp:
-                    if resp.status == 200:
-                        data = json.loads(resp.read().decode("utf-8"))
-                        email = data.get("response", {}).get("email")
-                        if email:
-                            return {"email": email, "confidence": 90, "source": "Prospeo"}
-            except Exception as e:
-                print(f"[Email Finder] Prospeo lookup error for {clean_domain}: {e}", file=sys.stderr)
+            print(f"[Email Finder] 🔄 Prospeo Rollback active: Searching verified email for {first} {last} at {clean_domain}...")
+            prospeo_res = self._lookup_prospeo(clean_domain, first, last, company_name)
+            if prospeo_res:
+                print(f"[Email Finder] 🛡️ Prospeo Rollback SUCCESS: Found {prospeo_res['email']} ({prospeo_res['source']})")
+                return prospeo_res
+            else:
+                print(f"[Email Finder] Prospeo found no verified record for {first} at {clean_domain}.")
 
-        # 3. Intelligent Pattern Fallback + MX check
+        # --- STAGE 3: Safety Fallback via Pattern & MX Validation ---
         has_mx = self.verify_domain_mx(clean_domain)
         guessed_email = f"{first}@{clean_domain}"
+        print(f"[Email Finder] ℹ️ Using pattern fallback: {guessed_email} (Domain MX Active: {has_mx})")
         return {
             "email": guessed_email,
             "confidence": 75 if has_mx else 40,
-            "source": "Pattern Inference + MX Check" if has_mx else "Inferred (Unverified Domain)"
+            "source": "MX Validated Pattern Fallback" if has_mx else "Inferred (Unverified Domain)"
         }
 
     def scrape_company_context_dev(self, domain: str) -> str:
@@ -243,7 +302,7 @@ Do not wrap in markdown quotes if possible, output pure JSON."""
                 # Stage 3: Contact discovery & deliverability check
                 first_name = founder.split()[0]
                 last_name = founder.split()[-1] if len(founder.split()) > 1 else ""
-                contact_res = self.find_founder_email(domain, first_name, last_name)
+                contact_res = self.find_founder_email(domain, first_name, last_name, company_name=company)
                 
                 prospect = {
                     "company": company,
