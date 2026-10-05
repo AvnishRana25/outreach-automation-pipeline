@@ -109,6 +109,11 @@ class GmailClient:
         payload = {"id": draft_id, "message": msg_payload}
         return self._api_request(f"drafts/{draft_id}", method="PUT", payload=payload)
 
+    def send_draft(self, draft_id: str) -> dict:
+        """Sends an existing draft directly, removing it from drafts."""
+        payload = {"id": draft_id}
+        return self._api_request("drafts/send", method="POST", payload=payload)
+
     def send_message(self, to_email: str, subject: str, body: str, thread_id: str = None) -> dict:
         """Sends an email directly through Gmail."""
         message = MIMEText(body, "plain", "utf-8")

@@ -121,7 +121,10 @@ def action_send_batch(region: str = "US", dry_run: bool = False, auto_send: bool
             
         try:
             if auto_send:
-                send_res = client.send_message(email, subject, body)
+                if draft_id:
+                    send_res = client.send_draft(draft_id)
+                else:
+                    send_res = client.send_message(email, subject, body)
                 thread_id = send_res.get("threadId")
                 cursor.execute(
                     "UPDATE leads SET status = 'SENT', sent_at = ?, gmail_thread_id = ? WHERE id = ?",
@@ -129,6 +132,7 @@ def action_send_batch(region: str = "US", dry_run: bool = False, auto_send: bool
                 )
                 conn.commit()
                 processed_count += 1
+                print(f"   🚀 Sent automatically to {email}")
             else:
                 # If not drafted yet in Gmail, create draft
                 if not draft_id:

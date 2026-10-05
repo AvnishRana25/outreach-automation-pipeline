@@ -2,25 +2,29 @@ name: Autonomous Outreach Engine
 
 on:
   schedule:
-    # 04:00 UTC = 09:30 AM IST (India & Middle East Morning)
+    # 03:00 UTC = 08:30 AM IST (Daily Startup Research & Drafting across India, ME, EU, US)
+    - cron: '0 3 * * 1-5'
+    # 04:00 UTC = 09:30 AM IST (India Morning Dispatch - Send automatically)
     - cron: '0 4 * * 1-5'
-    # 07:30 UTC = 01:00 PM IST (Europe & UK Morning: 08:30 AM BST / 09:30 AM CEST)
+    # 05:30 UTC = 11:00 AM IST (Middle East Morning Dispatch - Send automatically)
+    - cron: '30 5 * * 1-5'
+    # 07:30 UTC = 01:00 PM IST (Europe & UK Morning Dispatch - Send automatically)
     - cron: '30 7 * * 1-5'
-    # 16:00 UTC = 09:30 PM IST (US West Coast Morning: 09:00 AM PDT)
-    - cron: '0 16 * * 1-5'
     # 12:00 UTC = 05:30 PM IST (Mid-day Reply Checker & Follow-up Trigger)
     - cron: '0 12 * * 1-5'
+    # 16:00 UTC = 09:30 PM IST (US West Coast Morning Dispatch - Send automatically)
+    - cron: '0 16 * * 1-5'
 
   workflow_dispatch:
     inputs:
       action:
         description: 'Action to execute'
         required: true
-        default: 'research-and-draft'
+        default: 'send-batch'
         type: choice
         options:
-          - research-and-draft
           - send-batch
+          - research-and-draft
           - followups
           - check-replies
           - status
@@ -31,15 +35,15 @@ on:
         type: choice
         options:
           - All
+          - US
           - India
           - ME
           - EU
-          - US
       auto_send:
         description: 'Directly send email instead of saving to Drafts'
         required: false
         type: boolean
-        default: false
+        default: true
 
 permissions:
   contents: write
@@ -67,21 +71,37 @@ jobs:
           else
             # Determine based on current hour in UTC
             HOUR=$(date -u +%H)
-            echo "Current UTC Hour: $HOUR"
-            if [ "$HOUR" -eq 4 ]; then
+            MINUTE=$(date -u +%M)
+            echo "Current UTC Time: $HOUR:$MINUTE"
+            if [ "$HOUR" -eq 3 ]; then
               echo "ACTION=research-and-draft" >> $GITHUB_ENV
+              echo "REGION=All" >> $GITHUB_ENV
+              echo "AUTO_SEND=false" >> $GITHUB_ENV
+            elif [ "$HOUR" -eq 4 ]; then
+              echo "ACTION=send-batch" >> $GITHUB_ENV
               echo "REGION=India" >> $GITHUB_ENV
+              echo "AUTO_SEND=true" >> $GITHUB_ENV
+            elif [ "$HOUR" -eq 5 ]; then
+              echo "ACTION=send-batch" >> $GITHUB_ENV
+              echo "REGION=ME" >> $GITHUB_ENV
+              echo "AUTO_SEND=true" >> $GITHUB_ENV
             elif [ "$HOUR" -eq 7 ]; then
-              echo "ACTION=research-and-draft" >> $GITHUB_ENV
+              echo "ACTION=send-batch" >> $GITHUB_ENV
               echo "REGION=EU" >> $GITHUB_ENV
-            elif [ "$HOUR" -eq 16 ]; then
-              echo "ACTION=research-and-draft" >> $GITHUB_ENV
-              echo "REGION=US" >> $GITHUB_ENV
-            else
+              echo "AUTO_SEND=true" >> $GITHUB_ENV
+            elif [ "$HOUR" -eq 12 ]; then
               echo "ACTION=followups" >> $GITHUB_ENV
               echo "REGION=All" >> $GITHUB_ENV
+              echo "AUTO_SEND=true" >> $GITHUB_ENV
+            elif [ "$HOUR" -eq 16 ]; then
+              echo "ACTION=send-batch" >> $GITHUB_ENV
+              echo "REGION=US" >> $GITHUB_ENV
+              echo "AUTO_SEND=true" >> $GITHUB_ENV
+            else
+              echo "ACTION=check-replies" >> $GITHUB_ENV
+              echo "REGION=All" >> $GITHUB_ENV
+              echo "AUTO_SEND=false" >> $GITHUB_ENV
             fi
-            echo "AUTO_SEND=false" >> $GITHUB_ENV
           fi
 
       - name: Execute Autonomous Orchestrator
