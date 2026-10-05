@@ -67,26 +67,32 @@ def action_check_replies():
     print(f"[Reply Engine] Completed reply check. {replied_count} new replies detected.")
     return replied_count
 
+import time
+import random
+
 def action_send_batch(region: str = "US", dry_run: bool = False, auto_send: bool = False):
     """
     Processes emails for a given region according to founder local morning hours.
-    If auto_send is True, sends them directly via Gmail API.
+    If auto_send is True, sends them directly via Gmail API with human-like deliverability pacing.
     If auto_send is False, ensures they are drafted in Gmail and alerts mobile.
     """
     print(f"[Batch Engine] Processing batch for region: {region} (auto_send={auto_send})")
     conn = get_db()
     cursor = conn.cursor()
     
-    # Flexible keyword mapping for regions
+    # Flexible keyword mapping for regions with strict disambiguation
     region_upper = region.upper()
     if "US" in region_upper or "AMERICA" in region_upper:
-        region_clause = "(region LIKE '%US%' OR region LIKE '%SF%' OR region LIKE '%San Francisco%' OR region LIKE '%California%')"
+        # Exclude Indian and Middle East hybrid profiles from US batch so they send at local morning
+        region_clause = "((region LIKE '%US%' OR region LIKE '%SF%' OR region LIKE '%San Francisco%' OR region LIKE '%California%') AND region NOT LIKE '%Bengaluru%' AND region NOT LIKE '%Mumbai%' AND region NOT LIKE '%India%' AND region NOT LIKE '%Riyadh%' AND region NOT LIKE '%Dubai%')"
     elif "INDIA" in region_upper or "IN" in region_upper:
         region_clause = "(region LIKE '%Bengaluru%' OR region LIKE '%Mumbai%' OR region LIKE '%India%')"
     elif "ME" in region_upper or "MIDDLE" in region_upper or "DUBAI" in region_upper or "RIYADH" in region_upper:
         region_clause = "(region LIKE '%Riyadh%' OR region LIKE '%Dubai%' OR region LIKE '%Saudi%' OR region LIKE '%Middle East%')"
     elif "EU" in region_upper or "UK" in region_upper or "EUROPE" in region_upper or "LONDON" in region_upper:
         region_clause = "(region LIKE '%London%' OR region LIKE '%UK%' OR region LIKE '%Europe%' OR region LIKE '%Paris%')"
+    elif "ALL" in region_upper:
+        region_clause = "1=1"
     else:
         region_clause = f"region LIKE '%{region}%'"
 
@@ -133,6 +139,8 @@ def action_send_batch(region: str = "US", dry_run: bool = False, auto_send: bool
                 conn.commit()
                 processed_count += 1
                 print(f"   🚀 Sent automatically to {email}")
+                # Rate limit & deliverability delay (2.5 - 4.5s random jitter)
+                time.sleep(random.uniform(2.5, 4.5))
             else:
                 # If not drafted yet in Gmail, create draft
                 if not draft_id:

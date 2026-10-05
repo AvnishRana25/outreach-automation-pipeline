@@ -81,12 +81,31 @@ class GmailClient:
                     return json.loads(content2) if content2 else {}
             raise
 
+    def get_thread_message_id(self, thread_id: str) -> str:
+        """Fetches the Message-ID header of the first message in a thread for RFC 2822 compliance."""
+        try:
+            res = self._api_request(f"threads/{thread_id}?format=metadata&metadataHeaders=Message-ID")
+            messages = res.get("messages", [])
+            if messages:
+                for header in messages[0].get("payload", {}).get("headers", []):
+                    if header.get("name", "").lower() == "message-id":
+                        return header.get("value")
+        except Exception as e:
+            print(f"[GmailClient] Warning fetching thread Message-ID: {e}", file=sys.stderr)
+        return None
+
     def create_draft(self, to_email: str, subject: str, body: str, thread_id: str = None) -> dict:
         """Creates a draft email in Gmail."""
         message = MIMEText(body, "plain", "utf-8")
         message["to"] = to_email
         message["subject"] = subject
         
+        if thread_id:
+            orig_msg_id = self.get_thread_message_id(thread_id)
+            if orig_msg_id:
+                message["In-Reply-To"] = orig_msg_id
+                message["References"] = orig_msg_id
+
         raw_msg = base64.urlsafe_b64encode(message.as_bytes()).decode("utf-8")
         msg_payload = {"raw": raw_msg}
         if thread_id:
@@ -100,6 +119,12 @@ class GmailClient:
         message = MIMEText(body, "plain", "utf-8")
         message["to"] = to_email
         message["subject"] = subject
+
+        if thread_id:
+            orig_msg_id = self.get_thread_message_id(thread_id)
+            if orig_msg_id:
+                message["In-Reply-To"] = orig_msg_id
+                message["References"] = orig_msg_id
 
         raw_msg = base64.urlsafe_b64encode(message.as_bytes()).decode("utf-8")
         msg_payload = {"raw": raw_msg}
@@ -119,6 +144,12 @@ class GmailClient:
         message = MIMEText(body, "plain", "utf-8")
         message["to"] = to_email
         message["subject"] = subject
+
+        if thread_id:
+            orig_msg_id = self.get_thread_message_id(thread_id)
+            if orig_msg_id:
+                message["In-Reply-To"] = orig_msg_id
+                message["References"] = orig_msg_id
 
         raw_msg = base64.urlsafe_b64encode(message.as_bytes()).decode("utf-8")
         msg_payload = {"raw": raw_msg}
