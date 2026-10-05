@@ -1,0 +1,128 @@
+#!/usr/bin/env python3
+"""
+Gmail REST API Client (Zero external dependencies - standard Python 3 urllib)
+Handles authentication via refresh token, draft creation, message sending,
+thread search, and reply detection.
+"""
+
+import os
+import sys
+import json
+import base64
+import urllib.request
+import urllib.parse
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+
+class GmailClient:
+    def __init__(self, client_id=None, client_secret=None, refresh_token=None):
+        self.client_id = client_id or os.getenv("GMAIL_CLIENT_ID")
+        self.client_secret = client_secret or os.getenv("GMAIL_CLIENT_SECRET")
+        self.refresh_token = refresh_token or os.getenv("GMAIL_REFRESH_TOKEN")
+        
+        # Fallback to local credential file if running on Avnish's mac
+        if not (self.client_id and self.client_secret and self.refresh_token):
+            local_path = os.path.expanduser("~/.google_workspace_mcp/credentials/avnishrana797@gmail.com.json")
+            if os.path.exists(local_path):
+                try:
+                    with open(local_path, "r", encoding="utf-8") as f:
+                        data = json.load(f)
+                        self.client_id = self.client_id or data.get("client_id")
+                        self.client_secret = self.client_secret or data.get("client_secret")
+                        self.refresh_token = self.refresh_token or data.get("refresh_token")
+                except Exception as e:
+                    print(f"[GmailClient] Warning reading local credentials: {e}", file=sys.stderr)
+        
+        self.access_token = None
+
+    def refresh_access_token(self):
+        """Exchanges refresh token for a short-lived access token."""
+        if not (self.client_id and self.client_secret and self.refresh_token):
+            raise ValueError("Missing Gmail credentials (client_id, client_secret, or refresh_token).")
+
+        data = urllib.parse.urlencode({
+            "client_id": self.client_id,
+            "client_secret": self.client_secret,
+            "refresh_token": self.refresh_token,
+            "grant_type": "refresh_token"
+        }).encode("utf-8")
+
+        req = urllib.request.Request("https://oauth2.googleapis.com/token", data=data, method="POST")
+        with urllib.request.urlopen(req, timeout=15) as res:
+            resp_data = json.loads(res.read().decode("utf-8"))
+            self.access_token = resp_data.get("access_token")
+            return self.access_token
+
+    def _api_request(self, endpoint, method="GET", payload=None):
+        """Sends an authenticated request to the Gmail REST API."""
+        if not self.access_token:
+            self.refresh_access_token()
+
+        url = f"https://gmail.googleapis.com/gmail/v1/users/me/{endpoint}"
+        headers = {
+            "Authorization": f"Bearer {self.access_token}",
+            "Content-Type": "application/json"
+        }
+
+        data = json.dumps(payload).encode("utf-8") if payload is not None else None
+        req = urllib.request.Request(url, data=data, headers=headers, method=method)
+
+        try:
+            with urllib.request.urlopen(req, timeout=20) as res:
+                content = res.read().decode("utf-8")
+                return json.loads(content) if content else {}
+        except urllib.error.HTTPError as e:
+            if e.code == 401:  # Token expired, retry once
+                self.refresh_access_token()
+                headers["Authorization"] = f"Bearer {self.access_token}"
+                req = urllib.request.Request(url, data=data, headers=headers, method=method)
+                with urllib.request.urlopen(req, timeout=20) as res2:
+                    content2 = res2.read().decode("utf-8")
+                    return json.loads(content2) if content2 else {}
+            raise
+
+    def create_draft(self, to_email: str, subject: str, body: str, thread_id: str = None) -> dict:
+        """Creates a draft email in Gmail."""
+        message = MIMEText(body, "plain", "utf-8")
+        message["to"] = to_email
+        message["subject"] = subject
+        
+        raw_msg = base64.urlsafe_b64encode(message.as_bytes()).decode("utf-8")
+        msg_payload = {"raw": raw_msg}
+        if thread_id:
+            msg_payload["threadId"] = thread_id
+
+        payload = {"message": msg_payload}
+        return self._api_request("drafts", method="POST", payload=payload)
+
+    def send_message(self, to_email: str, subject: str, body: str, thread_id: str = None) -> dict:
+        """Sends an email directly through Gmail."""
+        message = MIMEText(body, "plain", "utf-8")
+        message["to"] = to_email
+        message["subject"] = subject
+
+        raw_msg = base64.urlsafe_b64encode(message.as_bytes()).decode("utf-8")
+        msg_payload = {"raw": raw_msg}
+        if thread_id:
+            msg_payload["threadId"] = thread_id
+
+        return self._api_request("messages/send", method="POST", payload=msg_payload)
+
+    def check_recipient_replied(self, recipient_email: str) -> bool:
+        """
+        Checks if the recipient has sent an email to us (replied).
+        Searches: 'from:<recipient_email>'
+        """
+        query = urllib.parse.quote(f"from:{recipient_email}")
+        res = self._api_request(f"messages?q={query}&maxResults=5")
+        messages = res.get("messages", [])
+        return len(messages) > 0
+
+    def list_recent_drafts(self, max_results=25):
+        """Lists recent drafts."""
+        return self._api_request(f"drafts?maxResults={max_results}")
+
+if __name__ == "__main__":
+    client = GmailClient()
+    token = client.refresh_access_token()
+    print(f"Gmail Client authenticated successfully! Token starts with: {token[:12]}...")

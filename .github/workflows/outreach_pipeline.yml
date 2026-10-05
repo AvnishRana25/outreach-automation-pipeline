@@ -1,0 +1,116 @@
+name: Autonomous Outreach Engine
+
+on:
+  schedule:
+    # 04:00 UTC = 09:30 AM IST (India & Middle East Morning)
+    - cron: '0 4 * * 1-5'
+    # 07:30 UTC = 01:00 PM IST (Europe & UK Morning: 08:30 AM BST / 09:30 AM CEST)
+    - cron: '30 7 * * 1-5'
+    # 16:00 UTC = 09:30 PM IST (US West Coast Morning: 09:00 AM PDT)
+    - cron: '0 16 * * 1-5'
+    # 12:00 UTC = 05:30 PM IST (Mid-day Reply Checker & Follow-up Trigger)
+    - cron: '0 12 * * 1-5'
+
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Action to execute'
+        required: true
+        default: 'status'
+        type: choice
+        options:
+          - status
+          - check-replies
+          - send-batch
+          - followups
+      region:
+        description: 'Target region if action is send-batch'
+        required: false
+        default: 'US'
+        type: choice
+        options:
+          - US
+          - India
+          - ME
+          - EU
+      auto_send:
+        description: 'Directly send email instead of saving to Drafts'
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  run-pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Determine Scheduled Action
+        id: schedule-decider
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "ACTION=${{ github.event.inputs.action }}" >> $GITHUB_ENV
+            echo "REGION=${{ github.event.inputs.region }}" >> $GITHUB_ENV
+            echo "AUTO_SEND=${{ github.event.inputs.auto_send }}" >> $GITHUB_ENV
+          else
+            # Determine based on current hour in UTC
+            HOUR=$(date -u +%H)
+            echo "Current UTC Hour: $HOUR"
+            if [ "$HOUR" -eq 4 ]; then
+              echo "ACTION=send-batch" >> $GITHUB_ENV
+              echo "REGION=India" >> $GITHUB_ENV
+            elif [ "$HOUR" -eq 7 ]; then
+              echo "ACTION=send-batch" >> $GITHUB_ENV
+              echo "REGION=EU" >> $GITHUB_ENV
+            elif [ "$HOUR" -eq 16 ]; then
+              echo "ACTION=send-batch" >> $GITHUB_ENV
+              echo "REGION=US" >> $GITHUB_ENV
+            else
+              echo "ACTION=check-replies" >> $GITHUB_ENV
+              echo "REGION=US" >> $GITHUB_ENV
+            fi
+            echo "AUTO_SEND=false" >> $GITHUB_ENV
+          fi
+
+      - name: Execute Autonomous Orchestrator
+        env:
+          GMAIL_CLIENT_ID: ${{ secrets.GMAIL_CLIENT_ID }}
+          GMAIL_CLIENT_SECRET: ${{ secrets.GMAIL_CLIENT_SECRET }}
+          GMAIL_REFRESH_TOKEN: ${{ secrets.GMAIL_REFRESH_TOKEN }}
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC || 'avnish-outreach-alert-797' }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          SEND_FLAG=""
+          if [ "$AUTO_SEND" = "true" ]; then
+            SEND_FLAG="--auto-send"
+          fi
+          
+          echo "Executing: python3 cloud_orchestrator.py --action $ACTION --region $REGION $SEND_FLAG"
+          python3 cloud_orchestrator.py --action "$ACTION" --region "$REGION" $SEND_FLAG
+          
+          # Also check replies in all runs
+          python3 cloud_orchestrator.py --action check-replies
+
+      - name: Persist Database Updates
+        run: |
+          git config --global user.name "Outreach Cloud Bot"
+          git config --global user.email "bot@outreach.local"
+          git add outreach.db
+          if ! git diff-index --quiet HEAD --; then
+            git commit -m "Auto-update outreach state & replies [skip ci]"
+            git push
+          else
+            echo "No database changes to commit."
+          fi
