@@ -94,43 +94,84 @@ class GmailClient:
             print(f"[GmailClient] Warning fetching thread Message-ID: {e}", file=sys.stderr)
         return None
 
-    def create_draft(self, to_email: str, subject: str, body: str, thread_id: str = None) -> dict:
-        """Creates a draft email in Gmail."""
-        message = MIMEText(body, "plain", "utf-8")
-        message["to"] = to_email
-        message["subject"] = subject
+    def format_email_html(self, plain_body: str) -> str:
+        """Converts plain email body to clean, beautifully formatted modern HTML."""
+        paragraphs = [p.strip() for p in plain_body.split('\n\n') if p.strip()]
+        html_paragraphs = []
+        
+        for p in paragraphs:
+            # Detect signature block
+            if p.startswith('Best,') or p.startswith('Best regards,') or 'Avnish Rana' in p:
+                sig_html = """<p style="margin: 18px 0 4px 0; color: #111827; font-size: 14px;">Best,<br><strong>Avnish Rana</strong></p>
+<p style="margin: 6px 0 0 0; font-size: 13px; color: #4b5563;">
+  <a href="https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing" style="color: #2563eb; text-decoration: underline; font-weight: 500;">Resume</a> &nbsp;•&nbsp; 
+  <a href="https://github.com/AvnishRana25" style="color: #2563eb; text-decoration: underline; font-weight: 500;">GitHub</a> &nbsp;•&nbsp; 
+  <a href="https://www.linkedin.com/in/avnish-rana-83523b2a3/" style="color: #2563eb; text-decoration: underline; font-weight: 500;">LinkedIn</a> &nbsp;•&nbsp; 
+  <a href="https://wa.me/917982252971" style="color: #2563eb; text-decoration: underline; font-weight: 500;">+91 7982252971</a>
+</p>"""
+                html_paragraphs.append(sig_html)
+                break
+            else:
+                # Remove artificial hard wraps inside sentences so it flows fluidly
+                clean_p = ' '.join(p.split())
+                html_paragraphs.append(f'<p style="margin: 0 0 14px 0; line-height: 1.55; color: #1f2937; font-size: 14px;">{clean_p}</p>')
+                
+        content_html = '\n'.join(html_paragraphs)
+        return f"""<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"></head>
+<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.55; color: #1f2937; margin: 0; padding: 0;">
+<div style="max-width: 600px;">
+{content_html}
+</div>
+</body>
+</html>"""
+
+    def _build_mime_message(self, to_email: str, subject: str, body: str, thread_id: str = None) -> dict:
+        """Builds a multipart email with both clean fluid plain text and beautiful rich HTML."""
+        msg = MIMEMultipart("alternative")
+        msg["to"] = to_email
+        msg["subject"] = subject
         
         if thread_id:
             orig_msg_id = self.get_thread_message_id(thread_id)
             if orig_msg_id:
-                message["In-Reply-To"] = orig_msg_id
-                message["References"] = orig_msg_id
+                msg["In-Reply-To"] = orig_msg_id
+                msg["References"] = orig_msg_id
 
-        raw_msg = base64.urlsafe_b64encode(message.as_bytes()).decode("utf-8")
+        # Clean plain text version (remove artificial line wraps)
+        clean_plain_paragraphs = []
+        for p in [p.strip() for p in body.split('\n\n') if p.strip()]:
+            if p.startswith('Best,') or 'Avnish Rana' in p:
+                clean_plain_paragraphs.append(p)
+            else:
+                clean_plain_paragraphs.append(' '.join(p.split()))
+        clean_plain = '\n\n'.join(clean_plain_paragraphs)
+
+        html_content = self.format_email_html(body)
+
+        part_plain = MIMEText(clean_plain, "plain", "utf-8")
+        part_html = MIMEText(html_content, "html", "utf-8")
+
+        msg.attach(part_plain)
+        msg.attach(part_html)
+
+        raw_msg = base64.urlsafe_b64encode(msg.as_bytes()).decode("utf-8")
         msg_payload = {"raw": raw_msg}
         if thread_id:
             msg_payload["threadId"] = thread_id
 
+        return msg_payload
+
+    def create_draft(self, to_email: str, subject: str, body: str, thread_id: str = None) -> dict:
+        """Creates a draft email in Gmail."""
+        msg_payload = self._build_mime_message(to_email, subject, body, thread_id)
         payload = {"message": msg_payload}
         return self._api_request("drafts", method="POST", payload=payload)
 
     def update_draft(self, draft_id: str, to_email: str, subject: str, body: str, thread_id: str = None) -> dict:
         """Updates an existing draft email in Gmail."""
-        message = MIMEText(body, "plain", "utf-8")
-        message["to"] = to_email
-        message["subject"] = subject
-
-        if thread_id:
-            orig_msg_id = self.get_thread_message_id(thread_id)
-            if orig_msg_id:
-                message["In-Reply-To"] = orig_msg_id
-                message["References"] = orig_msg_id
-
-        raw_msg = base64.urlsafe_b64encode(message.as_bytes()).decode("utf-8")
-        msg_payload = {"raw": raw_msg}
-        if thread_id:
-            msg_payload["threadId"] = thread_id
-
+        msg_payload = self._build_mime_message(to_email, subject, body, thread_id)
         payload = {"id": draft_id, "message": msg_payload}
         return self._api_request(f"drafts/{draft_id}", method="PUT", payload=payload)
 
@@ -141,21 +182,7 @@ class GmailClient:
 
     def send_message(self, to_email: str, subject: str, body: str, thread_id: str = None) -> dict:
         """Sends an email directly through Gmail."""
-        message = MIMEText(body, "plain", "utf-8")
-        message["to"] = to_email
-        message["subject"] = subject
-
-        if thread_id:
-            orig_msg_id = self.get_thread_message_id(thread_id)
-            if orig_msg_id:
-                message["In-Reply-To"] = orig_msg_id
-                message["References"] = orig_msg_id
-
-        raw_msg = base64.urlsafe_b64encode(message.as_bytes()).decode("utf-8")
-        msg_payload = {"raw": raw_msg}
-        if thread_id:
-            msg_payload["threadId"] = thread_id
-
+        msg_payload = self._build_mime_message(to_email, subject, body, thread_id)
         return self._api_request("messages/send", method="POST", payload=msg_payload)
 
     def check_recipient_replied(self, recipient_email: str) -> bool:
