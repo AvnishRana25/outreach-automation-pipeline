@@ -95,6 +95,20 @@ class GmailClient:
         payload = {"message": msg_payload}
         return self._api_request("drafts", method="POST", payload=payload)
 
+    def update_draft(self, draft_id: str, to_email: str, subject: str, body: str, thread_id: str = None) -> dict:
+        """Updates an existing draft email in Gmail."""
+        message = MIMEText(body, "plain", "utf-8")
+        message["to"] = to_email
+        message["subject"] = subject
+
+        raw_msg = base64.urlsafe_b64encode(message.as_bytes()).decode("utf-8")
+        msg_payload = {"raw": raw_msg}
+        if thread_id:
+            msg_payload["threadId"] = thread_id
+
+        payload = {"id": draft_id, "message": msg_payload}
+        return self._api_request(f"drafts/{draft_id}", method="PUT", payload=payload)
+
     def send_message(self, to_email: str, subject: str, body: str, thread_id: str = None) -> dict:
         """Sends an email directly through Gmail."""
         message = MIMEText(body, "plain", "utf-8")

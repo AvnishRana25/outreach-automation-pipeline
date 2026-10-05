@@ -384,7 +384,7 @@ def generate_custom_pitch(lead: dict) -> dict:
 
 Noticed how {company} is automating complex property transactions across the region. When building Realty Pandit CRM, the biggest technical challenge wasn't conversational flow—it was engineering a deterministic deal state machine handling 4,000+ live WhatsApp transactions with zero pricing hallucination.
 
-At Caudal AI, I also built Dockerized pytest eval harnesses benchmarking LLM agents under adversarial edge cases.
+In my current contract role at Caudal AI, I also engineer Dockerized pytest eval harnesses benchmarking LLM agents under adversarial edge cases.
 
 I want to join {company} as an FDE or AI Automation Engineer (or take on a 48-hour take-home / 2-week trial sprint to prove velocity).
 
@@ -417,9 +417,9 @@ GitHub: {GITHUB_LINK}
         initial_subject = f"evaluating {company}'s agent workflows & sandboxes / FDE trial"
         initial_body = f"""Hi {founder},
 
-Came across {company}'s work in {category.lower()}. When building Caudal AI, our core bottleneck was {hook}—specifically how agents behave when tool payloads return unexpected schemas or partial outputs.
+Came across {company}'s work in {category.lower()}. In my current contract role at Caudal AI, our core focus is {hook}—specifically how agents behave when tool payloads return unexpected schemas or partial outputs.
 
-I designed containerized Docker evaluation harnesses with automated pytest verifiers and grading to catch agent drift before production rollout. Previously, I also engineered a deterministic state machine managing 4,000+ live transactions on Realty Pandit.
+I build containerized Docker evaluation harnesses with automated pytest verifiers and grading to catch agent drift before production rollout. Previously, I also engineered a deterministic state machine managing 4,000+ live transactions on Realty Pandit.
 
 I want to join {company} as an FDE or AI Evaluation Engineer (or tackle a 2-week trial sprint / 48-hour work sample).
 
@@ -437,7 +437,7 @@ WhatsApp: {WHATSAPP}
 
 Following up on {company}'s agent verification architecture.
 
-At Caudal AI, we saw that prompt tweaking yielded diminishing returns compared to building automated pytest verifiers that grade agent trajectories across multi-step API calls.
+In my contract role at Caudal AI, we saw that prompt tweaking yielded diminishing returns compared to building automated pytest verifiers that grade agent trajectories across multi-step API calls.
 
 Happy to put together a 48-hour benchmark harness for {company}'s core agent workflows at zero cost before you decide on anything.
 
@@ -454,7 +454,7 @@ GitHub: {GITHUB_LINK}
 
 Impressed by {company}'s trajectory in {category.lower()}. When deploying production AI systems, the hardest failure mode is {hook}.
 
-At Caudal AI, I built Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.
+In my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.
 
 I want to join {company} as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).
 
@@ -472,7 +472,7 @@ WhatsApp: {WHATSAPP}
 
 Quick follow-up on {company}'s agent architecture.
 
-When building Caudal AI and Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.
+Across my contract work at Caudal AI and building Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.
 
 Happy to build a 48-hour prototype or review an open technical issue for {company} at zero risk.
 
