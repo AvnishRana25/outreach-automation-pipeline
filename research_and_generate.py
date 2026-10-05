@@ -580,6 +580,64 @@ def run_multi_region_expansion(target_regions=None, dry_run=False, create_drafts
             
         added_leads.append(prospect)
 
+    # 2. Live Autonomous AI Scout & Enricher (Gemini, Context.dev, Hunter)
+    try:
+        from autonomous_researcher import AutonomousResearcher
+        researcher = AutonomousResearcher()
+        if researcher.has_discovery_capabilities() or not added_leads:
+            print("\n[Autonomous AI Scout] Checking for fresh funded AI startups via live research...")
+            target_regs = target_regions or ["India", "Middle East", "Europe", "US"]
+            live_leads = researcher.research_and_enrich_new_leads(target_regions=target_regs, count_per_region=2)
+            
+            for prospect in live_leads:
+                comp_name = prospect["company"]
+                domain = prospect["domain"]
+                region = prospect["region"]
+                founder = prospect["founder"]
+                email = prospect["email"]
+                role = prospect["role"]
+
+                if db.is_company_contacted(domain, comp_name):
+                    print(f"[Deduplication] ⏩ Skipping live lead {comp_name} - already exists in database.")
+                    skipped_count += 1
+                    continue
+
+                print(f"\n[Lead Sourced via AI] 🎯 {comp_name} [{region}]")
+                print(f"                      Founder: {founder} <{email}>")
+                pitch = generate_custom_pitch(prospect)
+
+                draft_id = None
+                if client and not dry_run:
+                    try:
+                        draft_res = client.create_draft(email, pitch["initial_subject"], pitch["initial_body"])
+                        draft_id = draft_res.get("id")
+                        print(f"[Gmail Draft]  ✅ Saved draft in Gmail (ID: {draft_id})")
+                    except Exception as e:
+                        print(f"[Gmail Draft]  ⚠️ Could not draft in Gmail: {e}")
+
+                lead_dict = {
+                    "company_name": comp_name,
+                    "domain": domain,
+                    "founder_name": founder,
+                    "verified_email": email,
+                    "founder_role": role,
+                    "location": region,
+                    "status": "Drafted in Gmail" if draft_id else "DRAFTED",
+                    "initial_subject": pitch["initial_subject"],
+                    "initial_body": pitch["initial_body"],
+                    "fu1_subject": pitch["fu1_subject"],
+                    "fu1_body": pitch["fu1_body"],
+                    "fu2_subject": pitch["fu2_subject"],
+                    "fu2_body": pitch["fu2_body"],
+                    "gmail_draft_id": draft_id
+                }
+
+                if not dry_run:
+                    db.insert_or_update_lead(lead_dict)
+                added_leads.append(prospect)
+    except Exception as e:
+        print(f"[Autonomous AI Scout] Note on live discovery: {e}", file=sys.stderr)
+
     print("\n" + "=" * 60)
     print(f"Summary: Added {len(added_leads)} new multi-region leads, Skipped {skipped_count} duplicates.")
     print("=" * 60)
