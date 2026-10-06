@@ -115,11 +115,37 @@ jobs:
         run: |
           git config --global user.name "Outreach Cloud Bot"
           git config --global user.email "bot@outreach.local"
-          git pull --rebase origin main 2>/dev/null || true
+          
+          # Stash newly generated SQLite database and JSON
+          cp outreach.db /tmp/outreach.db.runner 2>/dev/null || true
+          cp curated_leads.json /tmp/curated_leads.json.runner 2>/dev/null || true
+          
+          # Fetch latest origin/main to prevent race-condition non-fast-forward rejections
+          git fetch origin main
+          git reset --hard origin/main
+          
+          # Restore updated files
+          if [ -f /tmp/outreach.db.runner ]; then
+            cp /tmp/outreach.db.runner outreach.db
+          fi
+          if [ -f /tmp/curated_leads.json.runner ]; then
+            cp /tmp/curated_leads.json.runner curated_leads.json
+          fi
+          
           git add outreach.db curated_leads.json 2>/dev/null || true
           if ! git diff-index --quiet HEAD --; then
             git commit -m "Auto-update outreach state & leads [skip ci]"
-            git push origin main
+            for attempt in 1 2 3; do
+              if git push origin main; then
+                echo "Successfully persisted database state to origin/main."
+                break
+              fi
+              echo "Push attempt $attempt failed, retrying in 2s..."
+              sleep 2
+              git fetch origin main
+              git reset --soft origin/main
+              git commit -m "Auto-update outreach state & leads [skip ci]" || true
+            done
           else
             echo "No database changes to commit."
           fi
