@@ -38,3 +38,4 @@ ENV/
 .AppleDouble
 .LSOverride
 Thumbs.db
+.serena/

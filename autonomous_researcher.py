@@ -23,13 +23,14 @@ from datetime import datetime, timezone
 class AutonomousResearcher:
     def __init__(self):
         self.gemini_key = os.getenv("GEMINI_API_KEY", "").strip().strip('"').strip("'")
+        self.groq_key = os.getenv("GROQ_API_KEY", "").strip().strip('"').strip("'")
         self.context_dev_key = os.getenv("CONTEXT_DEV_API_KEY", "").strip().strip('"').strip("'")
         self.hunter_key = os.getenv("HUNTER_API_KEY", "").strip().strip('"').strip("'")
         self.prospeo_key = os.getenv("PROSPEO_API_KEY", "").strip().strip('"').strip("'")
 
     def has_discovery_capabilities(self) -> bool:
         """Returns True if at least one live intelligence provider is configured."""
-        return bool(self.gemini_key or self.context_dev_key or self.hunter_key)
+        return bool(self.gemini_key or self.groq_key or self.context_dev_key or self.hunter_key)
 
     def verify_domain_mx(self, domain: str) -> bool:
         """Checks if a domain has active MX or A records using standard library socket."""
@@ -298,19 +299,114 @@ Do not wrap in markdown quotes if possible, output pure JSON."""
 
         return []
 
+    def discover_with_groq(self, target_region: str = "All", count: int = 3) -> list:
+        """
+        Uses Groq API (Llama 3.3 70B) as a zero-cost, high-speed discovery fallback
+        when Gemini rate limits or quota triggers.
+        """
+        if not self.groq_key:
+            return []
+
+        prompt = f"""You are a Silicon Valley / Global Tech Scout identifying fast-growing AI startups.
+Find {count} REAL, recently funded (2025-2026 Seed, Series A, or YC/Accel/Lightspeed backed) AI agent or AI automation startups in region: '{target_region}'.
+Focus on startups building autonomous coding agents, customer support agents, AI voice agents, eval/benchmarking platforms, or vertical enterprise AI.
+
+For each startup, provide:
+1. Company Name
+2. Official Domain (e.g. example.ai, not a subpath)
+3. Founder or Co-Founder Full Name
+4. Founder Role (e.g. Co-Founder & CEO, CTO)
+5. Region / City (e.g. Bengaluru, India; Riyadh, Saudi Arabia; London, UK; San Francisco, US)
+6. Category (e.g. Autonomous Coding Agents, Voice AI, AI Eval Harnesses)
+7. Funding Stage & Backers (e.g. $4M Seed - Lightspeed, Dec 2025)
+8. Technical Focus (1 sentence on their core tech)
+9. Technical Hook (A realistic technical challenge an FDE / Eval Engineer would solve for them)
+
+Output strictly valid JSON with this exact schema:
+[
+  {{
+    "company": "Company Name",
+    "domain": "company.ai",
+    "founder": "First Last",
+    "role": "Co-Founder & CEO",
+    "region": "City, Country",
+    "category": "Category",
+    "funding": "Funding details",
+    "tech_focus": "Tech description",
+    "hook": "Engineering challenge"
+  }}
+]
+Do not wrap in markdown quotes if possible, output pure JSON."""
+
+        models_to_try = ["llama-3.3-70b-versatile", "llama-3.1-8b-instant"]
+        url = "https://api.groq.com/openai/v1/chat/completions"
+
+        for model in models_to_try:
+            payload = {
+                "model": model,
+                "messages": [
+                    {"role": "system", "content": "You are a tech scout. Output strictly valid JSON arrays."},
+                    {"role": "user", "content": prompt}
+                ],
+                "temperature": 0.2
+            }
+            try:
+                req_data = json.dumps(payload).encode("utf-8")
+                req = urllib.request.Request(
+                    url,
+                    data=req_data,
+                    headers={
+                        "Authorization": f"Bearer {self.groq_key}",
+                        "Content-Type": "application/json"
+                    },
+                    method="POST"
+                )
+                with urllib.request.urlopen(req, timeout=20) as resp:
+                    if resp.status == 200:
+                        raw = json.loads(resp.read().decode("utf-8"))
+                        content = raw.get("choices", [{}])[0].get("message", {}).get("content", "")
+                        cleaned = re.sub(r'^```json\s*', '', content.strip())
+                        cleaned = re.sub(r'\s*```$', '', cleaned)
+                        parsed = json.loads(cleaned)
+                        startups = parsed if isinstance(parsed, list) else parsed.get("startups") or parsed.get("companies", [])
+                        if isinstance(startups, list) and startups:
+                            print(f"[Groq Scout] ⚡ Discovered {len(startups)} new AI startups for {target_region} via {model}")
+                            return startups
+            except Exception as e:
+                print(f"[Groq Scout] Model {model} attempt error: {e}", file=sys.stderr)
+                continue
+
+        return []
+
     def research_and_enrich_new_leads(self, target_regions: list = None, count_per_region: int = 2) -> list:
         """
-        Executes end-to-end autonomous research:
-        1. Queries Gemini for real funded startups in requested regions
-        2. Enriches with Context.dev (if available) for deep landing page insights
-        3. Looks up founder emails via Hunter / Prospeo / MX check
-        4. Returns fully formed prospect dictionaries ready for pitch generation & drafting
+        Executes end-to-end autonomous research using a 3-tier discovery waterfall:
+        1. Tier 1: Gemini API (gemini-3.8-flash)
+        2. Tier 2: Groq API (Llama 3.3 70B fallback)
+        3. Tier 3: Pre-seeded SQLite Candidate Pool
+        4. Enriches contacts via Hunter.io / Prospeo / MX validation
         """
         regions = target_regions or ["India", "Middle East", "Europe", "US"]
         enriched_leads = []
 
         for reg in regions:
+            # Stage 1: Try Gemini
             raw_startups = self.discover_with_gemini(target_region=reg, count=count_per_region)
+            
+            # Stage 2: Fallback to Groq if Gemini returned 0
+            if not raw_startups and self.groq_key:
+                print(f"[Discovery Waterfall] 🔄 Failing over to Groq AI Scout for {reg}...")
+                raw_startups = self.discover_with_groq(target_region=reg, count=count_per_region)
+                
+            # Stage 3: Fallback to SQLite Candidate Pool if external LLMs are unavailable/exhausted
+            if not raw_startups:
+                print(f"[Discovery Waterfall] 🛡️ Using Staged Candidate Pool for {reg}...")
+                try:
+                    import db
+                    raw_startups = db.get_uncontacted_candidates(region=reg, limit=count_per_region)
+                except Exception as e:
+                    print(f"[Candidate Pool] Error retrieving candidates: {e}", file=sys.stderr)
+                    raw_startups = []
             for s in raw_startups:
                 company = s.get("company", "").strip()
                 domain = s.get("domain", "").strip().lower()
@@ -331,9 +427,13 @@ Do not wrap in markdown quotes if possible, output pure JSON."""
                         s["site_context"] = site_context[:500]
 
                 # Stage 3: Contact discovery & deliverability check
-                first_name = founder.split()[0]
-                last_name = founder.split()[-1] if len(founder.split()) > 1 else ""
-                contact_res = self.find_founder_email(domain, first_name, last_name, company_name=company)
+                if s.get("email") and "@" in s["email"]:
+                    contact_res = {"email": s["email"], "confidence": 95, "source": "Curated Candidate Pool"}
+                else:
+                    first_name = founder.split()[0]
+                    last_name = founder.split()[-1] if len(founder.split()) > 1 else ""
+                    contact_res = self.find_founder_email(domain, first_name, last_name, company_name=company)
+
                 
                 prospect = {
                     "company": company,

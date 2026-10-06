@@ -859,6 +859,7 @@ def run_multi_region_expansion(target_regions=None, dry_run=False, create_drafts
 
                 if not dry_run:
                     db.insert_or_update_lead(lead_dict)
+                    db.mark_candidate_drafted(domain)
                 added_leads.append(prospect)
     except Exception as e:
         print(f"[Autonomous AI Scout] Note on live discovery: {e}", file=sys.stderr)

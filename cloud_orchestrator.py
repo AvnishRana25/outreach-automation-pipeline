@@ -80,22 +80,7 @@ def action_send_batch(region: str = "US", dry_run: bool = False, auto_send: bool
     conn = get_db()
     cursor = conn.cursor()
     
-    # Flexible keyword mapping for regions with strict disambiguation
-    region_upper = region.upper()
-    if "US" in region_upper or "AMERICA" in region_upper:
-        # Exclude Indian and Middle East hybrid profiles from US batch so they send at local morning
-        region_clause = "((region LIKE '%US%' OR region LIKE '%SF%' OR region LIKE '%San Francisco%' OR region LIKE '%California%') AND region NOT LIKE '%Bengaluru%' AND region NOT LIKE '%Mumbai%' AND region NOT LIKE '%India%' AND region NOT LIKE '%Riyadh%' AND region NOT LIKE '%Dubai%')"
-    elif "INDIA" in region_upper or "IN" in region_upper:
-        region_clause = "(region LIKE '%Bengaluru%' OR region LIKE '%Mumbai%' OR region LIKE '%India%')"
-    elif "ME" in region_upper or "MIDDLE" in region_upper or "DUBAI" in region_upper or "RIYADH" in region_upper:
-        region_clause = "(region LIKE '%Riyadh%' OR region LIKE '%Dubai%' OR region LIKE '%Saudi%' OR region LIKE '%Middle East%')"
-    elif "EU" in region_upper or "UK" in region_upper or "EUROPE" in region_upper or "LONDON" in region_upper:
-        region_clause = "(region LIKE '%London%' OR region LIKE '%UK%' OR region LIKE '%Europe%' OR region LIKE '%Paris%')"
-    elif "ALL" in region_upper:
-        region_clause = "1=1"
-    else:
-        region_clause = f"region LIKE '%{region}%'"
-
+    region_clause = db.get_region_sql_filter(region)
     sql = f"SELECT * FROM leads WHERE {region_clause} AND LOWER(status) LIKE '%draft%'"
     cursor.execute(sql)
     leads = cursor.fetchall()
@@ -272,24 +257,143 @@ def action_status():
 
 from research_and_generate import run_multi_region_expansion
 
-def action_research_and_draft(region: str = None):
+def action_research_and_draft(region: str = None, dry_run: bool = False):
     """Sources new multi-region startups, deduplicates, and drafts them into Gmail."""
-    print(f"[Research & Draft Engine] Sourcing new startups (region filter: {region})...")
+    print(f"[Research & Draft Engine] Sourcing new startups (region filter: {region}, dry_run={dry_run})...")
     target_regions = [region] if region and region.upper() != "ALL" else None
-    leads = run_multi_region_expansion(target_regions=target_regions, dry_run=False, create_drafts=True)
+    leads = run_multi_region_expansion(target_regions=target_regions, dry_run=dry_run, create_drafts=not dry_run)
     print(f"[Research & Draft Engine] Finished. {len(leads)} new emails drafted in Gmail.")
     return len(leads)
 
+def is_region_in_sending_window(region: str) -> tuple[bool, str]:
+    """
+    Evaluates whether target region is currently within the local founder morning window (08:30 - 12:30 local time)
+    on a business day.
+    Timezones:
+      - India: UTC+5:30 (IST). Window: 08:30 - 12:30 IST (03:00 - 07:00 UTC). Mon-Fri.
+      - Middle East: UTC+3 (AST Riyadh) / UTC+4 (GST Dubai). Window: 08:30 - 12:30 Riyadh time (05:30 - 09:30 UTC). Sun-Thu.
+      - Europe: UTC+1 (BST London) / UTC+2 (CEST Paris/Berlin). Window: 08:00 - 12:30 London/CEST (06:30 - 11:30 UTC). Mon-Fri.
+      - US: UTC-7 (PDT SF/West Coast). Window: 08:30 - 12:30 PDT (15:30 - 19:30 UTC). Mon-Fri.
+    Returns:
+      (in_window: bool, status_desc: str)
+    """
+    now_utc = datetime.now(timezone.utc)
+    r_upper = region.upper()
+    
+    if "INDIA" in r_upper or "IN" in r_upper:
+        local_time = now_utc + timedelta(hours=5, minutes=30)
+        weekday = local_time.weekday()
+        time_decimal = local_time.hour + local_time.minute / 60.0
+        time_str = local_time.strftime("%I:%M %p IST")
+        is_weekday = weekday in range(0, 5)
+        in_hours = 8.5 <= time_decimal <= 12.5
+        desc = f"{time_str} ({local_time.strftime('%A')})"
+        return (is_weekday and in_hours, desc)
+        
+    elif "ME" in r_upper or "MIDDLE" in r_upper or "DUBAI" in r_upper or "RIYADH" in r_upper:
+        local_time = now_utc + timedelta(hours=3) # Riyadh AST
+        weekday = local_time.weekday()
+        time_decimal = local_time.hour + local_time.minute / 60.0
+        time_str = local_time.strftime("%I:%M %p AST (Riyadh)")
+        is_weekday = weekday in [6, 0, 1, 2, 3, 4]
+        in_hours = 8.5 <= time_decimal <= 12.5
+        desc = f"{time_str} ({local_time.strftime('%A')})"
+        return (is_weekday and in_hours, desc)
+        
+    elif "EU" in r_upper or "UK" in r_upper or "EUROPE" in r_upper:
+        local_time = now_utc + timedelta(hours=1) # London BST
+        weekday = local_time.weekday()
+        time_decimal = local_time.hour + local_time.minute / 60.0
+        time_str = local_time.strftime("%I:%M %p BST (London)")
+        is_weekday = weekday in range(0, 5)
+        in_hours = 8.0 <= time_decimal <= 12.5
+        desc = f"{time_str} ({local_time.strftime('%A')})"
+        return (is_weekday and in_hours, desc)
+        
+    elif "US" in r_upper or "AMERICA" in r_upper:
+        local_time = now_utc - timedelta(hours=7) # PDT San Francisco
+        weekday = local_time.weekday()
+        time_decimal = local_time.hour + local_time.minute / 60.0
+        time_str = local_time.strftime("%I:%M %p PDT (SF)")
+        is_weekday = weekday in range(0, 5)
+        in_hours = 8.5 <= time_decimal <= 12.5
+        desc = f"{time_str} ({local_time.strftime('%A')})"
+        return (is_weekday and in_hours, desc)
+        
+    return (True, f"{now_utc.strftime('%H:%M UTC')} (Unrestricted)")
+
+def action_tick(dry_run: bool = False, auto_send: bool = True):
+    """
+    Heartbeat tick designed to be called by any scheduled cron or background runner.
+    Completely idempotent and timezone-aware:
+    1. Always runs inbox reply detection.
+    2. Evaluates each region (India, Middle East, Europe, US):
+       - If within local morning sending window AND 0 emails sent today:
+         - Dispatches send-batch for that region.
+         - If 0 drafts exist in candidate/leads, replenishes via research-and-draft first!
+       - If outside window, logs status and avoids sending.
+    3. Processes due follow-ups (Day +3, Day +7) during business hours.
+    """
+    print("=" * 60)
+    print("       TIMEZONE-AWARE ORCHESTRATOR HEARTBEAT TICK       ")
+    print("=" * 60)
+    now_utc = datetime.now(timezone.utc)
+    print(f"[Tick Engine] Current UTC Time: {now_utc.strftime('%Y-%m-%d %H:%M:%S UTC')}")
+    
+    # 1. Reply Detection
+    action_check_replies()
+
+    # 2. Autonomous Morning Replenishment (02:30 - 04:00 UTC)
+    time_decimal = now_utc.hour + now_utc.minute / 60.0
+    if 2.5 <= time_decimal <= 4.0:
+        total_drafts = db.get_pending_draft_count("All")
+        if total_drafts < 8:
+            print(f"[Tick Engine] 🌅 Early morning replenishment window active (total pending drafts={total_drafts} < 8). Replenishing fresh startups...")
+            action_research_and_draft(region="All", dry_run=dry_run)
+    
+    # 3. Regional morning dispatch checks
+    regions = ["India", "ME", "EU", "US"]
+    for reg in regions:
+        in_window, local_desc = is_region_in_sending_window(reg)
+        print(f"\n[Timezone Controller] Checking {reg} -> Local: {local_desc}")
+        if in_window:
+            today_sent = db.get_today_sent_count(reg)
+            if today_sent > 0:
+                print(f"[Timezone Controller] ⏸️ {reg} is in morning sending window, but {today_sent} emails were already sent today. Skipping duplicate dispatch.")
+            else:
+                pending_drafts = db.get_pending_draft_count(reg)
+                if pending_drafts == 0:
+                    print(f"[Timezone Controller] ⚠️ {reg} is in sending window with 0 pending drafts. Replenishing drafts via research-and-draft...")
+                    action_research_and_draft(region=reg)
+                    pending_drafts = db.get_pending_draft_count(reg)
+                    
+                if pending_drafts > 0:
+                    print(f"[Timezone Controller] 🚀 {reg} morning window ACTIVE! Dispatching batch of {pending_drafts} drafts...")
+                    action_send_batch(region=reg, dry_run=dry_run, auto_send=auto_send)
+                else:
+                    print(f"[Timezone Controller] No drafts available for {reg}.")
+        else:
+            print(f"[Timezone Controller] ⏳ {reg} is outside morning sending window (08:30 - 12:30 local). No emails will be sent.")
+            
+    # 3. Follow-up Engine
+    print("\n[Tick Engine] Running Follow-Up verification...")
+    action_process_followups(auto_send=auto_send)
+    print("=" * 60)
+    print("                    HEARTBEAT TICK COMPLETE                     ")
+    print("=" * 60)
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Cloud Outreach Orchestrator")
-    parser.add_argument("--action", choices=["research-and-draft", "send-batch", "check-replies", "followups", "status"], default="research-and-draft")
+    parser.add_argument("--action", choices=["research-and-draft", "send-batch", "check-replies", "followups", "status", "tick"], default="research-and-draft")
     parser.add_argument("--region", default="All", help="Target region (India, Middle East, Europe, US, All)")
     parser.add_argument("--auto-send", action="store_true", help="Send directly instead of creating drafts")
     parser.add_argument("--dry-run", action="store_true", help="Dry run without writing to Gmail")
     args = parser.parse_args()
     
-    if args.action == "research-and-draft":
-        action_research_and_draft(region=args.region)
+    if args.action == "tick":
+        action_tick(dry_run=args.dry_run, auto_send=args.auto_send)
+    elif args.action == "research-and-draft":
+        action_research_and_draft(region=args.region, dry_run=args.dry_run)
     elif args.action == "status":
         action_status()
     elif args.action == "check-replies":
@@ -298,4 +402,5 @@ if __name__ == "__main__":
         action_send_batch(region=args.region, dry_run=args.dry_run, auto_send=args.auto_send)
     elif args.action == "followups":
         action_process_followups(auto_send=args.auto_send)
+
 
