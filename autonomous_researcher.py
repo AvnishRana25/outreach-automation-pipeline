@@ -242,12 +242,12 @@ Output strictly valid JSON with this exact schema:
 Do not wrap in markdown quotes if possible, output pure JSON."""
 
         models_to_try = [
+            "models/gemini-3.8-flash",
+            "gemini-3.8-flash",
             "models/gemini-2.5-flash",
             "gemini-2.5-flash",
             "models/gemini-2.5-pro",
-            "gemini-2.5-pro",
-            "models/gemini-3.8-flash",
-            "gemini-3.8-flash"
+            "gemini-2.5-pro"
         ]
         for model in models_to_try:
             model_path = model if model.startswith("models/") else f"models/{model}"
@@ -259,38 +259,43 @@ Do not wrap in markdown quotes if possible, output pure JSON."""
                     "response_mime_type": "application/json"
                 }
             }
-            try:
-                req = urllib.request.Request(
-                    url,
-                    data=json.dumps(payload).encode("utf-8"),
-                    headers={
-                        "Content-Type": "application/json",
-                        "User-Agent": "AutonomousColdOutreach/1.0"
-                    },
-                    method="POST"
-                )
-                with urllib.request.urlopen(req, timeout=25) as resp:
-                    if resp.status == 200:
-                        raw = json.loads(resp.read().decode("utf-8"))
-                        text_part = raw.get("candidates", [{}])[0].get("content", {}).get("parts", [{}])[0].get("text", "")
-                        # Parse JSON from response
-                        cleaned = re.sub(r'^```json\s*', '', text_part.strip())
-                        cleaned = re.sub(r'\s*```$', '', cleaned)
-                        startups = json.loads(cleaned)
-                        if isinstance(startups, list) and startups:
-                            print(f"[Gemini Scout] 🔍 Discovered {len(startups)} new AI startups for {target_region} via {model}")
-                            return startups
-            except urllib.error.HTTPError as e:
-                body = ""
+            for attempt in range(2):
                 try:
-                    body = e.read().decode("utf-8", errors="replace")
-                except Exception:
-                    pass
-                print(f"[Gemini Scout] Model {model} HTTP Error {e.code}: {body}", file=sys.stderr)
-                continue
-            except Exception as e:
-                print(f"[Gemini Scout] Model {model} attempt error: {e}", file=sys.stderr)
-                continue
+                    req = urllib.request.Request(
+                        url,
+                        data=json.dumps(payload).encode("utf-8"),
+                        headers={
+                            "Content-Type": "application/json",
+                            "User-Agent": "AutonomousColdOutreach/1.0"
+                        },
+                        method="POST"
+                    )
+                    with urllib.request.urlopen(req, timeout=25) as resp:
+                        if resp.status == 200:
+                            raw = json.loads(resp.read().decode("utf-8"))
+                            text_part = raw.get("candidates", [{}])[0].get("content", {}).get("parts", [{}])[0].get("text", "")
+                            # Parse JSON from response
+                            cleaned = re.sub(r'^```json\s*', '', text_part.strip())
+                            cleaned = re.sub(r'\s*```$', '', cleaned)
+                            startups = json.loads(cleaned)
+                            if isinstance(startups, list) and startups:
+                                print(f"[Gemini Scout] 🔍 Discovered {len(startups)} new AI startups for {target_region} via {model}")
+                                return startups
+                except urllib.error.HTTPError as e:
+                    body = ""
+                    try:
+                        body = e.read().decode("utf-8", errors="replace")
+                    except Exception:
+                        pass
+                    if e.code == 503 and attempt == 0:
+                        print(f"[Gemini Scout] Model {model} temporary 503 spike, retrying in 2.5s...", file=sys.stderr)
+                        time.sleep(2.5)
+                        continue
+                    print(f"[Gemini Scout] Model {model} HTTP Error {e.code}: {body}", file=sys.stderr)
+                    break
+                except Exception as e:
+                    print(f"[Gemini Scout] Model {model} attempt error: {e}", file=sys.stderr)
+                    break
 
         # Diagnostic check if all models fail
         try:
@@ -313,7 +318,7 @@ Do not wrap in markdown quotes if possible, output pure JSON."""
 
     def discover_with_groq(self, target_region: str = "All", count: int = 3) -> list:
         """
-        Uses Groq API (Llama 3.3 70B) as a zero-cost, high-speed discovery fallback
+        Uses Groq API (Llama 3 / Mixtral) as a zero-cost, high-speed discovery fallback
         when Gemini rate limits or quota triggers.
         """
         if not self.groq_key:
@@ -350,7 +355,15 @@ Output strictly valid JSON with this exact schema:
 ]
 Do not wrap in markdown quotes if possible, output pure JSON."""
 
-        models_to_try = ["llama-3.3-70b-versatile", "llama-3.1-8b-instant"]
+        models_to_try = [
+            "llama3-70b-8192",
+            "llama3-8b-8192",
+            "llama-3.1-70b-versatile",
+            "llama-3.1-8b-instant",
+            "llama-3.3-70b-versatile",
+            "mixtral-8x7b-32768",
+            "gemma2-9b-it"
+        ]
         url = "https://api.groq.com/openai/v1/chat/completions"
 
         for model in models_to_try:
@@ -396,6 +409,22 @@ Do not wrap in markdown quotes if possible, output pure JSON."""
             except Exception as e:
                 print(f"[Groq Scout] Model {model} attempt error: {e}", file=sys.stderr)
                 continue
+
+        # Diagnostic check if all Groq models fail
+        try:
+            diag_req = urllib.request.Request(
+                "https://api.groq.com/openai/v1/models",
+                headers={
+                    "Authorization": f"Bearer {self.groq_key}",
+                    "User-Agent": "AutonomousColdOutreach/1.0"
+                }
+            )
+            with urllib.request.urlopen(diag_req, timeout=10) as resp:
+                m_data = json.loads(resp.read().decode("utf-8"))
+                available = [m.get("id") for m in m_data.get("data", [])]
+                print(f"[Groq Scout] ℹ️ Available models for key: {available[:8]}", file=sys.stderr)
+        except Exception as e:
+            print(f"[Groq Scout] Diagnostic ListModels error: {e}", file=sys.stderr)
 
         return []
 
