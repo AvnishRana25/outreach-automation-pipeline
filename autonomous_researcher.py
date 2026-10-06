@@ -234,10 +234,10 @@ Output strictly valid JSON with this exact schema:
 Do not wrap in markdown quotes if possible, output pure JSON."""
 
         models_to_try = [
-            "models/gemini-2.5-flash",
-            "models/gemini-2.5-pro",
-            "gemini-2.5-flash",
-            "gemini-2.5-pro"
+            "models/gemini-3.8-flash",
+            "gemini-3.8-flash",
+            "models/gemini-3.1-pro-preview",
+            "gemini-3.1-pro-preview"
         ]
         for model in models_to_try:
             model_path = model if model.startswith("models/") else f"models/{model}"
