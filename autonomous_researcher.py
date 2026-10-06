@@ -181,14 +181,21 @@ class AutonomousResearcher:
                 data=req_data,
                 headers={
                     "Authorization": f"Bearer {self.context_dev_key}",
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "User-Agent": "AutonomousColdOutreach/1.0"
                 },
                 method="POST"
             )
             with urllib.request.urlopen(req, timeout=15) as resp:
                 if resp.status == 200:
                     data = json.loads(resp.read().decode("utf-8"))
-                    markdown = data.get("markdown") or data.get("data", {}).get("markdown", "")
+                    raw_md = data.get("markdown") or data.get("data", {}).get("markdown") or ""
+                    if isinstance(raw_md, dict):
+                        markdown = raw_md.get("content") or raw_md.get("text") or raw_md.get("raw") or raw_md.get("markdown") or json.dumps(raw_md)
+                    elif isinstance(raw_md, str):
+                        markdown = raw_md
+                    else:
+                        markdown = str(raw_md) if raw_md else ""
                     print(f"[Context.dev] ✅ Scraped live technical context for {clean_domain} ({len(markdown)} bytes)")
                     return markdown[:3000] # Return top 3,000 chars of core product context
         except Exception as e:
@@ -235,10 +242,12 @@ Output strictly valid JSON with this exact schema:
 Do not wrap in markdown quotes if possible, output pure JSON."""
 
         models_to_try = [
+            "models/gemini-2.5-flash",
+            "gemini-2.5-flash",
+            "models/gemini-2.5-pro",
+            "gemini-2.5-pro",
             "models/gemini-3.8-flash",
-            "gemini-3.8-flash",
-            "models/gemini-3.1-pro-preview",
-            "gemini-3.1-pro-preview"
+            "gemini-3.8-flash"
         ]
         for model in models_to_try:
             model_path = model if model.startswith("models/") else f"models/{model}"
@@ -254,7 +263,10 @@ Do not wrap in markdown quotes if possible, output pure JSON."""
                 req = urllib.request.Request(
                     url,
                     data=json.dumps(payload).encode("utf-8"),
-                    headers={"Content-Type": "application/json"},
+                    headers={
+                        "Content-Type": "application/json",
+                        "User-Agent": "AutonomousColdOutreach/1.0"
+                    },
                     method="POST"
                 )
                 with urllib.request.urlopen(req, timeout=25) as resp:
@@ -357,7 +369,8 @@ Do not wrap in markdown quotes if possible, output pure JSON."""
                     data=req_data,
                     headers={
                         "Authorization": f"Bearer {self.groq_key}",
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
+                        "User-Agent": "AutonomousColdOutreach/1.0 (Macintosh; Intel Mac OS X 10_15_7)"
                     },
                     method="POST"
                 )
@@ -372,6 +385,14 @@ Do not wrap in markdown quotes if possible, output pure JSON."""
                         if isinstance(startups, list) and startups:
                             print(f"[Groq Scout] ⚡ Discovered {len(startups)} new AI startups for {target_region} via {model}")
                             return startups
+            except urllib.error.HTTPError as e:
+                err_body = ""
+                try:
+                    err_body = e.read().decode("utf-8", errors="replace")
+                except Exception:
+                    pass
+                print(f"[Groq Scout] Model {model} HTTP Error {e.code}: {err_body}", file=sys.stderr)
+                continue
             except Exception as e:
                 print(f"[Groq Scout] Model {model} attempt error: {e}", file=sys.stderr)
                 continue
