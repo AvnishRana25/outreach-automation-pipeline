@@ -234,14 +234,14 @@ Output strictly valid JSON with this exact schema:
 Do not wrap in markdown quotes if possible, output pure JSON."""
 
         models_to_try = [
-            "gemini-1.5-flash-latest",
-            "gemini-1.5-flash",
-            "gemini-2.0-flash",
-            "gemini-1.5-pro-latest",
-            "gemini-1.5-pro"
+            "models/gemini-2.5-flash",
+            "models/gemini-2.5-pro",
+            "gemini-2.5-flash",
+            "gemini-2.5-pro"
         ]
         for model in models_to_try:
-            url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={self.gemini_key}"
+            model_path = model if model.startswith("models/") else f"models/{model}"
+            url = f"https://generativelanguage.googleapis.com/v1beta/{model_path}:generateContent?key={self.gemini_key}"
             payload = {
                 "contents": [{"parts": [{"text": prompt}]}],
                 "generationConfig": {
