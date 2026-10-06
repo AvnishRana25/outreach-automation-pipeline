@@ -244,11 +244,7 @@ Do not wrap in markdown quotes if possible, output pure JSON."""
 
         models_to_try = [
             "models/gemini-3.8-flash",
-            "gemini-3.8-flash",
-            "models/gemini-2.5-flash",
-            "gemini-2.5-flash",
-            "models/gemini-2.5-pro",
-            "gemini-2.5-pro"
+            "gemini-3.8-flash"
         ]
         for model in models_to_try:
             model_path = model if model.startswith("models/") else f"models/{model}"
@@ -319,7 +315,7 @@ Do not wrap in markdown quotes if possible, output pure JSON."""
 
     def discover_with_groq(self, target_region: str = "All", count: int = 3) -> list:
         """
-        Uses Groq API (Llama 3 / Mixtral) as a zero-cost, high-speed discovery fallback
+        Uses Groq API (Qwen 3.8 / GPT-OSS) as a zero-cost, high-speed discovery fallback
         when Gemini rate limits or quota triggers.
         """
         if not self.groq_key:
@@ -357,13 +353,8 @@ Output strictly valid JSON with this exact schema:
 Do not wrap in markdown quotes if possible, output pure JSON."""
 
         models_to_try = [
-            "llama3-70b-8192",
-            "llama3-8b-8192",
-            "llama-3.1-70b-versatile",
-            "llama-3.1-8b-instant",
-            "llama-3.3-70b-versatile",
-            "mixtral-8x7b-32768",
-            "gemma2-9b-it"
+            "qwen/qwen3.8-27b",
+            "openai/gpt-oss-120b"
         ]
         url = "https://api.groq.com/openai/v1/chat/completions"
 
