@@ -85,43 +85,43 @@ jobs:
             TOTAL_MIN=$(( H * 60 + M ))
             echo "Current UTC Time: $H:$M (Minute $TOTAL_MIN of day)"
 
-            # 03:00 UTC schedule (Window: 02:30 - 03:45 UTC / 150 - 225 min) -> Research
-            if [ $TOTAL_MIN -ge 150 ] && [ $TOTAL_MIN -le 225 ]; then
+            # 02:00 - 03:45 UTC (120 - 225 min) -> Morning Research & Sourcing
+            if [ $TOTAL_MIN -ge 120 ] && [ $TOTAL_MIN -le 225 ]; then
               echo "ACTION=research-and-draft" >> $GITHUB_ENV
               echo "REGION=All" >> $GITHUB_ENV
               echo "AUTO_SEND=false" >> $GITHUB_ENV
 
-            # 04:00 UTC schedule (Window: 03:46 - 05:00 UTC / 226 - 300 min) -> India Send
-            elif [ $TOTAL_MIN -ge 226 ] && [ $TOTAL_MIN -le 300 ]; then
+            # 03:46 - 05:15 UTC (226 - 315 min) -> India Send (09:15 - 10:45 AM IST)
+            elif [ $TOTAL_MIN -ge 226 ] && [ $TOTAL_MIN -le 315 ]; then
               echo "ACTION=send-batch" >> $GITHUB_ENV
               echo "REGION=India" >> $GITHUB_ENV
               echo "AUTO_SEND=true" >> $GITHUB_ENV
 
-            # 05:30 UTC schedule (Window: 05:01 - 06:45 UTC / 301 - 405 min) -> Middle East Send
-            elif [ $TOTAL_MIN -ge 301 ] && [ $TOTAL_MIN -le 405 ]; then
+            # 05:16 - 07:15 UTC (316 - 435 min) -> Middle East Send (09:15 - 11:15 AM Gulf)
+            elif [ $TOTAL_MIN -ge 316 ] && [ $TOTAL_MIN -le 435 ]; then
               echo "ACTION=send-batch" >> $GITHUB_ENV
               echo "REGION=ME" >> $GITHUB_ENV
               echo "AUTO_SEND=true" >> $GITHUB_ENV
 
-            # 07:30 UTC schedule (Window: 06:46 - 09:00 UTC / 406 - 540 min) -> Europe/UK Send
-            elif [ $TOTAL_MIN -ge 406 ] && [ $TOTAL_MIN -le 540 ]; then
+            # 07:16 - 11:30 UTC (436 - 690 min) -> Europe/UK Send (08:16 - 12:30 PM BST/CEST)
+            elif [ $TOTAL_MIN -ge 436 ] && [ $TOTAL_MIN -le 690 ]; then
               echo "ACTION=send-batch" >> $GITHUB_ENV
               echo "REGION=EU" >> $GITHUB_ENV
               echo "AUTO_SEND=true" >> $GITHUB_ENV
 
-            # 12:00 UTC schedule (Window: 11:30 - 13:30 UTC / 690 - 810 min) -> Follow-ups
-            elif [ $TOTAL_MIN -ge 690 ] && [ $TOTAL_MIN -le 810 ]; then
+            # 11:31 - 15:15 UTC (691 - 915 min) -> Mid-day Follow-ups
+            elif [ $TOTAL_MIN -ge 691 ] && [ $TOTAL_MIN -le 915 ]; then
               echo "ACTION=followups" >> $GITHUB_ENV
               echo "REGION=All" >> $GITHUB_ENV
               echo "AUTO_SEND=true" >> $GITHUB_ENV
 
-            # 16:00 UTC schedule (Window: 15:30 - 18:00 UTC / 930 - 1080 min) -> US West Coast Send
-            elif [ $TOTAL_MIN -ge 930 ] && [ $TOTAL_MIN -le 1080 ]; then
+            # 15:16 - 19:30 UTC (916 - 1170 min) -> US West Coast Send (08:16 - 12:30 PM PDT)
+            elif [ $TOTAL_MIN -ge 916 ] && [ $TOTAL_MIN -le 1170 ]; then
               echo "ACTION=send-batch" >> $GITHUB_ENV
               echo "REGION=US" >> $GITHUB_ENV
               echo "AUTO_SEND=true" >> $GITHUB_ENV
 
-            # Fallback
+            # Night hours fallback (19:31 - 01:59 UTC) -> Reply checking only
             else
               echo "ACTION=check-replies" >> $GITHUB_ENV
               echo "REGION=All" >> $GITHUB_ENV

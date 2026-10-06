@@ -362,6 +362,231 @@ MULTI_REGION_PROSPECTS = [
         "funding": "$30M (Benchmark)",
         "tech_focus": "AI agents evaluating engineer pull requests, work samples, and live audio interviews",
         "hook": "designing objective Docker-based coding benchmark suites and deterministic candidate scoring"
+    },
+
+    # --- BATCH 2: FRESH 2025-2026 AI DISCOVERY ---
+    # INDIA (Bengaluru)
+    {
+        "company": "Karya",
+        "domain": "karya.in",
+        "founder": "Manu Chopra",
+        "email": "manu@karya.in",
+        "role": "Co-Founder & CEO",
+        "region": "Bengaluru, India",
+        "category": "Ethical AI Data & Indic Voice AI",
+        "funding": "$5M Seed (Dec 2025)",
+        "tech_focus": "Building multilingual datasets and voice automation pipelines across 20+ Indian languages",
+        "hook": "preventing speech recognition degradation and semantic drift across dialectical voice inputs"
+    },
+    {
+        "company": "Gnani.ai",
+        "domain": "gnani.ai",
+        "founder": "Ganesh Gopalan",
+        "email": "ganesh@gnani.ai",
+        "role": "Co-Founder & CEO",
+        "region": "Bengaluru, India",
+        "category": "Conversational Voice AI & Small Language Models",
+        "funding": "$4M Series A",
+        "tech_focus": "Low-latency voice agent architectures and edge speech models for banking and contact centers",
+        "hook": "engineering sub-200ms latency pipelines and streaming audio transcription guardrails"
+    },
+    {
+        "company": "Skan.ai",
+        "domain": "skan.ai",
+        "founder": "Avinash Misra",
+        "email": "avinash@skan.ai",
+        "role": "Co-Founder & CEO",
+        "region": "Bengaluru, India",
+        "category": "Process Intelligence & Agentic Workflow Discovery",
+        "funding": "$40M Series B",
+        "tech_focus": "Computer vision and agentic process telemetry mapping complex enterprise operations",
+        "hook": "containerized eval harnesses verifying deterministic state tracking across desktop telemetry streams"
+    },
+    {
+        "company": "CognitiveLab",
+        "domain": "cognitivelab.in",
+        "founder": "Adarsh Nair",
+        "email": "adarsh@cognitivelab.in",
+        "role": "Founder",
+        "region": "Bengaluru, India",
+        "category": "Autonomous Local Agent Frameworks",
+        "funding": "Seed Funded",
+        "tech_focus": "Open-source agent frameworks and sovereign on-prem LLM orchestration",
+        "hook": "preventing tool call schema hallucinations when executing multi-turn tool chains"
+    },
+
+    # MIDDLE EAST (Riyadh, Dubai)
+    {
+        "company": "Qashio",
+        "domain": "qashio.com",
+        "founder": "Armin Moradi",
+        "email": "armin@qashio.com",
+        "role": "Co-Founder & CEO",
+        "region": "Dubai, UAE",
+        "category": "Enterprise Spend Automation & AI Workflows",
+        "funding": "$10M Seed",
+        "tech_focus": "Autonomous expense auditing and real-time corporate card transaction state machines",
+        "hook": "deterministic financial state validation with zero LLM hallucination on ledger reconciliations"
+    },
+    {
+        "company": "Penny Software",
+        "domain": "penny.co",
+        "founder": "Iyad Aldalooj",
+        "email": "iyad@penny.co",
+        "role": "Co-Founder & CEO",
+        "region": "Riyadh, Saudi Arabia",
+        "category": "B2B Procurement AI & Vendor Workflows",
+        "funding": "$5M Pre-Series A",
+        "tech_focus": "AI-driven procurement marketplace automating enterprise purchase orders and supplier RFQs",
+        "hook": "building deterministic state machines for complex multi-vendor bidding and quote parsing"
+    },
+    {
+        "company": "Tabby",
+        "domain": "tabby.ai",
+        "founder": "Hosam Arab",
+        "email": "hosam@tabby.ai",
+        "role": "Co-Founder & CEO",
+        "region": "Riyadh & Dubai",
+        "category": "Fintech & Autonomous Credit Risk Engines",
+        "funding": "Series D ($200M+)",
+        "tech_focus": "Real-time automated credit underwriting and merchant checkout pipelines",
+        "hook": "building low-latency streaming evaluation harnesses under heavy concurrent transaction load"
+    },
+    {
+        "company": "Aumet",
+        "domain": "aumet.com",
+        "founder": "Yahya Aqel",
+        "email": "yahya@aumet.com",
+        "role": "Co-Founder & CEO",
+        "region": "Riyadh & Abu Dhabi",
+        "category": "Healthcare B2B AI & Supply Chain Automation",
+        "funding": "$7M Series A",
+        "tech_focus": "Autonomous inventory replenishment and distributor matchmaking for pharmacies",
+        "hook": "deterministic SKU matching pipelines and preventing catalog hallucination in pharmaceutical databases"
+    },
+
+    # EUROPE & UK (London, Paris, Munich)
+    {
+        "company": "Poolside",
+        "domain": "poolside.ai",
+        "founder": "Jason Warner",
+        "email": "jason@poolside.ai",
+        "role": "Co-Founder & CEO",
+        "region": "Paris & London",
+        "category": "Autonomous Coding Foundation Models & Agents",
+        "funding": "$400M Series B",
+        "tech_focus": "Training foundation models specialized in software reasoning and full-repo code generation",
+        "hook": "building isolated Dockerized pytest verification sandboxes for automated code evaluation at scale"
+    },
+    {
+        "company": "Photoroom",
+        "domain": "photoroom.com",
+        "founder": "Matthieu Rouif",
+        "email": "matthieu@photoroom.com",
+        "role": "Co-Founder & CEO",
+        "region": "Paris, France",
+        "category": "Production Computer Vision & GenAI APIs",
+        "funding": "$43M Series B",
+        "tech_focus": "High-throughput model serving pipelines and mobile image generation workflows",
+        "hook": "engineering sub-second automated visual regression benchmarking harnesses for API deployments"
+    },
+    {
+        "company": "Synthesia",
+        "domain": "synthesia.io",
+        "founder": "Victor Riparbelli",
+        "email": "victor@synthesia.io",
+        "role": "Co-Founder & CEO",
+        "region": "London, UK",
+        "category": "Generative Video & Interactive AI Avatars",
+        "funding": "$90M Series C",
+        "tech_focus": "Real-time avatar synthesis and multi-modal streaming conversation pipelines",
+        "hook": "audio-video synchronization latency benchmarking and automated streaming test suites"
+    },
+    {
+        "company": "Helsing",
+        "domain": "helsing.ai",
+        "founder": "Gundbert Scherf",
+        "email": "gundbert@helsing.ai",
+        "role": "Co-Founder",
+        "region": "London, UK",
+        "category": "Real-time Sensor Processing & Edge AI",
+        "funding": "EUR 209M Series B",
+        "tech_focus": "Live sensor fusion and edge neural network deployment for mission-critical telemetry",
+        "hook": "stress-testing real-time telemetry streaming pipelines with zero packet loss and deterministic state handling"
+    },
+    {
+        "company": "Mistral AI",
+        "domain": "mistral.ai",
+        "founder": "Arthur Mensch",
+        "email": "arthur@mistral.ai",
+        "role": "Co-Founder & CEO",
+        "region": "Paris, France",
+        "category": "Open Foundation Models & Codestral Agent Infrastructure",
+        "funding": "Series B ($600M+)",
+        "tech_focus": "High-efficiency open models and agent tool-use execution runtimes",
+        "hook": "building robust evaluation benchmarks verifying agent tool selection precision under schema changes"
+    },
+
+    # US (San Francisco, Mountain View)
+    {
+        "company": "Cursor",
+        "domain": "cursor.com",
+        "founder": "Michael Truell",
+        "email": "michael@cursor.com",
+        "role": "Co-Founder & CEO",
+        "region": "San Francisco, US",
+        "category": "Autonomous Coding Environment & Agent Workflows",
+        "funding": "$60M Series A (Andreessen Horowitz)",
+        "tech_focus": "Next-token code prediction, codebase indexing, and multi-file diff application",
+        "hook": "evaluating multi-file diff application precision and stress-testing repository-level agent indexing harnesses"
+    },
+    {
+        "company": "Harvey",
+        "domain": "harvey.ai",
+        "founder": "Winston Weinberg",
+        "email": "winston@harvey.ai",
+        "role": "Co-Founder & CEO",
+        "region": "San Francisco, US",
+        "category": "Legal Domain Foundation Models & Contract Analysis",
+        "funding": "$100M Series C (Kleiner Perkins & Sequoia)",
+        "tech_focus": "Complex regulatory document reasoning, automated citation verification, and workflow agents",
+        "hook": "engineering deterministic citation evaluation harnesses and eliminating subtle contract clause hallucination"
+    },
+    {
+        "company": "Codeium",
+        "domain": "codeium.com",
+        "founder": "Varun Mohan",
+        "email": "varun@codeium.com",
+        "role": "Co-Founder & CEO",
+        "region": "San Francisco, US",
+        "category": "Enterprise AI Developer Platform & Code Acceleration",
+        "funding": "$65M Series C",
+        "tech_focus": "Enterprise context search, air-gapped model serving, and low-latency IDE autocomplete",
+        "hook": "benchmarking context retrieval latency under massive enterprise monorepos"
+    },
+    {
+        "company": "Ema",
+        "domain": "ema.co",
+        "founder": "Surojit Chatterjee",
+        "email": "surojit@ema.co",
+        "role": "Founder & CEO",
+        "region": "San Francisco, US",
+        "category": "Universal Enterprise AI Employee & Agentic Integrations",
+        "funding": "$36M Series A (Accel & Section 32)",
+        "tech_focus": "Multi-agent systems executing cross-application workflows across Salesforce, Zendesk, and Jira",
+        "hook": "preventing state desynchronization and rollback failures in multi-agent cross-app execution chains"
+    },
+    {
+        "company": "Vapi",
+        "domain": "vapi.ai",
+        "founder": "Jordan Dearsley",
+        "email": "jordan@vapi.ai",
+        "role": "Co-Founder & CEO",
+        "region": "San Francisco, US",
+        "category": "Voice AI Agent Infrastructure & Telephony Pipelines",
+        "funding": "Seed Funded",
+        "tech_focus": "Ultra-low-latency voice agent orchestration combining telephony, STT, LLM, and TTS in under 400ms",
+        "hook": "benchmarking turn-taking interruption latency and engineering streaming voice pipeline stress-tests"
     }
 ]
 
