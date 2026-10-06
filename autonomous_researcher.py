@@ -22,10 +22,10 @@ from datetime import datetime, timezone
 
 class AutonomousResearcher:
     def __init__(self):
-        self.gemini_key = os.getenv("GEMINI_API_KEY", "").strip()
-        self.context_dev_key = os.getenv("CONTEXT_DEV_API_KEY", "").strip()
-        self.hunter_key = os.getenv("HUNTER_API_KEY", "").strip()
-        self.prospeo_key = os.getenv("PROSPEO_API_KEY", "").strip()
+        self.gemini_key = os.getenv("GEMINI_API_KEY", "").strip().strip('"').strip("'")
+        self.context_dev_key = os.getenv("CONTEXT_DEV_API_KEY", "").strip().strip('"').strip("'")
+        self.hunter_key = os.getenv("HUNTER_API_KEY", "").strip().strip('"').strip("'")
+        self.prospeo_key = os.getenv("PROSPEO_API_KEY", "").strip().strip('"').strip("'")
 
     def has_discovery_capabilities(self) -> bool:
         """Returns True if at least one live intelligence provider is configured."""
@@ -233,7 +233,13 @@ Output strictly valid JSON with this exact schema:
 ]
 Do not wrap in markdown quotes if possible, output pure JSON."""
 
-        models_to_try = ["gemini-2.5-flash", "gemini-1.5-flash", "gemini-1.5-pro"]
+        models_to_try = [
+            "gemini-1.5-flash-latest",
+            "gemini-1.5-flash",
+            "gemini-2.0-flash",
+            "gemini-1.5-pro-latest",
+            "gemini-1.5-pro"
+        ]
         for model in models_to_try:
             url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={self.gemini_key}"
             payload = {
@@ -261,9 +267,34 @@ Do not wrap in markdown quotes if possible, output pure JSON."""
                         if isinstance(startups, list) and startups:
                             print(f"[Gemini Scout] 🔍 Discovered {len(startups)} new AI startups for {target_region} via {model}")
                             return startups
+            except urllib.error.HTTPError as e:
+                body = ""
+                try:
+                    body = e.read().decode("utf-8", errors="replace")
+                except Exception:
+                    pass
+                print(f"[Gemini Scout] Model {model} HTTP Error {e.code}: {body}", file=sys.stderr)
+                continue
             except Exception as e:
                 print(f"[Gemini Scout] Model {model} attempt error: {e}", file=sys.stderr)
                 continue
+
+        # Diagnostic check if all models fail
+        try:
+            diag_url = f"https://generativelanguage.googleapis.com/v1beta/models?key={self.gemini_key}"
+            with urllib.request.urlopen(diag_url, timeout=10) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+                available = [m.get("name") for m in data.get("models", []) if "generateContent" in m.get("supportedGenerationMethods", [])]
+                print(f"[Gemini Scout] ℹ️ Available models for key: {available[:6]}", file=sys.stderr)
+        except urllib.error.HTTPError as e:
+            err_body = ""
+            try:
+                err_body = e.read().decode("utf-8", errors="replace")
+            except Exception:
+                pass
+            print(f"[Gemini Scout] Diagnostic ListModels HTTP {e.code}: {err_body}", file=sys.stderr)
+        except Exception as e:
+            print(f"[Gemini Scout] Diagnostic ListModels error: {e}", file=sys.stderr)
 
         return []
 
