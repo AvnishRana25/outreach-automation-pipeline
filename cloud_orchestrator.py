@@ -244,10 +244,11 @@ def action_process_followups(auto_send: bool = False):
     conn.close()
     
     if fu_count > 0:
+        action_text = "sent automatically to" if auto_send else "queued in Gmail Drafts for"
         notify_user_mobile(
             title="Follow-Up Alert",
-            message=f"{fu_count} personalized follow-up emails queued in Gmail for unreplied leads.",
-            click_url="https://mail.google.com/mail/u/0/#drafts"
+            message=f"{fu_count} personalized follow-up emails {action_text} unreplied leads.",
+            click_url="https://mail.google.com/mail/u/0/#inbox" if auto_send else "https://mail.google.com/mail/u/0/#drafts"
         )
     return fu_count
 
