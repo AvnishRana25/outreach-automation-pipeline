@@ -2,25 +2,11 @@ name: Autonomous Outreach Engine
 
 on:
   schedule:
-    # 03:15 UTC = 08:45 AM IST (Daily Startup Research & Sourcing)
-    - cron: '15 3 * * 1-5'
-    # 03:55 & 04:15 UTC = 09:25 & 09:45 AM IST (India Morning Dispatch - Dual pulse)
-    - cron: '55 3 * * 1-5'
-    - cron: '15 4 * * 1-5'
-    # 05:25 & 05:45 UTC = 10:55 & 11:15 AM IST (Middle East Morning Dispatch - Dual pulse)
-    - cron: '25 5 * * 1-5'
-    - cron: '45 5 * * 1-5'
-    # 07:25 & 07:45 UTC = 12:55 & 01:15 PM IST (Europe & UK Morning Dispatch - Dual pulse)
-    - cron: '25 7 * * 1-5'
-    - cron: '45 7 * * 1-5'
-    # 11:55 & 12:20 UTC = 05:25 & 05:50 PM IST (Mid-day Reply Checker & Follow-up Trigger)
-    - cron: '55 11 * * 1-5'
-    - cron: '20 12 * * 1-5'
-    # 15:50 & 16:15 UTC = 09:20 & 09:45 PM IST (US West Coast Morning Dispatch - Dual pulse)
-    - cron: '50 15 * * 1-5'
-    - cron: '15 16 * * 1-5'
-    # Periodic reply checks throughout the day
-    - cron: '15 9,14,18 * * 1-5'
+    # Jitter-Immune Heartbeat: Every 25 minutes across global business hours (02:00 - 18:59 UTC / 07:30 AM - 12:30 AM IST)
+    # Flawlessly covers India (08:30-12:30 IST), Middle East (08:30-12:30 AST), Europe (08:00-12:30 BST), and US (08:30-12:30 PDT)
+    - cron: '*/25 2-18 * * 1-5'
+    # Nightly reply checks & state sync
+    - cron: '0 21,0 * * 1-5'
 
   workflow_dispatch:
     inputs:

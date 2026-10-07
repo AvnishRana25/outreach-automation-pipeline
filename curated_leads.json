@@ -8,7 +8,7 @@
       "founder_email": "sumanyu@hamming.ai",
       "founder_role": "Co-founder & CEO",
       "region": "San Francisco, US (Remote)",
-      "status": "SENT",
+      "status": "REPLIED",
       "initial_subject": "quick technical question re: Hamming's agent eval verifiers",
       "initial_body": "Hi Sumanyu,\n\nSaw your launch of Hamming for agent QA and prompt optimization \u2014 the focus on moving teams away from 'vibe checks' to deterministic regression testing is spot on.\n\nAt Caudal AI, I author contamination-resistant benchmark tasks for frontier coding agents in Docker environments. I write adversarial edge cases and pytest verifiers that catch hallucinated fixes and incomplete execution across complex trajectories before they reach benchmark datasets.\n\nPreviously, I shipped a production WhatsApp sales agent running 4,000+ live deals where deterministic state machines prevented LLMs from hallucinating pricing or availability.\n\nI\u2019d love to join Hamming as an AI Eval / Solutions Engineer intern (or tackle a 1-month trial contract) to author specialized agent benchmarks, build client evaluation pipelines, or stress-test your voice/chat runners.\n\nOpen to a 10-minute chat this Thursday?\n\nBest,\nAvnish Rana\nGitHub: https://github.com/ | LinkedIn: https://linkedin.com/in/ | +91 7982252971",
       "fu1_subject": "Re: quick technical question re: Hamming's agent eval verifiers",
@@ -19,8 +19,8 @@
       "gmail_thread_id": "1a10c41a04979edf",
       "created_at": "2026-10-05T12:41:21.816859",
       "sent_at": "2026-10-05T16:29:22.871702+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
-      "replied_at": null
+      "last_checked_reply_at": "2026-10-06T14:16:01.406027+00:00",
+      "replied_at": "2026-10-06T14:16:01.406027+00:00"
     },
     {
       "id": 2,
@@ -41,7 +41,7 @@
       "gmail_thread_id": "1a10c41a30f53e56",
       "created_at": "2026-10-05T12:41:21.818036",
       "sent_at": "2026-10-05T19:03:01.000241+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -63,7 +63,7 @@
       "gmail_thread_id": "1a10c41a672ce48f",
       "created_at": "2026-10-05T12:41:21.818551",
       "sent_at": "2026-10-05T19:03:01.000241+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -85,7 +85,7 @@
       "gmail_thread_id": "1a10c41a9f89cd65",
       "created_at": "2026-10-05T12:41:21.818986",
       "sent_at": "2026-10-05T16:29:22.871702+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -107,7 +107,7 @@
       "gmail_thread_id": "1a10c41ac885b0ad",
       "created_at": "2026-10-05T12:41:21.819510",
       "sent_at": "2026-10-05T16:29:22.871702+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -129,7 +129,7 @@
       "gmail_thread_id": "1a10c41b18653fe2",
       "created_at": "2026-10-05T12:41:21.820035",
       "sent_at": "2026-10-05T19:03:01.000241+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -151,7 +151,7 @@
       "gmail_thread_id": "1a10c41b5de7fff8",
       "created_at": "2026-10-05T12:41:21.820468",
       "sent_at": "2026-10-05T16:29:22.871702+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -173,7 +173,7 @@
       "gmail_thread_id": "1a10c41b77d67895",
       "created_at": "2026-10-05T12:41:21.820945",
       "sent_at": "2026-10-05T19:03:01.000241+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -195,7 +195,7 @@
       "gmail_thread_id": "1a10c41ba8b0f1c7",
       "created_at": "2026-10-05T12:41:21.821409",
       "sent_at": "2026-10-05T16:29:22.871702+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -217,7 +217,7 @@
       "gmail_thread_id": "1a10c41bf15ea164",
       "created_at": "2026-10-05T12:41:21.821868",
       "sent_at": "2026-10-05T16:29:22.871702+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -239,7 +239,7 @@
       "gmail_thread_id": "1a10c41c370aca3e",
       "created_at": "2026-10-05T12:41:21.822443",
       "sent_at": "2026-10-05T19:03:01.000241+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -261,7 +261,7 @@
       "gmail_thread_id": "1a10c41c4a287930",
       "created_at": "2026-10-05T12:41:21.822923",
       "sent_at": "2026-10-05T19:03:01.000241+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -283,7 +283,7 @@
       "gmail_thread_id": "1a10c41c8da11eac",
       "created_at": "2026-10-05T12:41:21.823362",
       "sent_at": "2026-10-05T16:29:22.871702+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -305,7 +305,7 @@
       "gmail_thread_id": "1a10c41cac10634b",
       "created_at": "2026-10-05T12:41:21.823742",
       "sent_at": "2026-10-05T16:29:22.871702+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -327,7 +327,7 @@
       "gmail_thread_id": "1a10c41ce44df9eb",
       "created_at": "2026-10-05T12:41:21.824111",
       "sent_at": "2026-10-05T16:29:22.871702+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -349,7 +349,7 @@
       "gmail_thread_id": "1a10c41d2a7eb303",
       "created_at": "2026-10-05T12:41:21.824521",
       "sent_at": "2026-10-05T16:29:22.871702+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -371,7 +371,7 @@
       "gmail_thread_id": "1a10c41d75f051db",
       "created_at": "2026-10-05T12:41:21.824889",
       "sent_at": "2026-10-05T16:29:22.871702+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -393,7 +393,7 @@
       "gmail_thread_id": "1a10c41d96a9a8cc",
       "created_at": "2026-10-05T12:41:21.825248",
       "sent_at": "2026-10-05T16:29:22.871702+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -415,7 +415,7 @@
       "gmail_thread_id": "1a10c41dc518db5c",
       "created_at": "2026-10-05T12:41:21.825658",
       "sent_at": "2026-10-05T16:29:22.871702+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -437,7 +437,7 @@
       "gmail_thread_id": "1a10c41e01e4a0f1",
       "created_at": "2026-10-05T12:41:21.826041",
       "sent_at": "2026-10-05T16:29:22.871702+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -459,7 +459,7 @@
       "gmail_thread_id": "1a10c41e56892274",
       "created_at": "2026-10-05T12:41:21.826398",
       "sent_at": "2026-10-05T16:29:22.871702+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -481,7 +481,7 @@
       "gmail_thread_id": "1a10c41e7c73ddab",
       "created_at": "2026-10-05T12:41:21.826756",
       "sent_at": "2026-10-05T16:29:22.871702+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -503,7 +503,7 @@
       "gmail_thread_id": "1a10c41ea9dfb356",
       "created_at": "2026-10-05T12:41:21.827209",
       "sent_at": "2026-10-05T16:29:22.871702+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -525,7 +525,7 @@
       "gmail_thread_id": "1a10c41eeaf01952",
       "created_at": "2026-10-05T12:41:21.827624",
       "sent_at": "2026-10-05T16:29:22.871702+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -547,7 +547,7 @@
       "gmail_thread_id": "1a10c41f30a96ad3",
       "created_at": "2026-10-05T12:41:21.827975",
       "sent_at": "2026-10-05T19:03:01.000241+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -569,7 +569,7 @@
       "gmail_thread_id": "1a10c41f7602ac63",
       "created_at": "2026-10-05T12:51:22.124933",
       "sent_at": "2026-10-05T19:03:01.000241+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -591,7 +591,7 @@
       "gmail_thread_id": "1a10c41fac2bf9a2",
       "created_at": "2026-10-05T12:51:22.618401",
       "sent_at": "2026-10-05T19:03:01.000241+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -613,7 +613,7 @@
       "gmail_thread_id": "1a10c41fdb8d67d1",
       "created_at": "2026-10-05T12:51:23.120010",
       "sent_at": "2026-10-05T19:03:01.000241+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -635,7 +635,7 @@
       "gmail_thread_id": "1a10c420080e0a0b",
       "created_at": "2026-10-05T12:51:23.671487",
       "sent_at": "2026-10-05T19:03:01.000241+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -657,7 +657,7 @@
       "gmail_thread_id": "1a10c42053046322",
       "created_at": "2026-10-05T12:51:24.216508",
       "sent_at": "2026-10-05T19:03:01.000241+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -679,7 +679,7 @@
       "gmail_thread_id": "1a10c42072c8a387",
       "created_at": "2026-10-05T12:51:24.746721",
       "sent_at": "2026-10-05T19:03:01.000241+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -701,7 +701,7 @@
       "gmail_thread_id": "1a10c420bd263324",
       "created_at": "2026-10-05T12:51:25.319256",
       "sent_at": "2026-10-05T19:03:01.000241+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -723,7 +723,7 @@
       "gmail_thread_id": "1a10c420e0981c6a",
       "created_at": "2026-10-05T12:51:25.833612",
       "sent_at": "2026-10-05T19:03:01.000241+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -745,7 +745,7 @@
       "gmail_thread_id": "1a10c4212b4fe9a2",
       "created_at": "2026-10-05T12:51:26.312848",
       "sent_at": "2026-10-05T19:03:01.000241+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -767,7 +767,7 @@
       "gmail_thread_id": "1a10c4215518b6e2",
       "created_at": "2026-10-05T12:51:26.817932",
       "sent_at": "2026-10-05T19:03:01.000241+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -789,7 +789,7 @@
       "gmail_thread_id": "1a10c42188b11b08",
       "created_at": "2026-10-05T12:51:27.326293",
       "sent_at": "2026-10-05T19:03:01.000241+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -811,7 +811,7 @@
       "gmail_thread_id": "1a10c421d513f03f",
       "created_at": "2026-10-05T12:51:27.852777",
       "sent_at": "2026-10-05T19:03:01.000241+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -833,7 +833,7 @@
       "gmail_thread_id": "1a10c421e80fdf9b",
       "created_at": "2026-10-05T12:51:28.448319",
       "sent_at": "2026-10-05T16:29:22.871702+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -855,7 +855,7 @@
       "gmail_thread_id": "1a10c422397ef7f2",
       "created_at": "2026-10-05T12:51:28.993009",
       "sent_at": "2026-10-05T16:29:22.871702+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -877,7 +877,7 @@
       "gmail_thread_id": "1a10c42279ac825f",
       "created_at": "2026-10-05T12:51:29.532091",
       "sent_at": "2026-10-05T16:29:22.871702+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -899,7 +899,7 @@
       "gmail_thread_id": "1a10c422a07e5f1d",
       "created_at": "2026-10-05T12:55:14.005690",
       "sent_at": "2026-10-05T19:03:01.000241+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -921,7 +921,7 @@
       "gmail_thread_id": "1a10c422c0c6c689",
       "created_at": "2026-10-05T12:55:14.432292",
       "sent_at": "2026-10-05T19:03:01.000241+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -943,7 +943,7 @@
       "gmail_thread_id": "1a10c4231d31303b",
       "created_at": "2026-10-05T12:55:14.786599",
       "sent_at": "2026-10-05T19:03:01.000241+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -965,7 +965,7 @@
       "gmail_thread_id": "1a10c4234519fcda",
       "created_at": "2026-10-05T12:55:15.082550",
       "sent_at": "2026-10-05T19:03:01.000241+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -987,7 +987,7 @@
       "gmail_thread_id": "1a10c4236d2530a2",
       "created_at": "2026-10-05T12:55:15.363167",
       "sent_at": "2026-10-05T19:03:01.000241+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1009,7 +1009,7 @@
       "gmail_thread_id": "1a10c423a877944d",
       "created_at": "2026-10-05T12:55:15.627312",
       "sent_at": "2026-10-05T19:03:01.000241+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1031,7 +1031,7 @@
       "gmail_thread_id": "1a10c423f69a9abc",
       "created_at": "2026-10-05T12:55:15.888033",
       "sent_at": "2026-10-05T19:03:01.000241+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1053,7 +1053,7 @@
       "gmail_thread_id": "1a10c4241137d1cc",
       "created_at": "2026-10-05T12:55:16.148181",
       "sent_at": "2026-10-05T19:03:01.000241+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1075,7 +1075,7 @@
       "gmail_thread_id": "1a10c4245c593bec",
       "created_at": "2026-10-05T12:55:16.428860",
       "sent_at": "2026-10-05T19:03:01.000241+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1097,7 +1097,7 @@
       "gmail_thread_id": "1a10c424816e2cbe",
       "created_at": "2026-10-05T12:55:17.792835",
       "sent_at": "2026-10-05T16:29:22.871702+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1119,7 +1119,7 @@
       "gmail_thread_id": "1a10c424cd18f6e2",
       "created_at": "2026-10-05T12:55:18.161713",
       "sent_at": "2026-10-05T16:29:22.871702+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1141,7 +1141,7 @@
       "gmail_thread_id": "1a10c424f8ece017",
       "created_at": "2026-10-05T12:55:18.420479",
       "sent_at": "2026-10-05T16:29:22.871702+00:00",
-      "last_checked_reply_at": "2026-10-06T12:45:34.819452+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1185,7 +1185,7 @@
       "gmail_thread_id": "1a111157002be60a",
       "created_at": "2026-10-06T11:59:40.675501",
       "sent_at": "2026-10-06T12:37:37+00:00",
-      "last_checked_reply_at": null,
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1207,7 +1207,7 @@
       "gmail_thread_id": "1a1111572402a7ba",
       "created_at": "2026-10-06T11:59:40.954238",
       "sent_at": "2026-10-06T12:36:32+00:00",
-      "last_checked_reply_at": null,
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1229,7 +1229,7 @@
       "gmail_thread_id": "1a11115742b8b818",
       "created_at": "2026-10-06T11:59:41.208752",
       "sent_at": "2026-10-06T12:37:34+00:00",
-      "last_checked_reply_at": null,
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1251,7 +1251,7 @@
       "gmail_thread_id": "1a11115747f65039",
       "created_at": "2026-10-06T11:59:41.571005",
       "sent_at": "2026-10-06T12:37:31+00:00",
-      "last_checked_reply_at": null,
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1273,7 +1273,7 @@
       "gmail_thread_id": "1a111157645c5d1c",
       "created_at": "2026-10-06T11:59:41.985983",
       "sent_at": "2026-10-06T12:37:28+00:00",
-      "last_checked_reply_at": null,
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1295,7 +1295,7 @@
       "gmail_thread_id": "1a1111579b98963c",
       "created_at": "2026-10-06T11:59:42.288458",
       "sent_at": "2026-10-06T12:37:25+00:00",
-      "last_checked_reply_at": null,
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1317,7 +1317,7 @@
       "gmail_thread_id": "1a11115786f0f594",
       "created_at": "2026-10-06T11:59:42.607708",
       "sent_at": "2026-10-06T12:36:36+00:00",
-      "last_checked_reply_at": null,
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1339,7 +1339,7 @@
       "gmail_thread_id": "1a111157a32be8c7",
       "created_at": "2026-10-06T11:59:42.857160",
       "sent_at": "2026-10-06T12:37:22+00:00",
-      "last_checked_reply_at": null,
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1361,7 +1361,7 @@
       "gmail_thread_id": "1a111157b07430e2",
       "created_at": "2026-10-06T11:59:43.190082",
       "sent_at": "2026-10-06T12:37:19+00:00",
-      "last_checked_reply_at": null,
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1383,7 +1383,7 @@
       "gmail_thread_id": "1a111157df6a6aff",
       "created_at": "2026-10-06T11:59:43.508748",
       "sent_at": "2026-10-06T12:37:16+00:00",
-      "last_checked_reply_at": null,
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1405,7 +1405,7 @@
       "gmail_thread_id": "1a111157f6abbcbc",
       "created_at": "2026-10-06T11:59:43.822294",
       "sent_at": "2026-10-06T12:37:08+00:00",
-      "last_checked_reply_at": null,
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1427,7 +1427,7 @@
       "gmail_thread_id": "1a111157f207831f",
       "created_at": "2026-10-06T11:59:44.080491",
       "sent_at": "2026-10-06T12:37:13+00:00",
-      "last_checked_reply_at": null,
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1449,7 +1449,7 @@
       "gmail_thread_id": "1a111158136af431",
       "created_at": "2026-10-06T11:59:44.411339",
       "sent_at": "2026-10-06T12:37:03+00:00",
-      "last_checked_reply_at": null,
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1471,7 +1471,7 @@
       "gmail_thread_id": "1a11115823eccec8",
       "created_at": "2026-10-06T11:59:44.918630",
       "sent_at": "2026-10-06T12:36:46+00:00",
-      "last_checked_reply_at": null,
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1493,7 +1493,7 @@
       "gmail_thread_id": "1a1111582894ae4a",
       "created_at": "2026-10-06T11:59:45.194598",
       "sent_at": "2026-10-06T12:36:59+00:00",
-      "last_checked_reply_at": null,
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1515,7 +1515,7 @@
       "gmail_thread_id": "1a11115855930c82",
       "created_at": "2026-10-06T11:59:45.458530",
       "sent_at": "2026-10-06T12:36:56+00:00",
-      "last_checked_reply_at": null,
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1537,7 +1537,7 @@
       "gmail_thread_id": "1a1111585ef52915",
       "created_at": "2026-10-06T11:59:45.756383",
       "sent_at": "2026-10-06T12:36:53+00:00",
-      "last_checked_reply_at": null,
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1559,7 +1559,7 @@
       "gmail_thread_id": "1a11115864a66e5e",
       "created_at": "2026-10-06T11:59:46.017471",
       "sent_at": "2026-10-06T12:36:42+00:00",
-      "last_checked_reply_at": null,
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1581,7 +1581,7 @@
       "gmail_thread_id": "1a1112ca0ab449a3",
       "created_at": "2026-10-06T12:25:00.250201",
       "sent_at": "2026-10-06T12:36:49+00:00",
-      "last_checked_reply_at": null,
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1603,7 +1603,7 @@
       "gmail_thread_id": "1a1112ca6c701c82",
       "created_at": "2026-10-06T12:25:01.661280",
       "sent_at": "2026-10-06T12:36:39+00:00",
-      "last_checked_reply_at": null,
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1625,7 +1625,7 @@
       "gmail_thread_id": "1a11133bf3306b98",
       "created_at": "2026-10-06T12:32:46.595546",
       "sent_at": "2026-10-06T12:36:28+00:00",
-      "last_checked_reply_at": null,
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1647,7 +1647,7 @@
       "gmail_thread_id": "1a11133c132265a8",
       "created_at": "2026-10-06T12:32:46.823139",
       "sent_at": "2026-10-06T12:36:24+00:00",
-      "last_checked_reply_at": null,
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1669,7 +1669,7 @@
       "gmail_thread_id": "1a1113a0b2294cb0",
       "created_at": "2026-10-06T12:39:39.044526",
       "sent_at": "2026-10-06T12:42:16+00:00",
-      "last_checked_reply_at": null,
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1691,7 +1691,7 @@
       "gmail_thread_id": "1a1113a0b7049876",
       "created_at": "2026-10-06T12:39:39.344386",
       "sent_at": "2026-10-06T12:42:12+00:00",
-      "last_checked_reply_at": null,
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1713,7 +1713,7 @@
       "gmail_thread_id": "1a1113dba932e6cc",
       "created_at": "2026-10-06T12:43:40.944865",
       "sent_at": "2026-10-06T12:44:51+00:00",
-      "last_checked_reply_at": null,
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1735,7 +1735,7 @@
       "gmail_thread_id": "1a1113dbd96e720f",
       "created_at": "2026-10-06T12:43:41.256265",
       "sent_at": "2026-10-06T12:44:52+00:00",
-      "last_checked_reply_at": null,
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1746,7 +1746,7 @@
       "founder_email": "siddharth@sana.ai",
       "founder_role": "Co-Founder & CEO",
       "region": "Bengaluru, India",
-      "status": "Drafted in Gmail",
+      "status": "SENT",
       "initial_subject": "scaling Sana's agent reliability / FDE trial",
       "initial_body": "Hi Siddharth Menon,\n\nImpressed by Sana's trajectory in vertical enterprise ai. When deploying production AI systems, the hardest failure mode is Designing a robust RAG evaluation framework to measure the accuracy of cross-tool data retrieval and ensure the agent correctly synthesizes information from disparate sources like Slack, Jira, and Salesforce without hallucinating permissions or context..\n\nIn my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.\n\nI want to join Sana as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).\n\nWould you be open to a 10-minute chat this week?\n\nBest,\nAvnish Rana\nResume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing\nGitHub: https://github.com/AvnishRana25\nLinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/\nWhatsApp: +91 7982252971\n",
       "fu1_subject": "Re: scaling Sana's agent reliability / FDE trial",
@@ -1754,10 +1754,10 @@
       "fu2_subject": "Re: scaling Sana's agent reliability / FDE trial",
       "fu2_body": "Hi Siddharth Menon,\n\nI know you're busy building Sana, so I won't follow up further.\n\nIf you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.\n\nWishing you and the Sana team all the best!\n\nAvnish Rana\nLinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/\nGitHub: https://github.com/AvnishRana25\n",
       "gmail_draft_id": "r8369408249058183669",
-      "gmail_thread_id": null,
+      "gmail_thread_id": "1a1113f7751ed8e2",
       "created_at": "2026-10-06T12:45:34.218522",
-      "sent_at": null,
-      "last_checked_reply_at": null,
+      "sent_at": "2026-10-06T12:50:04+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     },
     {
@@ -1768,7 +1768,7 @@
       "founder_email": "amit@zeta.ai",
       "founder_role": "Co-Founder & CEO",
       "region": "Bengaluru, India",
-      "status": "Drafted in Gmail",
+      "status": "SENT",
       "initial_subject": "scaling Zeta's agent reliability / FDE trial",
       "initial_body": "Hi Amit Jain,\n\nImpressed by Zeta's trajectory in ai voice agents. When deploying production AI systems, the hardest failure mode is Optimizing the end-to-end latency of the speech-to-text and text-to-speech pipeline to achieve sub-500ms response times while maintaining high accuracy in noisy, multilingual environments typical of Indian customer service calls..\n\nIn my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.\n\nI want to join Zeta as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).\n\nWould you be open to a 10-minute chat this week?\n\nBest,\nAvnish Rana\nResume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing\nGitHub: https://github.com/AvnishRana25\nLinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/\nWhatsApp: +91 7982252971\n",
       "fu1_subject": "Re: scaling Zeta's agent reliability / FDE trial",
@@ -1776,10 +1776,296 @@
       "fu2_subject": "Re: scaling Zeta's agent reliability / FDE trial",
       "fu2_body": "Hi Amit Jain,\n\nI know you're busy building Zeta, so I won't follow up further.\n\nIf you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.\n\nWishing you and the Zeta team all the best!\n\nAvnish Rana\nLinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/\nGitHub: https://github.com/AvnishRana25\n",
       "gmail_draft_id": "r-6314316040336016617",
-      "gmail_thread_id": null,
+      "gmail_thread_id": "1a1113f771a118e6",
       "created_at": "2026-10-06T12:45:34.527709",
-      "sent_at": null,
-      "last_checked_reply_at": null,
+      "sent_at": "2026-10-06T12:50:07+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
+      "replied_at": null
+    },
+    {
+      "id": 107,
+      "name": "Gupshup",
+      "domain": "gupshup.ai",
+      "founder_name": "Saurabh Agrawal",
+      "founder_email": "saurabh@gupshup.ai",
+      "founder_role": "Co-Founder & CEO",
+      "region": "Bengaluru, India",
+      "status": "SENT",
+      "initial_subject": "scaling Gupshup's agent reliability / FDE trial",
+      "initial_body": "Hi Saurabh Agrawal,\n\nImpressed by Gupshup's trajectory in ai voice agents. When deploying production AI systems, the hardest failure mode is Optimizing the inference pipeline for sub-200ms round-trip latency in high-concurrency voice agent sessions while maintaining high accuracy in noisy, multilingual environments..\n\nIn my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.\n\nI want to join Gupshup as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).\n\nWould you be open to a 10-minute chat this week?\n\nBest,\nAvnish Rana\nResume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing\nGitHub: https://github.com/AvnishRana25\nLinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/\nWhatsApp: +91 7982252971\n",
+      "fu1_subject": "Re: scaling Gupshup's agent reliability / FDE trial",
+      "fu1_body": "Hi Saurabh Agrawal,\n\nQuick follow-up on Gupshup's agent architecture.\n\nAcross my contract work at Caudal AI and building Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.\n\nHappy to build a 48-hour prototype or review an open technical issue for Gupshup at zero risk.\n\nBest,\nAvnish Rana\nResume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing\nGitHub: https://github.com/AvnishRana25\n",
+      "fu2_subject": "Re: scaling Gupshup's agent reliability / FDE trial",
+      "fu2_body": "Hi Saurabh Agrawal,\n\nI know you're busy building Gupshup, so I won't follow up further.\n\nIf you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.\n\nWishing you and the Gupshup team all the best!\n\nAvnish Rana\nLinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/\nGitHub: https://github.com/AvnishRana25\n",
+      "gmail_draft_id": "r-3849839445026667923",
+      "gmail_thread_id": "1a11149c140f0284",
+      "created_at": "2026-10-06T12:56:48.882966",
+      "sent_at": "2026-10-06T17:06:48+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
+      "replied_at": null
+    },
+    {
+      "id": 108,
+      "name": "Mojal",
+      "domain": "mojal.ai",
+      "founder_name": "Omar Al-Harbi",
+      "founder_email": "omar@mojal.ai",
+      "founder_role": "Co-Founder & CEO",
+      "region": "Riyadh, Saudi Arabia",
+      "status": "SENT",
+      "initial_subject": "scaling Mojal's agent reliability / FDE trial",
+      "initial_body": "Hi Omar Al-Harbi,\n\nImpressed by Mojal's trajectory in ai voice agents. When deploying production AI systems, the hardest failure mode is Optimizing the speech-to-text and text-to-speech pipeline to handle code-switching between Modern Standard Arabic and local dialects with sub-500ms end-to-end latency..\n\nIn my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.\n\nI want to join Mojal as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).\n\nWould you be open to a 10-minute chat this week?\n\nBest,\nAvnish Rana\nResume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing\nGitHub: https://github.com/AvnishRana25\nLinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/\nWhatsApp: +91 7982252971\n",
+      "fu1_subject": "Re: scaling Mojal's agent reliability / FDE trial",
+      "fu1_body": "Hi Omar Al-Harbi,\n\nQuick follow-up on Mojal's agent architecture.\n\nAcross my contract work at Caudal AI and building Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.\n\nHappy to build a 48-hour prototype or review an open technical issue for Mojal at zero risk.\n\nBest,\nAvnish Rana\nResume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing\nGitHub: https://github.com/AvnishRana25\n",
+      "fu2_subject": "Re: scaling Mojal's agent reliability / FDE trial",
+      "fu2_body": "Hi Omar Al-Harbi,\n\nI know you're busy building Mojal, so I won't follow up further.\n\nIf you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.\n\nWishing you and the Mojal team all the best!\n\nAvnish Rana\nLinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/\nGitHub: https://github.com/AvnishRana25\n",
+      "gmail_draft_id": "r8775655368668950262",
+      "gmail_thread_id": "1a11149c2b104831",
+      "created_at": "2026-10-06T12:56:49.168741",
+      "sent_at": "2026-10-06T17:07:11+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
+      "replied_at": null
+    },
+    {
+      "id": 109,
+      "name": "Sahm",
+      "domain": "sahm.ai",
+      "founder_name": "Lina Al-Qahtani",
+      "founder_email": "lina@sahm.ai",
+      "founder_role": "Co-Founder & CEO",
+      "region": "Dubai, UAE",
+      "status": "SENT",
+      "initial_subject": "scaling Sahm's agent reliability / FDE trial",
+      "initial_body": "Hi Lina Al-Qahtani,\n\nImpressed by Sahm's trajectory in vertical enterprise ai. When deploying production AI systems, the hardest failure mode is Implementing a robust retrieval-augmented generation (RAG) system that can accurately cite specific clauses from dynamic, multi-language regulatory documents to ensure auditability..\n\nIn my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.\n\nI want to join Sahm as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).\n\nWould you be open to a 10-minute chat this week?\n\nBest,\nAvnish Rana\nResume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing\nGitHub: https://github.com/AvnishRana25\nLinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/\nWhatsApp: +91 7982252971\n",
+      "fu1_subject": "Re: scaling Sahm's agent reliability / FDE trial",
+      "fu1_body": "Hi Lina Al-Qahtani,\n\nQuick follow-up on Sahm's agent architecture.\n\nAcross my contract work at Caudal AI and building Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.\n\nHappy to build a 48-hour prototype or review an open technical issue for Sahm at zero risk.\n\nBest,\nAvnish Rana\nResume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing\nGitHub: https://github.com/AvnishRana25\n",
+      "fu2_subject": "Re: scaling Sahm's agent reliability / FDE trial",
+      "fu2_body": "Hi Lina Al-Qahtani,\n\nI know you're busy building Sahm, so I won't follow up further.\n\nIf you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.\n\nWishing you and the Sahm team all the best!\n\nAvnish Rana\nLinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/\nGitHub: https://github.com/AvnishRana25\n",
+      "gmail_draft_id": "r-1931879871475790035",
+      "gmail_thread_id": "1a11149c3ad1662b",
+      "created_at": "2026-10-06T12:56:49.475924",
+      "sent_at": "2026-10-06T17:07:14+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
+      "replied_at": null
+    },
+    {
+      "id": 110,
+      "name": "11x",
+      "domain": "11x.ai",
+      "founder_name": "Hasan Sukkar",
+      "founder_email": "hasan@11x.ai",
+      "founder_role": "Co-Founder & CEO",
+      "region": "San Francisco, US",
+      "status": "SENT",
+      "initial_subject": "scaling 11x's agent reliability / FDE trial",
+      "initial_body": "Hi Hasan Sukkar,\n\nImpressed by 11x's trajectory in ai sales & marketing agents. When deploying production AI systems, the hardest failure mode is Implementing a real-time latency optimization layer for voice-based agent interactions to ensure sub-200ms response times while maintaining high-fidelity natural language understanding in noisy call environments..\n\nIn my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.\n\nI want to join 11x as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).\n\nWould you be open to a 10-minute chat this week?\n\nBest,\nAvnish Rana\nResume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing\nGitHub: https://github.com/AvnishRana25\nLinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/\nWhatsApp: +91 7982252971\n",
+      "fu1_subject": "Re: scaling 11x's agent reliability / FDE trial",
+      "fu1_body": "Hi Hasan Sukkar,\n\nQuick follow-up on 11x's agent architecture.\n\nAcross my contract work at Caudal AI and building Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.\n\nHappy to build a 48-hour prototype or review an open technical issue for 11x at zero risk.\n\nBest,\nAvnish Rana\nResume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing\nGitHub: https://github.com/AvnishRana25\n",
+      "fu2_subject": "Re: scaling 11x's agent reliability / FDE trial",
+      "fu2_body": "Hi Hasan Sukkar,\n\nI know you're busy building 11x, so I won't follow up further.\n\nIf you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.\n\nWishing you and the 11x team all the best!\n\nAvnish Rana\nLinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/\nGitHub: https://github.com/AvnishRana25\n",
+      "gmail_draft_id": "r2482796206586223196",
+      "gmail_thread_id": "1a11149c485c539b",
+      "created_at": "2026-10-06T12:56:49.740754",
+      "sent_at": "2026-10-06T17:07:17+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
+      "replied_at": null
+    },
+    {
+      "id": 111,
+      "name": "Salla AI",
+      "domain": "salla.ai",
+      "founder_name": "Omar Al-Farsi",
+      "founder_email": "omar@salla.ai",
+      "founder_role": "Co-Founder & CEO",
+      "region": "Dubai, UAE",
+      "status": "SENT",
+      "initial_subject": "scaling Salla AI's agent reliability / FDE trial",
+      "initial_body": "Hi Omar Al-Farsi,\n\nImpressed by Salla AI's trajectory in ai voice agents. When deploying production AI systems, the hardest failure mode is Optimizing the ASR-to-LLM pipeline to handle code-switching between Modern Standard Arabic and local dialects without increasing end-to-end latency beyond 800ms..\n\nIn my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.\n\nI want to join Salla AI as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).\n\nWould you be open to a 10-minute chat this week?\n\nBest,\nAvnish Rana\nResume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing\nGitHub: https://github.com/AvnishRana25\nLinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/\nWhatsApp: +91 7982252971\n",
+      "fu1_subject": "Re: scaling Salla AI's agent reliability / FDE trial",
+      "fu1_body": "Hi Omar Al-Farsi,\n\nQuick follow-up on Salla AI's agent architecture.\n\nAcross my contract work at Caudal AI and building Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.\n\nHappy to build a 48-hour prototype or review an open technical issue for Salla AI at zero risk.\n\nBest,\nAvnish Rana\nResume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing\nGitHub: https://github.com/AvnishRana25\n",
+      "fu2_subject": "Re: scaling Salla AI's agent reliability / FDE trial",
+      "fu2_body": "Hi Omar Al-Farsi,\n\nI know you're busy building Salla AI, so I won't follow up further.\n\nIf you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.\n\nWishing you and the Salla AI team all the best!\n\nAvnish Rana\nLinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/\nGitHub: https://github.com/AvnishRana25\n",
+      "gmail_draft_id": "r-367124214277028568",
+      "gmail_thread_id": "1a111c1fa2ee2cba",
+      "created_at": "2026-10-06T15:08:07.910695",
+      "sent_at": "2026-10-06T17:06:39+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
+      "replied_at": null
+    },
+    {
+      "id": 112,
+      "name": "CodeSultan",
+      "domain": "codesultan.ai",
+      "founder_name": "Layla Hassan",
+      "founder_email": "layla@codesultan.ai",
+      "founder_role": "Co-Founder & CTO",
+      "region": "Riyadh, Saudi Arabia",
+      "status": "SENT",
+      "initial_subject": "evaluating CodeSultan's agent workflows & sandboxes / FDE trial",
+      "initial_body": "Hi Layla Hassan,\n\nCame across CodeSultan's work in autonomous coding agents. In my current contract role at Caudal AI, our core focus is Implementing a robust evaluation harness to verify that generated refactoring code maintains 100% behavioral equivalence with legacy COBOL/Java modules in regulated environments.\u2014specifically how agents behave when tool payloads return unexpected schemas or partial outputs.\n\nI build containerized Docker evaluation harnesses with automated pytest verifiers and grading to catch agent drift before production rollout. Previously, I also engineered a deterministic state machine managing 4,000+ live transactions on Realty Pandit.\n\nI want to join CodeSultan as an FDE or AI Evaluation Engineer (or tackle a 2-week trial sprint / 48-hour work sample).\n\nOpen to a 10-minute technical chat this week?\n\nBest,\nAvnish Rana\nResume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing\nGitHub: https://github.com/AvnishRana25\nLinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/\nWhatsApp: +91 7982252971\n",
+      "fu1_subject": "Re: evaluating CodeSultan's agent workflows & sandboxes / FDE trial",
+      "fu1_body": "Hi Layla Hassan,\n\nFollowing up on CodeSultan's agent verification architecture.\n\nIn my contract role at Caudal AI, we saw that prompt tweaking yielded diminishing returns compared to building automated pytest verifiers that grade agent trajectories across multi-step API calls.\n\nHappy to put together a 48-hour benchmark harness for CodeSultan's core agent workflows at zero cost before you decide on anything.\n\nBest,\nAvnish Rana\nResume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing\nGitHub: https://github.com/AvnishRana25\n",
+      "fu2_subject": "Re: evaluating CodeSultan's agent workflows & sandboxes / FDE trial",
+      "fu2_body": "Hi Layla Hassan,\n\nI know you're busy building CodeSultan, so I won't follow up further.\n\nIf you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.\n\nWishing you and the CodeSultan team all the best!\n\nAvnish Rana\nLinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/\nGitHub: https://github.com/AvnishRana25\n",
+      "gmail_draft_id": "r-7383182198008486537",
+      "gmail_thread_id": "1a111c1fc362ccdf",
+      "created_at": "2026-10-06T15:08:08.241968",
+      "sent_at": "2026-10-06T17:06:36+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
+      "replied_at": null
+    },
+    {
+      "id": 113,
+      "name": "Agentic",
+      "domain": "agentic.ai",
+      "founder_name": "Lena Schmidt",
+      "founder_email": "lena@agentic.ai",
+      "founder_role": "Co-Founder & CEO",
+      "region": "Berlin, Germany",
+      "status": "SENT",
+      "initial_subject": "evaluating Agentic's agent workflows & sandboxes / FDE trial",
+      "initial_body": "Hi Lena Schmidt,\n\nCame across Agentic's work in autonomous coding agents. In my current contract role at Caudal AI, our core focus is Design a secure, sandboxed execution environment that can deterministically run the agent\u2011generated code, enforce resource limits, and capture reproducible test results for continuous\u2011integration pipelines.\u2014specifically how agents behave when tool payloads return unexpected schemas or partial outputs.\n\nI build containerized Docker evaluation harnesses with automated pytest verifiers and grading to catch agent drift before production rollout. Previously, I also engineered a deterministic state machine managing 4,000+ live transactions on Realty Pandit.\n\nI want to join Agentic as an FDE or AI Evaluation Engineer (or tackle a 2-week trial sprint / 48-hour work sample).\n\nOpen to a 10-minute technical chat this week?\n\nBest,\nAvnish Rana\nResume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing\nGitHub: https://github.com/AvnishRana25\nLinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/\nWhatsApp: +91 7982252971\n",
+      "fu1_subject": "Re: evaluating Agentic's agent workflows & sandboxes / FDE trial",
+      "fu1_body": "Hi Lena Schmidt,\n\nFollowing up on Agentic's agent verification architecture.\n\nIn my contract role at Caudal AI, we saw that prompt tweaking yielded diminishing returns compared to building automated pytest verifiers that grade agent trajectories across multi-step API calls.\n\nHappy to put together a 48-hour benchmark harness for Agentic's core agent workflows at zero cost before you decide on anything.\n\nBest,\nAvnish Rana\nResume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing\nGitHub: https://github.com/AvnishRana25\n",
+      "fu2_subject": "Re: evaluating Agentic's agent workflows & sandboxes / FDE trial",
+      "fu2_body": "Hi Lena Schmidt,\n\nI know you're busy building Agentic, so I won't follow up further.\n\nIf you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.\n\nWishing you and the Agentic team all the best!\n\nAvnish Rana\nLinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/\nGitHub: https://github.com/AvnishRana25\n",
+      "gmail_draft_id": "r240074541611590833",
+      "gmail_thread_id": "1a111c1fc9d05097",
+      "created_at": "2026-10-06T15:08:08.539549",
+      "sent_at": "2026-10-06T17:06:33+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
+      "replied_at": null
+    },
+    {
+      "id": 114,
+      "name": "EvalBench",
+      "domain": "evalbench.ai",
+      "founder_name": "Rohan Patel",
+      "founder_email": "rohan@evalbench.ai",
+      "founder_role": "Co-Founder & CEO",
+      "region": "London, United Kingdom",
+      "status": "SENT",
+      "initial_subject": "scaling EvalBench's agent reliability / FDE trial",
+      "initial_body": "Hi Rohan Patel,\n\nImpressed by EvalBench's trajectory in ai eval harnesses. When deploying production AI systems, the hardest failure mode is Build a high\u2011throughput, fault\u2011tolerant pipeline that parallelises inference calls to heterogeneous APIs while normalising latency and pricing data for fair, cross\u2011model comparison..\n\nIn my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.\n\nI want to join EvalBench as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).\n\nWould you be open to a 10-minute chat this week?\n\nBest,\nAvnish Rana\nResume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing\nGitHub: https://github.com/AvnishRana25\nLinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/\nWhatsApp: +91 7982252971\n",
+      "fu1_subject": "Re: scaling EvalBench's agent reliability / FDE trial",
+      "fu1_body": "Hi Rohan Patel,\n\nQuick follow-up on EvalBench's agent architecture.\n\nAcross my contract work at Caudal AI and building Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.\n\nHappy to build a 48-hour prototype or review an open technical issue for EvalBench at zero risk.\n\nBest,\nAvnish Rana\nResume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing\nGitHub: https://github.com/AvnishRana25\n",
+      "fu2_subject": "Re: scaling EvalBench's agent reliability / FDE trial",
+      "fu2_body": "Hi Rohan Patel,\n\nI know you're busy building EvalBench, so I won't follow up further.\n\nIf you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.\n\nWishing you and the EvalBench team all the best!\n\nAvnish Rana\nLinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/\nGitHub: https://github.com/AvnishRana25\n",
+      "gmail_draft_id": "r1758945472042118815",
+      "gmail_thread_id": "1a111c1fed1c2122",
+      "created_at": "2026-10-06T15:08:08.851527",
+      "sent_at": "2026-10-06T17:06:29+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
+      "replied_at": null
+    },
+    {
+      "id": 115,
+      "name": "11 Labs",
+      "domain": "elevenlabs.io",
+      "founder_name": "Matthew Chudzik",
+      "founder_email": "matthew@elevenlabs.io",
+      "founder_role": "Co-Founder & CEO",
+      "region": "New York, US",
+      "status": "SENT",
+      "initial_subject": "scaling 11 Labs's agent reliability / FDE trial",
+      "initial_body": "Hi Matthew Chudzik,\n\nImpressed by 11 Labs's trajectory in voice ai. When deploying production AI systems, the hardest failure mode is Optimizing the inference pipeline to achieve sub-200ms end-to-end latency for real-time voice agents while maintaining high emotional prosody and clarity across diverse accents..\n\nIn my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.\n\nI want to join 11 Labs as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).\n\nWould you be open to a 10-minute chat this week?\n\nBest,\nAvnish Rana\nResume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing\nGitHub: https://github.com/AvnishRana25\nLinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/\nWhatsApp: +91 7982252971\n",
+      "fu1_subject": "Re: scaling 11 Labs's agent reliability / FDE trial",
+      "fu1_body": "Hi Matthew Chudzik,\n\nQuick follow-up on 11 Labs's agent architecture.\n\nAcross my contract work at Caudal AI and building Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.\n\nHappy to build a 48-hour prototype or review an open technical issue for 11 Labs at zero risk.\n\nBest,\nAvnish Rana\nResume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing\nGitHub: https://github.com/AvnishRana25\n",
+      "fu2_subject": "Re: scaling 11 Labs's agent reliability / FDE trial",
+      "fu2_body": "Hi Matthew Chudzik,\n\nI know you're busy building 11 Labs, so I won't follow up further.\n\nIf you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.\n\nWishing you and the 11 Labs team all the best!\n\nAvnish Rana\nLinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/\nGitHub: https://github.com/AvnishRana25\n",
+      "gmail_draft_id": "r-4695150762762084392",
+      "gmail_thread_id": "1a111c2002bd37d7",
+      "created_at": "2026-10-06T15:08:09.435677",
+      "sent_at": "2026-10-06T17:06:26+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
+      "replied_at": null
+    },
+    {
+      "id": 116,
+      "name": "Falcon AI",
+      "domain": "falconai.me",
+      "founder_name": "Sarah Al-Farsi",
+      "founder_email": "sarah@falconai.me",
+      "founder_role": "Co-Founder & CTO",
+      "region": "Dubai, UAE",
+      "status": "SENT",
+      "initial_subject": "scaling Falcon AI's agent reliability / FDE trial",
+      "initial_body": "Hi Sarah Al-Farsi,\n\nImpressed by Falcon AI's trajectory in ai voice agents. When deploying production AI systems, the hardest failure mode is Optimizing the speech-to-text pipeline to handle code-switching between Arabic and English in real-time without increasing inference latency..\n\nIn my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.\n\nI want to join Falcon AI as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).\n\nWould you be open to a 10-minute chat this week?\n\nBest,\nAvnish Rana\nResume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing\nGitHub: https://github.com/AvnishRana25\nLinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/\nWhatsApp: +91 7982252971\n",
+      "fu1_subject": "Re: scaling Falcon AI's agent reliability / FDE trial",
+      "fu1_body": "Hi Sarah Al-Farsi,\n\nQuick follow-up on Falcon AI's agent architecture.\n\nAcross my contract work at Caudal AI and building Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.\n\nHappy to build a 48-hour prototype or review an open technical issue for Falcon AI at zero risk.\n\nBest,\nAvnish Rana\nResume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing\nGitHub: https://github.com/AvnishRana25\n",
+      "fu2_subject": "Re: scaling Falcon AI's agent reliability / FDE trial",
+      "fu2_body": "Hi Sarah Al-Farsi,\n\nI know you're busy building Falcon AI, so I won't follow up further.\n\nIf you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.\n\nWishing you and the Falcon AI team all the best!\n\nAvnish Rana\nLinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/\nGitHub: https://github.com/AvnishRana25\n",
+      "gmail_draft_id": "r-3550184333890210844",
+      "gmail_thread_id": "1a1122c80218271e",
+      "created_at": "2026-10-06T17:04:29.096477",
+      "sent_at": "2026-10-06T17:06:22+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
+      "replied_at": null
+    },
+    {
+      "id": 117,
+      "name": "Sahil",
+      "domain": "sahil.ai",
+      "founder_name": "Aarav Gupta",
+      "founder_email": "aarav@sahil.ai",
+      "founder_role": "Co-Founder & CEO",
+      "region": "Mumbai, India",
+      "status": "SENT",
+      "initial_subject": "scaling Sahil's agent reliability / FDE trial",
+      "initial_body": "Hi Aarav Gupta,\n\nImpressed by Sahil's trajectory in ai voice agents. When deploying production AI systems, the hardest failure mode is Optimizing the speech-to-text and text-to-speech pipeline to handle high-noise environments and rapid code-switching between English and regional Indian languages without increasing latency..\n\nIn my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.\n\nI want to join Sahil as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).\n\nWould you be open to a 10-minute chat this week?\n\nBest,\nAvnish Rana\nResume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing\nGitHub: https://github.com/AvnishRana25\nLinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/\nWhatsApp: +91 7982252971\n",
+      "fu1_subject": "Re: scaling Sahil's agent reliability / FDE trial",
+      "fu1_body": "Hi Aarav Gupta,\n\nQuick follow-up on Sahil's agent architecture.\n\nAcross my contract work at Caudal AI and building Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.\n\nHappy to build a 48-hour prototype or review an open technical issue for Sahil at zero risk.\n\nBest,\nAvnish Rana\nResume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing\nGitHub: https://github.com/AvnishRana25\n",
+      "fu2_subject": "Re: scaling Sahil's agent reliability / FDE trial",
+      "fu2_body": "Hi Aarav Gupta,\n\nI know you're busy building Sahil, so I won't follow up further.\n\nIf you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.\n\nWishing you and the Sahil team all the best!\n\nAvnish Rana\nLinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/\nGitHub: https://github.com/AvnishRana25\n",
+      "gmail_draft_id": "r6174579149034484782",
+      "gmail_thread_id": "1a112311fe70b511",
+      "created_at": "2026-10-06T17:09:31.502433",
+      "sent_at": "2026-10-06T17:10:07+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
+      "replied_at": null
+    },
+    {
+      "id": 118,
+      "name": "Najm Voice",
+      "domain": "najmvoice.com",
+      "founder_name": "Layla Hassan",
+      "founder_email": "layla@najmvoice.com",
+      "founder_role": "Co-Founder & CTO",
+      "region": "Riyadh, Saudi Arabia",
+      "status": "SENT",
+      "initial_subject": "scaling Najm Voice's agent reliability / FDE trial",
+      "initial_body": "Hi Layla Hassan,\n\nImpressed by Najm Voice's trajectory in ai voice agents. When deploying production AI systems, the hardest failure mode is Reducing hallucination rates in code-switching scenarios where users mix Modern Standard Arabic with local dialects..\n\nIn my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.\n\nI want to join Najm Voice as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).\n\nWould you be open to a 10-minute chat this week?\n\nBest,\nAvnish Rana\nResume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing\nGitHub: https://github.com/AvnishRana25\nLinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/\nWhatsApp: +91 7982252971\n",
+      "fu1_subject": "Re: scaling Najm Voice's agent reliability / FDE trial",
+      "fu1_body": "Hi Layla Hassan,\n\nQuick follow-up on Najm Voice's agent architecture.\n\nAcross my contract work at Caudal AI and building Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.\n\nHappy to build a 48-hour prototype or review an open technical issue for Najm Voice at zero risk.\n\nBest,\nAvnish Rana\nResume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing\nGitHub: https://github.com/AvnishRana25\n",
+      "fu2_subject": "Re: scaling Najm Voice's agent reliability / FDE trial",
+      "fu2_body": "Hi Layla Hassan,\n\nI know you're busy building Najm Voice, so I won't follow up further.\n\nIf you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.\n\nWishing you and the Najm Voice team all the best!\n\nAvnish Rana\nLinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/\nGitHub: https://github.com/AvnishRana25\n",
+      "gmail_draft_id": "r-5258439625659819976",
+      "gmail_thread_id": "1a112311ea354438",
+      "created_at": "2026-10-06T17:09:31.801146",
+      "sent_at": "2026-10-06T17:10:09+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
+      "replied_at": null
+    },
+    {
+      "id": 119,
+      "name": "Vocode",
+      "domain": "vocode.dev",
+      "founder_name": "Alex Kuo",
+      "founder_email": "alex@vocode.dev",
+      "founder_role": "Co-Founder & CEO",
+      "region": "San Francisco, US",
+      "status": "SENT",
+      "initial_subject": "scaling Vocode's agent reliability / FDE trial",
+      "initial_body": "Hi Alex Kuo,\n\nImpressed by Vocode's trajectory in voice ai. When deploying production AI systems, the hardest failure mode is Reduce end\u2011to\u2011end latency below 150\u202fms while maintaining high\u2011fidelity TTS, requiring optimised streaming inference and efficient audio codec integration..\n\nIn my current contract role at Caudal AI, I engineer Dockerized evaluation harnesses with pytest verifiers stress-testing agents under real-world drift. At Realty Pandit CRM, I built a deterministic state machine managing 4,000+ live WhatsApp transactions with zero hallucination, and at Klimashift I engineered 1 Hz streaming telemetry pipelines.\n\nI want to join Vocode as an FDE or AI/Automation Engineer (or take on a 48-hour technical trial to prove speed).\n\nWould you be open to a 10-minute chat this week?\n\nBest,\nAvnish Rana\nResume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing\nGitHub: https://github.com/AvnishRana25\nLinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/\nWhatsApp: +91 7982252971\n",
+      "fu1_subject": "Re: scaling Vocode's agent reliability / FDE trial",
+      "fu1_body": "Hi Alex Kuo,\n\nQuick follow-up on Vocode's agent architecture.\n\nAcross my contract work at Caudal AI and building Realty Pandit, I focused on building deterministic guardrails so that customer-facing agents never drift out of transaction state.\n\nHappy to build a 48-hour prototype or review an open technical issue for Vocode at zero risk.\n\nBest,\nAvnish Rana\nResume: https://drive.google.com/file/d/1ekE5qIvlxSTAbdRzmktkMarLCAUYklWW/view?usp=sharing\nGitHub: https://github.com/AvnishRana25\n",
+      "fu2_subject": "Re: scaling Vocode's agent reliability / FDE trial",
+      "fu2_body": "Hi Alex Kuo,\n\nI know you're busy building Vocode, so I won't follow up further.\n\nIf you ever need an engineer who can build deterministic agent guardrails, Dockerized evaluation pipelines, and ship fast, I'd love to stay in touch.\n\nWishing you and the Vocode team all the best!\n\nAvnish Rana\nLinkedIn: https://www.linkedin.com/in/avnish-rana-83523b2a3/\nGitHub: https://github.com/AvnishRana25\n",
+      "gmail_draft_id": "r-3762003160705310963",
+      "gmail_thread_id": "1a1123121f6b5b13",
+      "created_at": "2026-10-06T17:09:32.259105",
+      "sent_at": "2026-10-06T17:10:02+00:00",
+      "last_checked_reply_at": "2026-10-07T12:20:18.496682+00:00",
       "replied_at": null
     }
   ]

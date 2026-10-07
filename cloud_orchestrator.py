@@ -70,6 +70,56 @@ def action_check_replies():
 import time
 import random
 
+def sync_draft_states(client=None) -> int:
+    """
+    Verifies leads in 'Drafted in Gmail' status against Gmail API.
+    If the draft was already sent manually by the user, updates status to 'SENT'.
+    If the draft was trashed, marks it as 'ARCHIVED'.
+    Prevents ghost drafts from falsely blocking research or throwing 400 errors.
+    """
+    conn = get_db()
+    cursor = conn.cursor()
+    cursor.execute("SELECT id, name, gmail_draft_id FROM leads WHERE LOWER(status) LIKE '%draft%' AND gmail_draft_id IS NOT NULL")
+    rows = cursor.fetchall()
+    if not rows:
+        conn.close()
+        return 0
+
+    client = client or GmailClient()
+    updated = 0
+    now = datetime.now(timezone.utc).isoformat()
+
+    for r in rows:
+        did = r["gmail_draft_id"]
+        lid = r["id"]
+        name = r["name"]
+        try:
+            draft = client._api_request(f"drafts/{did}")
+            msg = draft.get("message", {})
+            labels = msg.get("labelIds", [])
+            thread_id = msg.get("threadId")
+
+            if "SENT" in labels:
+                internal_date = int(msg.get("internalDate", 0)) / 1000
+                sent_at = datetime.fromtimestamp(internal_date, tz=timezone.utc).isoformat() if internal_date else now
+                cursor.execute(
+                    "UPDATE leads SET status = 'SENT', sent_at = ?, gmail_thread_id = ? WHERE id = ?",
+                    (sent_at, thread_id, lid)
+                )
+                updated += 1
+                print(f"[Draft Sync] Synced {name} -> SENT (already sent in Gmail)")
+            elif "TRASH" in labels:
+                cursor.execute("UPDATE leads SET status = 'ARCHIVED' WHERE id = ?", (lid,))
+                updated += 1
+                print(f"[Draft Sync] Synced {name} -> ARCHIVED (trashed in Gmail)")
+        except Exception:
+            pass
+
+    if updated > 0:
+        conn.commit()
+    conn.close()
+    return updated
+
 def action_send_batch(region: str = "US", dry_run: bool = False, auto_send: bool = False):
     """
     Processes emails for a given region according to founder local morning hours.
@@ -77,6 +127,11 @@ def action_send_batch(region: str = "US", dry_run: bool = False, auto_send: bool
     If auto_send is False, ensures they are drafted in Gmail and alerts mobile.
     """
     print(f"[Batch Engine] Processing batch for region: {region} (auto_send={auto_send})")
+    client = GmailClient()
+    
+    # Sync drafts first to eliminate phantom drafts
+    sync_draft_states(client)
+
     conn = get_db()
     cursor = conn.cursor()
     
@@ -91,7 +146,6 @@ def action_send_batch(region: str = "US", dry_run: bool = False, auto_send: bool
         return 0
         
     print(f"[Batch Engine] Found {len(leads)} leads for {region}:")
-    client = GmailClient()
     processed_count = 0
     now = datetime.now(timezone.utc).isoformat()
     
@@ -112,11 +166,35 @@ def action_send_batch(region: str = "US", dry_run: bool = False, auto_send: bool
             
         try:
             if auto_send:
+                send_res = None
                 if draft_id:
-                    send_res = client.send_draft(draft_id)
+                    try:
+                        send_res = client.send_draft(draft_id)
+                    except Exception as err:
+                        # Check if draft was already sent manually or deleted
+                        print(f"   ⚠️ Could not send draft {draft_id}: {err}")
+                        try:
+                            draft_info = client._api_request(f"drafts/{draft_id}")
+                            msg = draft_info.get("message", {})
+                            if "SENT" in msg.get("labelIds", []):
+                                print(f"   ℹ️ Draft {draft_id} was already sent in Gmail.")
+                                thread_id = msg.get("threadId")
+                                cursor.execute(
+                                    "UPDATE leads SET status = 'SENT', sent_at = ?, gmail_thread_id = ? WHERE id = ?",
+                                    (now, thread_id, lead_id)
+                                )
+                                conn.commit()
+                                processed_count += 1
+                                continue
+                        except Exception:
+                            pass
+                        # Fallback: direct send
+                        print(f"   🚀 Fallback: Sending directly via Gmail API to {email}...")
+                        send_res = client.send_message(email, subject, body)
                 else:
                     send_res = client.send_message(email, subject, body)
-                thread_id = send_res.get("threadId")
+                
+                thread_id = send_res.get("threadId") if send_res else None
                 cursor.execute(
                     "UPDATE leads SET status = 'SENT', sent_at = ?, gmail_thread_id = ? WHERE id = ?",
                     (now, thread_id, lead_id)
@@ -340,18 +418,25 @@ def action_tick(dry_run: bool = False, auto_send: bool = True):
     now_utc = datetime.now(timezone.utc)
     print(f"[Tick Engine] Current UTC Time: {now_utc.strftime('%Y-%m-%d %H:%M:%S UTC')}")
     
-    # 1. Reply Detection
+    # 1. Sync Draft States with Gmail (eliminates phantom drafts)
+    try:
+        sync_draft_states()
+    except Exception as e:
+        print(f"[Tick Engine] Warning syncing draft states: {e}")
+
+    # 2. Reply Detection
     action_check_replies()
 
-    # 2. Autonomous Morning Replenishment (02:30 - 04:00 UTC)
+    # 3. Autonomous Morning Replenishment (02:00 - 06:00 UTC / 07:30 - 11:30 AM IST)
+    # If total drafts across all regions is low (< 8), replenish fresh startups
     time_decimal = now_utc.hour + now_utc.minute / 60.0
-    if 2.5 <= time_decimal <= 4.0:
+    if 2.0 <= time_decimal <= 6.0:
         total_drafts = db.get_pending_draft_count("All")
         if total_drafts < 8:
-            print(f"[Tick Engine] 🌅 Early morning replenishment window active (total pending drafts={total_drafts} < 8). Replenishing fresh startups...")
+            print(f"[Tick Engine] 🌅 Morning replenishment window active (total pending drafts={total_drafts} < 8). Replenishing fresh startups...")
             action_research_and_draft(region="All", dry_run=dry_run)
     
-    # 3. Regional morning dispatch checks
+    # 4. Regional morning dispatch checks
     regions = ["India", "ME", "EU", "US"]
     for reg in regions:
         in_window, local_desc = is_region_in_sending_window(reg)
@@ -364,7 +449,7 @@ def action_tick(dry_run: bool = False, auto_send: bool = True):
                 pending_drafts = db.get_pending_draft_count(reg)
                 if pending_drafts == 0:
                     print(f"[Timezone Controller] ⚠️ {reg} is in sending window with 0 pending drafts. Replenishing drafts via research-and-draft...")
-                    action_research_and_draft(region=reg)
+                    action_research_and_draft(region=reg, dry_run=dry_run)
                     pending_drafts = db.get_pending_draft_count(reg)
                     
                 if pending_drafts > 0:
